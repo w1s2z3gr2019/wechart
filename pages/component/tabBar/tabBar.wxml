@@ -1,0 +1,13 @@
+<!--pages/component/tabBar/tabBar.wxml-->
+<view class='footer'>
+  <i-row>
+    <i-col span="12" data-id='1' i-class="{{state=='1'?'left active':'left'}}" bindtap="activeTab">
+      <image src="{{state=='1'?indexYes:indexNo}}"></image>
+      <text>主页</text>
+    </i-col>
+    <i-col span="12" i-class="{{state=='2'?'left active':'left'}}" data-id='2' bindtap="activeTab">
+      <image src="{{state=='2'?myYes:myNo}}"></image>
+      <text>我的</text>
+    </i-col>
+  </i-row>
+</view>

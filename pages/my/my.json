@@ -1,0 +1,7 @@
+{
+  "component":true,
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+   "footer": "../component/tabBar/tabBar"
+  }
+}

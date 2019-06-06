@@ -1,0 +1,91 @@
+<!--index.wxml-->
+<view>
+  <view class='header'>
+    <text>可以免费拿奖品的社区</text>
+    <text class='return'>fanhui</text>
+  </view>
+</view>
+<view class='content'>
+  <view class='list'>
+    <view class='listHader'>
+      <text>每周话题</text>
+    </view>
+    <view class='listText'>
+      <view class='listImg'>
+        <image src='../../image/tt.jpg'></image>
+        <view class='jp'>奖品:
+          <text>迪斯尼公仔一个</text>
+        </view>
+      </view>
+      <view class='listBot'>
+        <view class='firstTxt'>
+          <text class='first'>[ 娱乐 ]</text>
+          <text>陈晓陈妍希夫妇今年会不会</text>
+        </view>
+        <i-row class='time'>
+          <i-col span="16">
+            <text class="left">5月28日 20:00 自动开奖/每周一开</text>
+          </i-col>
+          <i-col span="5" class='red'>
+            <navigator>
+              <text>竞猜官方</text>
+            </navigator>
+          </i-col>
+          <i-col span="3" class='red'>
+            <navigator>
+              <text>赞助</text>
+            </navigator>
+          </i-col>
+        </i-row>
+        <i-divider i-class="divider"></i-divider>
+        <i-row i-class="more">
+            <i-col span="22">ss</i-col>
+            <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+        </i-row>
+      </view>
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='listHader'>
+      <text>每周话题</text>
+    </view>
+    <view class='listText'>
+      <view class='listImg'>
+        <image src='../../image/tt.jpg'></image>
+        <view class='jp'>奖品:
+          <text>迪斯尼公仔一个</text>
+        </view>
+      </view>
+      <view class='listBot'>
+        <view class='firstTxt'>
+          <text class='first'>[ 娱乐 ]</text>
+          <text>陈晓陈妍希夫妇今年会不会</text>
+        </view>
+        <i-row class='time'>
+          <i-col span="16">
+            <text class="left">5月28日 20:00 自动开奖/每周一开</text>
+          </i-col>
+          <i-col span="5" class='red'>
+            <navigator>
+              <text>竞猜官方</text>
+            </navigator>
+          </i-col>
+          <i-col span="3" class='red'>
+            <navigator>
+              <text>赞助</text>
+            </navigator>
+          </i-col>
+        </i-row>
+        <i-divider i-class="divider"></i-divider>
+        <i-row i-class="more">
+            <i-col span="22">ss</i-col>
+            <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+        </i-row>
+      </view>
+    </view>
+  </view>
+
+
+</view>
+<footer state="1" />
