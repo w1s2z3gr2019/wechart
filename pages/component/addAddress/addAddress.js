@@ -1,13 +1,19 @@
-// pages/component/address/address.js
+// pages/component/addAddress/addAddress.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1]
+    region: [],
+    detailedAddress:''
   },
-
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

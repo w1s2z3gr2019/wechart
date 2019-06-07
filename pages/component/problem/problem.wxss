@@ -1,0 +1,35 @@
+/* pages/component/problem/problem.wxss */
+
+.wrap{
+  box-sizing: border-box;
+  width: 100%;
+  background: #E9EDF1;
+  position: relative;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+.list{
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  padding: 20px 10px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.list .title{
+  color:#E70012;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.list .txt{
+   text-align: justify;
+}
+.footer{
+  text-align: center;
+  padding: 60rpx 0 60px;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}

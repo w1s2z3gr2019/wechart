@@ -34,28 +34,28 @@
             <i-icon i-class='icon' type="enter" size="18" color="#666666" />
         </view>
      </navigator>
-     <navigator url="">
+     <navigator url="/pages/component/extension/extension">
         <view class='col'>
             <image src="../../image/my2.png"></image>
             <text>推广合作</text>
             <i-icon i-class='icon' type="enter" size="18" color="#666666" />
         </view>
      </navigator>
-     <navigator url="">
+     <navigator url="/pages/component/problem/problem">
         <view class='col'>
             <image src="../../image/my3.png"></image>
             <text>常见问题</text>
             <i-icon i-class='icon' type="enter" size="18" color="#666666" />
         </view>
      </navigator>
-     <navigator url="">
+     <navigator url="/pages/component/complaint/complaint">
         <view class='col'>
             <image src="../../image/my4.png"></image>
             <text>投诉建议</text>
             <i-icon i-class='icon' type="enter" size="18" color="#666666" />
         </view>
      </navigator>
-     <navigator url="">
+     <navigator url="/pages/component/contact/contact">
         <view class='col'>
             <image src="../../image/my5.png"></image>
             <text>联系我们</text>

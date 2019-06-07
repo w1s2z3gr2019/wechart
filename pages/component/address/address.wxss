@@ -1,1 +1,108 @@
 /* pages/component/address/address.wxss */
+.wrap{
+  box-sizing: border-box;
+  width: 100%;
+  background: #E9EDF1;
+  position: absolute;
+  height: 100%;
+  padding: 10px;
+}
+.addressL{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 10px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.addressL .init{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  width: 60px;
+  height: 24px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 24px;
+  z-index: 12;
+  background: #90EE90;
+  border-radius: 0 0 0 10px;
+}
+.addressL .left{
+  box-sizing: border-box;
+  float: left;
+  font-size: 16px;
+  color: #666;
+  width: 220px;
+}
+
+.addressL .addressTxt{
+  box-sizing: border-box;
+  font-size: 14px;
+  margin-top: 4px;
+}
+.addressL .icon{
+  float: right;
+  margin-top: 20px;
+}
+.addressL .headImg{
+  float: left;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  line-height: 60px;
+  text-align: center;
+  background: #B4BEC1;
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.addressL .name{
+  color: #333;
+  font-size: 16px;
+  margin-right: 10px
+}
+.addressL .phone{
+  font-size: 12px;
+}
+.addressNo{
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  margin: 0px auto
+}
+.addressNo image{
+  width: 100%;
+  height: 100%;
+}
+.addressFooter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  background: #E70012;
+}
+.footer{
+  text-align: center;
+  padding: 60rpx 0 0rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}
+
+
+
+
+
+
+

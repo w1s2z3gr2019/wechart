@@ -1,0 +1,94 @@
+/* pages/component/addAddress/addAddress.wxss */
+.wrap{
+  width: 100%;
+  background: #E9EDF1;
+  position: absolute;
+  height: 100%;
+  padding-bottom: 60px;
+
+}
+.wrap .section{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+ color: #999999;
+ font-size: 16px;
+ margin-bottom: 1px;
+ background: #fff;
+}
+.wrap .section input{
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  border:none;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 10px
+}
+.picker{
+  padding: 0 10px;
+}
+.sec_picker{
+  position: relative;
+}
+.wrap .section .icon{
+  position: absolute;
+  right: 10px;
+  top: 22px;
+}
+.del{
+  color: #E70012
+}
+.del:active{
+  background: #E70012;
+  color: #fff;
+}
+textarea{
+  box-sizing: border-box;
+  min-height:100px; 
+  width: 100%!important;
+  background: #fff!important;
+  padding: 10px;
+  font-size: 16px;
+  color: #999999;
+}
+.initAddress{
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 100%;
+  margin-top: 15px;
+  height: 60px;
+  line-height: 60px;
+  background: #fff;
+}
+.left{
+  float: left
+}
+.right{
+  float: right
+}
+.initAddress text{
+  float: left
+}
+.submit:active{
+  background: rgb(240, 56, 71);
+}
+.submit{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #E70012;
+  color: #fff;
+  font-size: 18px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.footer{
+  text-align: center;
+  padding: 100rpx 0 40rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}

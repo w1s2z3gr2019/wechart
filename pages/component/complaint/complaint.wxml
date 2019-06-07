@@ -1,0 +1,14 @@
+<!--pages/component/complaint/complaint.wxml-->
+<view class='wrap'>
+   <view class='title'>欢迎写下您的投诉与建议</view>
+   <view class='textarea'>
+        <textarea bindinput="bindTextAreaBlur" maxlength='200' placeholder="请描述您所遇到的问题，并提供您的建议" />
+        <view class='num'>{{nub}}/200</view>
+    </view>
+   <view class='title'>联系方式</view>
+   <input  bindinput="bindKeyInput" placeholder="请留下您的邮箱/手机/微信/QQ"/>
+   <view class='footer'>
+      <image src='../../../image/my6.png'></image>
+   </view>
+   <view class='submit'>发送</view>
+</view>

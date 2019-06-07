@@ -1,0 +1,32 @@
+<!--pages/component/addAddress/addAddress.wxml-->
+<view class='wrap'>
+    <view class="section">
+      <input placeholder="收货人" value="{{}}"/>
+    </view>
+    <view class="section">
+      <input placeholder="手机号码" type = "number"/>
+    </view>
+    <view class="section sec_picker">
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          <text wx:if="{{!region.length}}">所在地区</text>
+          <text wx:if="{{region.length}}">{{region[0]}} - {{region[1]}} - {{region[2]}}</text>
+          <i-icon i-class='icon' type="enter" size="16" color="#999999" />
+        </view>
+      </picker>
+    </view>
+    <textarea class='textarea' auto-height bindblur="bindTextAreaBlur" placeholder="详细地址：如道路、门牌、小区、楼栋号、单元室等" type = "number"/>
+    <view class='initAddress'>
+      <view class='left'>设为默认地址</view>
+      <view class='right'>
+        <switch checked bindchange="switch1Change"/>
+      </view>
+    </view>
+    <view class='initAddress del'>删除收货地址</view>
+    <view class='footer'>
+        <image src='../../../image/my6.png'></image>
+    </view>
+    <view class='submit'>
+        保存
+    </view>
+</view>

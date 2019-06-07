@@ -1,0 +1,75 @@
+/* pages/component/extension/extension.wxss */
+.header{
+  width: 100%;
+  height: 240px;
+  overflow: hidden
+}
+.header image{
+  width: 100%;
+  height: 100%;
+}
+.wrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  background: #110446;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+.tg{
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  width: 100%;
+  height: 180px;
+}
+.tg image{
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+}
+.tg .contact{
+  width: 100px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 10px;
+  background: linear-gradient(#FF8C00,#FF003B)
+}
+.contact1{
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}
+.contact3{
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+}
+.contact2{
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+}
+.contact4{
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+}
+.more{
+  font-size: 16px;
+  text-align: center;
+  color: #AEA1E8;
+  margin: 10px 0 30px;
+}
+.footer{
+  text-align: center;
+  padding: 60rpx 0 0rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}

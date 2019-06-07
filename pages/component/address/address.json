@@ -1,4 +1,8 @@
 {
   "component":true,
-  "usingComponents": {}
+  "navigationBarTitleText": "收货地址",
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index"
+  }
+  
 }

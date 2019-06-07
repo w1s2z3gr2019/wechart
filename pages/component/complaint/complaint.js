@@ -1,13 +1,25 @@
-// pages/component/address/address.js
+// pages/component/complaint/complaint.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1]
+    nub:0
   },
-
+  bindTextAreaBlur:function(e){
+    console.log(e)
+    let val = e.detail.value;
+    this.setData({
+      textVal:val,
+      nub: val.length
+    })
+  },
+  bindKeyInput:function(e){
+    this.setData({
+      phone: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

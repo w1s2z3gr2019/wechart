@@ -1,11 +1,11 @@
-// pages/component/address/address.js
+// pages/component/extension/extension.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[1]
+
   },
 
   /**

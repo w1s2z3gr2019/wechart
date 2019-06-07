@@ -2,7 +2,12 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/component/address/address"
+    "pages/component/address/address",
+    "pages/component/addAddress/addAddress",
+    "pages/component/extension/extension",
+    "pages/component/problem/problem",
+    "pages/component/complaint/complaint",
+    "pages/component/contact/contact"
   ],
   "window": {
     "backgroundTextStyle": "light",

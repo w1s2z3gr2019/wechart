@@ -1,0 +1,29 @@
+
+<view class='header'>
+  <image src='../../../image/tg_1.png'></image>
+</view>
+<view class='wrap'>
+    <view class='tg'>
+      <image src='../../../image/tg_2.png'></image>
+      <navigator url=""><view class='contact contact1'>联系我们></view></navigator>
+    </view>
+    <view class='tg'>
+      <image src='../../../image/tg_3.png'></image>
+      <navigator url=""><view class='contact contact2'>联系我们></view></navigator>
+    </view>
+    <view class='tg'>
+      <image src='../../../image/tg_4.png'></image>
+      <navigator url=""><view class='contact contact3'>联系我们></view></navigator>
+    </view>
+    <view class='tg'>
+      <image src='../../../image/tg_5.png'></image>
+      <navigator url=""><view class='contact contact4'>联系我们></view></navigator>
+    </view>
+    <view class='more'>
+      更多合作,如有其他合作意向,欢迎联系我们
+    </view>
+    <view class='footer'>
+      <image src='../../../image/my6.png'></image>
+</view>
+</view>
+
