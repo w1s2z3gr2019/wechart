@@ -2,6 +2,12 @@
   "component":true,
   "navigationBarTitleText": "我的",
   "usingComponents": {
-   "footer": "../component/tabBar/tabBar"
+   "footer": "../component/tabBar/tabBar",
+   "i-cell-group": "../dist/cell-group/index",
+   "i-cell": "../dist/cell/index",
+   "i-row": "../dist/row/index",
+   "i-col": "../dist/col/index",
+   "i-avatar": "../dist/avatar/index",
+   "i-icon": "../dist/icon/index"
   }
 }

@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/component/address/address"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f00",
+    "navigationBarBackgroundColor": "#E70012",
     "navigationBarTitleText": "猜猜玩",
     "navigationBarTextStyle": "white"
   },

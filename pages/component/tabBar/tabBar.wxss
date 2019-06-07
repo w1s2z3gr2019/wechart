@@ -14,7 +14,7 @@
 
 }
 .footer .left.active{
-  background: #f00;
+  background: #E70012;
   color:#fff;
 }
 .footer image{

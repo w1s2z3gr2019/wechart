@@ -1,14 +1,18 @@
 <!--index.wxml-->
 <view>
   <view class='header'>
-    <text>可以免费拿奖品的社区</text>
-    <text class='return'>fanhui</text>
+    <image src='../../image/titletext.png'></image>
+    <navigator url=''>
+        <view class='return'>
+            <image src='../../image/return.png'></image>
+        </view>
+    </navigator>
   </view>
 </view>
 <view class='content'>
   <view class='list'>
     <view class='listHader'>
-      <text>每周话题</text>
+      <image src='../../image/title.png'></image><text>每周话题</text>
     </view>
     <view class='listText'>
       <view class='listImg'>
@@ -19,7 +23,7 @@
       </view>
       <view class='listBot'>
         <view class='firstTxt'>
-          <text class='first'>[ 娱乐 ]</text>
+          <text class='first'>[娱乐]</text>
           <text>陈晓陈妍希夫妇今年会不会</text>
         </view>
         <i-row class='time'>
@@ -39,16 +43,27 @@
         </i-row>
         <i-divider i-class="divider"></i-divider>
         <i-row i-class="more">
-            <i-col span="22">ss</i-col>
+            <i-col span="22">
+                <view class='left'>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                </view>
+                <view class='left'>
+                   <image src="../../image/more_03.png"></image>
+                   <view class='txt'>等参与了抽奖</view>
+                </view>
+            </i-col>
             <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
         </i-row>
       </view>
     </view>
   </view>
-
-  <view class='list'>
+<view class='list'>
     <view class='listHader'>
-      <text>每周话题</text>
+      <image src='../../image/title.png'></image><text>每周话题</text>
     </view>
     <view class='listText'>
       <view class='listImg'>
@@ -59,7 +74,7 @@
       </view>
       <view class='listBot'>
         <view class='firstTxt'>
-          <text class='first'>[ 娱乐 ]</text>
+          <text class='first'>[娱乐]</text>
           <text>陈晓陈妍希夫妇今年会不会</text>
         </view>
         <i-row class='time'>
@@ -79,12 +94,31 @@
         </i-row>
         <i-divider i-class="divider"></i-divider>
         <i-row i-class="more">
-            <i-col span="22">ss</i-col>
+            <i-col span="22">
+                <view class='left'>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                </view>
+                <view class='left'>
+                   <image src="../../image/more_03.png"></image>
+                   <view class='txt'>等参与了抽奖</view>
+                </view>
+            </i-col>
             <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
         </i-row>
       </view>
     </view>
   </view>
+ 
+
+
+
+    <view class='contact'>
+      <image src='../../image/contact.png'></image><text>联系我们</text>
+    </view>
 
 
 </view>

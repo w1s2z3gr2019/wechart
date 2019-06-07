@@ -1,1 +1,84 @@
 /* pages/my/my.wxss */
+.wrap{
+  width: 100%;
+  padding: 10px;
+  background: #E9EDF1;
+  box-sizing: border-box;
+  padding-bottom: 200rpx;
+}
+.myHeader{
+  width: 100%;
+  background: #EB070E;
+  font-size: 14px;
+  color:#fff;
+  border-radius: 16rpx;
+}
+.myHeader .txt{
+  padding: 80rpx;
+  clear: both;
+  overflow: hidden;
+  text-align: center;
+}
+.myHeader .advice{
+  padding: 40rpx
+}
+.myHeader .advice .headImg{
+  width: 120rpx;
+  height:120rpx;
+  padding: 6rpx;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+  margin-right: 30rpx;
+}
+.myHeader .advice block{
+  float: left;
+}
+.myHeader .advice .name{
+  vertical-align: top;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.myHeader .advice .headImg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.txt .nub{
+  margin-bottom: 20rpx;
+}
+.list{
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 20rpx;
+  background: #fff;
+  padding:20rpx;
+  border-radius: 10rpx;
+}
+.col{
+  height: 60px;
+  line-height: 60px;
+  color: #666666;
+}
+.col image{
+  width: 20px;
+  height: 20px;
+  margin: 0 20rpx;
+  vertical-align: middle;
+  margin-top: -8rpx;
+}
+.col .icon{
+  float: right!important;
+  margin-top: 20px;
+}
+.footer{
+  text-align: center;
+  padding: 60rpx 0 0rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+  
+}

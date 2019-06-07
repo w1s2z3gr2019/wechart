@@ -1,3 +1,71 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class='wrap'>
+  <view class='myHeader'>
+      <view class='advice'>
+          <view class='headImg'>
+            <image src="{{imgUrl}}"></image>
+          </view>
+          <block >
+              <view class='name'>{{name}}</view>
+              <view>乐天自由派！重在参与！</view>
+          </block>
+      </view>
+      <view class='txt'>
+          <i-row>
+              <i-col span="8" i-class="col-class">
+                <view class='nub'>212</view>
+                <view>竞猜记录</view>
+              </i-col>
+              <i-col span="8" i-class="col-class">
+                <view class='nub'>212</view>
+                <view>累计概率</view>
+              </i-col>
+              <i-col span="8" i-class="col-class">
+                <view class='nub'>212</view>
+                <view>中奖记录</view>
+              </i-col>
+          </i-row>
+      </view>
+  </view>
+  <view class='list'>
+     <navigator url="/pages/component/address/address">
+        <view class='col'>
+            <image src="../../image/my1.png"></image>
+            <text>收货地址</text>
+            <i-icon i-class='icon' type="enter" size="18" color="#666666" />
+        </view>
+     </navigator>
+     <navigator url="">
+        <view class='col'>
+            <image src="../../image/my2.png"></image>
+            <text>推广合作</text>
+            <i-icon i-class='icon' type="enter" size="18" color="#666666" />
+        </view>
+     </navigator>
+     <navigator url="">
+        <view class='col'>
+            <image src="../../image/my3.png"></image>
+            <text>常见问题</text>
+            <i-icon i-class='icon' type="enter" size="18" color="#666666" />
+        </view>
+     </navigator>
+     <navigator url="">
+        <view class='col'>
+            <image src="../../image/my4.png"></image>
+            <text>投诉建议</text>
+            <i-icon i-class='icon' type="enter" size="18" color="#666666" />
+        </view>
+     </navigator>
+     <navigator url="">
+        <view class='col'>
+            <image src="../../image/my5.png"></image>
+            <text>联系我们</text>
+            <i-icon i-class='icon' type="enter" size="18" color="#666666" />
+        </view>
+     </navigator>
+  </view>
+  <view class='footer'>
+      <image src='../../image/my6.png'></image>
+  </view>
+</view>
+
 <footer state="2"/>

@@ -1,24 +1,17 @@
-// pages/my/my.js
-const app = getApp();
+// pages/component/address/address.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    name: '',
-    imgUrl: '../../image/tt.jpg'
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app)
-    this.setData({
-      name: app.globalData.userInfo.nickName,
-      imgUrl: app.globalData.userInfo.avatarUrl
-    })
 
   },
 
@@ -33,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+
   },
 
   /**
