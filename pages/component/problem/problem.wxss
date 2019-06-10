@@ -4,7 +4,7 @@
   box-sizing: border-box;
   width: 100%;
   background: #E9EDF1;
-  position: relative;
+  position: absolute;
   height: 100%;
   padding: 10px;
   overflow: hidden;

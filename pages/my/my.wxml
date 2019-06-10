@@ -11,10 +11,12 @@
       </view>
       <view class='txt'>
           <i-row>
-              <i-col span="8" i-class="col-class">
-                <view class='nub'>212</view>
-                <view>竞猜记录</view>
-              </i-col>
+              <navigator url="/pages/component/guessRecord/guessRecord">
+                  <i-col span="8" i-class="col-class">
+                    <view class='nub'>212</view>
+                    <view>竞猜记录</view>
+                  </i-col>
+              </navigator>
               <i-col span="8" i-class="col-class">
                 <view class='nub'>212</view>
                 <view>累计概率</view>
@@ -67,5 +69,3 @@
       <image src='../../image/my6.png'></image>
   </view>
 </view>
-
-<footer state="2"/>

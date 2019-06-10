@@ -1,0 +1,63 @@
+
+.wrap{
+  box-sizing: border-box;
+  width: 100%;
+  background: #E9EDF1;
+  position: absolute;
+  height: 100%;
+  padding: 10px;
+}
+.addressL{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 10px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.addressL .icon{
+  margin-top: 15px;
+ margin-left: 12px;
+}
+.addressL .bothTxt{
+  font-size: 16px;
+  font-weight: 800;
+  color: #333333;
+  margin-bottom: 10px;
+}
+.addressL .nub{
+  font-size: 14px;
+  color: #999999
+}
+.addressL .hms{
+  vertical-align: top;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #999999;
+}
+.addressL .ymd{
+  font-size: 14px;
+  color: #999999;
+}
+.addressL .nub text{
+  color:#f00
+}
+
+.footer{
+  text-align: center;
+  padding: 60rpx 0 0rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}
+
+
+
+
+
+
+

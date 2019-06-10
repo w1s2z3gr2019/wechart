@@ -1,0 +1,190 @@
+
+  .wrap{
+  box-sizing: border-box;
+  width: 100%;
+  background: #ffffff;
+  padding: 10px;
+}
+.result{
+  text-align: center;
+}
+.result image{
+  width: 80%;
+  height:180px;
+}
+.divider{
+  font-size: 18px!important;
+}
+.resultImg{
+  text-align: center;
+}
+.resultImg image{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.more .left{
+  float: left;
+}
+.more .left image{
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin-right: 20rpx;
+}
+.red{
+  color: #E43E16;
+}
+.more .left .txt{
+  float: left;
+  height:24px;
+  line-height: 24px;
+}
+.person .txt {
+  color: #999999;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.person .only{
+  vertical-align: middle;
+  margin-top: 4px;
+  font-size: 16px;
+  color: #999;
+  text-align: right
+}
+.person .only .icon{
+    vertical-align: top;
+    margin-top: 1px;
+}
+.only .onlytxt{
+  margin-right: 10px;
+}
+.resultImg .red{
+  font-size: 16px;
+  color: #E43E16;
+  margin: 10px 0;
+}
+.resultImg .prize{
+  font-size: 16px;
+  color: #333;
+ 
+}
+
+.list .listText{
+  font-size: 14px;
+  width: 100%;
+  border-radius: 14rpx;
+  overflow: hidden;
+  background: #fff;
+}
+.wrapColor{
+  background: #E9EDF1;
+  padding:0 20rpx 100rpx;
+}
+.listHader{
+  position: relative;
+  text-align: center;
+  color: #E43E16;
+  padding:40rpx 0 ;
+  width: 100%;
+}
+.listHader image{
+  width:350rpx;
+  position: absolute;
+  height: 60rpx;
+  z-index: 12;
+  left: 50%;
+  top: 26rpx;
+  margin-left: -175rpx;
+}
+.listImg{
+  position: relative;
+  height: 400rpx;
+}
+
+.listImg>image{
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400rpx;
+}
+.listImg .jp{
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  height: 54rpx;
+  line-height: 54rpx;
+  padding: 0 50rpx;
+  right: 0;
+  z-index: 12;
+  background: #E43E16;
+  color: #fff;
+  border-radius: 14rpx 0 0 0;
+  
+
+}
+.listBot{
+  padding: 0 20rpx 30rpx;
+}
+.listBot .firstTxt{
+  padding: 20rpx 0;
+  font-weight: 800;
+}
+.listBot .firstTxt .first{
+  margin-right:10rpx;
+}
+.listBot .time{
+ font-size: 12px;
+}
+.listBot .left{
+  color: #999999;
+}
+.listBot .red{
+  text-align: right;
+  color: #E43E16
+}
+.listBot .divider{
+  height:50rpx!important;
+}
+.more .left{
+  float: left;
+}
+.more .left image{
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin-right: 20rpx;
+}
+.more .left .txt{
+  float: left;
+  height:24px;
+  line-height: 24px;
+}
+.listBot .cell{
+  padding-top: 4rpx!important;
+}
+.contact{
+  width: 240rpx;
+  height: 80rpx;
+  line-height:80rpx;
+  margin: 80rpx auto; 
+  background: #fff;
+  color: #666666;
+  font-size:32rpx;
+  text-align: center;
+  border-radius: 40rpx;
+}
+.navigator-hover{
+  background: #E9EDF1;
+  border-radius: 40rpx;
+}
+.footer{
+  text-align: center;
+  padding: 60rpx 0 0rpx;
+}
+.footer image{
+  width: 240rpx;
+  height: 50rpx;
+}

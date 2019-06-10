@@ -7,13 +7,36 @@
     "pages/component/extension/extension",
     "pages/component/problem/problem",
     "pages/component/complaint/complaint",
-    "pages/component/contact/contact"
+    "pages/component/contact/contact",
+    "pages/component/guessRecord/guessRecord",
+    "pages/component/lotteryResult/lotteryResult"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#E70012",
     "navigationBarTitleText": "猜猜玩",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#fff",
+    "selectedColor": "#999999",
+    "borderStyle": "white",
+    "backgroundColor": "#E70012",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/index_no.png",
+        "selectedIconPath": "/image/index_Yes.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "/image/myNo.png",
+        "selectedIconPath": "/image/myYes.png",
+        "text": "我的"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,12 +1,13 @@
 <!--pages/component/complaint/complaint.wxml-->
 <view class='wrap'>
   <view class='qrCode'>
-      <image src='../../../image/contact_qr.png'></image>
+       <image src="https://img.fetow.com/Public/Index/images/shewm.jpg" mode="widthFix"  
+    data-src="https://img.fetow.com/Public/Index/images/shewm.jpg" 
+    bindtap="previewImage"></image>
   </view>
   <view>长按识别二维码</view>
   <view>关注猜猜玩公众号</view>
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
- 
 </view>

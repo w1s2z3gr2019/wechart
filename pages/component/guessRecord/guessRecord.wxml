@@ -1,0 +1,45 @@
+<!--pages/component/guessRecord/guessRecord.wxml-->
+<view class='wrap'>
+    <view>
+      <navigator url="/pages/component/lotteryResult/lotteryResult">
+        <view class='addressL'>
+            <i-row>
+                <i-col span="15" i-class="col-class">
+                    <view class='bothTxt'>奖品：迪斯尼米奇公仔</view>
+                    <view class='nub'>限量<text>1</text>个</view>
+                </i-col>
+                <i-col span="7" i-class="col-class">
+                    <view class='hms'>10:44:53</view>
+                    <view class='ymd'>2019-06-05</view>
+                </i-col>
+                <i-col span="2" i-class="col-class">
+                  <i-icon type="enter" i-class="icon" size="20" color="#80848f" />
+                </i-col>
+            </i-row>
+        </view>
+      </navigator>
+    </view>
+     <view>
+      <navigator url="/pages/component/lotteryResult/lotteryResult">
+        <view class='addressL'>
+            <i-row>
+                <i-col span="15" i-class="col-class">
+                    <view class='bothTxt'>奖品：迪斯尼米奇公仔</view>
+                    <view class='nub'>限量<text>1</text>个</view>
+                </i-col>
+                <i-col span="7" i-class="col-class">
+                    <view class='hms'>10:44:53</view>
+                    <view class='ymd'>2019-06-05</view>
+                </i-col>
+                <i-col span="2" i-class="col-class">
+                  <i-icon type="enter" i-class="icon" size="20" color="#80848f" />
+                </i-col>
+            </i-row>
+        </view>
+      </navigator>
+    </view>
+   <view class='footer'>
+      <image src='../../../image/my6.png'></image>
+   </view>
+   <footer />
+</view>

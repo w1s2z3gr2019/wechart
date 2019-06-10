@@ -1,11 +1,12 @@
-// pages/component/contact/contact.js
+// pages/component/lotteryResult/lotteryResult.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    resultIndex:true,
+    probability:'45%'
   },
 
   /**
@@ -14,13 +15,7 @@ Page({
   onLoad: function (options) {
 
   },
-  previewImage: function (e) {
-    var current = e.target.dataset.src;
-    wx.previewImage({
-      current: current,
-      urls: [current]
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
