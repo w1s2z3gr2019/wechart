@@ -5,13 +5,41 @@
   background: #ffffff;
   padding: 10px;
 }
+.success{
+  position: relative;
+  width: 100%;
+  height: 180px;
+}
+.success image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 90
+}
+.success .share{
+  position: absolute;
+  right:42px;
+  bottom: 22px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  z-index: 99;
+}
+.share{
+  background: none;
+  border: none;
+}
+.noTxt{
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
 .result{
   text-align: center;
 }
-.result image{
-  width: 80%;
-  height:180px;
-}
+
 .divider{
   font-size: 18px!important;
 }

@@ -4,6 +4,7 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
+      console.log('222')
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
@@ -20,7 +21,6 @@ Component({
   },
   //初始
   attached() {
-    wx.showShareMenu()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

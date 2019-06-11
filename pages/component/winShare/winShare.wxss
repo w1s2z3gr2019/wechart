@@ -1,0 +1,94 @@
+/* pages/component/winShare/winShare.wxss */
+.wrap{
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  height:100%;
+  width:100%;
+  background: #fff; 
+}
+.red{
+  color: #E43E16;
+}
+.wrap .jpImg{
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 100%;
+  height:80px;
+}
+.gzh{
+  text-align: center;
+  color:#E70012;
+  font-size: 14px;
+  padding-bottom: 50px;
+}
+.gzh image{
+  width: 180px;
+  height: 180px;
+  margin-bottom: 20px;
+}
+.wrap .jpImg .ttImg{
+  width: 100%;
+  height: 100%;
+}
+.content{
+  width: 100%;
+  overflow: hidden;
+  background: #E70012;
+  clear: both;
+  margin-top: -10px;
+  padding: 25px 15px;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius:  0 0 5px 5px;
+}
+
+.content .head{
+  background: #fff;
+  padding: 2px;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.content .bigTxt{
+  font-size: 18px;
+}
+.content .jp{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.content .head image{
+  display:inline-block; 
+  width: 100%;
+  height: 100%;
+  border-radius:50%;
+  
+  
+}
+
+.person{
+  clear: both;
+  overflow: hidden
+}
+.person .txt {
+  color: #999999;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.person .only{
+  vertical-align: middle;
+  margin-top: 4px;
+  font-size: 16px;
+  color: #999;
+  text-align: right
+}
+.person .only .icon{
+    vertical-align: top;
+    margin-top: 1px;
+}

@@ -1,23 +1,25 @@
-// pages/component/lotteryResult/lotteryResult.js
-const app =getApp();
-console.log(app)
+// pages/component/winShare/winShare.js
+
 Page({
-  
+
   /**
    * 页面的初始数据
    */
+ 
   data: {
-    resultIndex:1,
-    probability:'45%',
-    id:'123456'
+    name:'TTT',
+    winP:'iPhoneX 512G 一台',
+    name: '',
+    urlImg: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    
+
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -29,7 +31,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var app = getApp();
+    let userInfo = app.globalData.userInfo;
+    this.setData({
+      name: userInfo.nickName,
+      urlImg: userInfo.avatarUrl
+    })
   },
 
   /**
@@ -38,7 +45,13 @@ Page({
   onHide: function () {
 
   },
-
+  previewImage: function (e) {
+    var current = e.target.dataset.src;
+    wx.previewImage({
+      current: current,
+      urls: [current]
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */
@@ -63,17 +76,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    console.log(res)
-    if (res.from === 'button') {
-      console.log(res);
-    }
-    return {
-      title: '中奖啦!!!',
-      path: '/pages/component/winShare/winShare',
-      success: function (res) {
-        console.log('成功', res)
-      }
-    }
-  },
+  onShareAppMessage: function (e) {
+    console.log(e)
+  }
 })

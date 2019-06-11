@@ -9,7 +9,8 @@
     "pages/component/complaint/complaint",
     "pages/component/contact/contact",
     "pages/component/guessRecord/guessRecord",
-    "pages/component/lotteryResult/lotteryResult"
+    "pages/component/lotteryResult/lotteryResult",
+    "pages/component/winShare/winShare"
   ],
   "window": {
     "backgroundTextStyle": "light",

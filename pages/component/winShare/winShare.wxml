@@ -1,0 +1,44 @@
+<!--pages/component/winShare/winShare.wxml-->
+<view class='wrap'>
+  <view class='jpImg'>
+    <image class='ttImg' src='../../../image/shareImg.png'></image>
+    <view class='content'>
+        <i-row>
+          <i-col span="8">
+            <view class='head'>
+              <image src="{{urlImg}}"></image>
+            </view>
+            <view class='name'>{{name}}</view> 
+          </i-col>
+          <i-col span="16" class="txtLeft">
+            <view class='bigTxt'>中奖啦</view>
+            <view class='jp'>奖品：{{winP}}</view>
+            <view>母猪还真能上树！！！</view>
+          </i-col>
+        </i-row>
+      </view>
+      <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
+      
+      <view class='person'>
+          <view class='txt'>本次<text class='red'>100</text>个小伙伴参与</view>
+          <i-row i-class="more">
+              <i-col span="16">
+                  <view class='left'>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  </view>
+              </i-col>
+              <i-col span="8" i-class="only"><text class='onlytxt'>查看全部</text><i-icon i-class="icon" type="enter" size="20" color="#999999" /></i-col>
+          </i-row>
+      </view>
+      <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
+      <view class='gzh'>
+         <image src="../../../image/gzhImg.png" mode="widthFix"  
+    data-src="../../../image/gzhImg.png" 
+    bindtap="previewImage"></image>
+          <view>长按识别小程序,立即参与猜奖</view>
+      </view>
+  </view>
+</view>

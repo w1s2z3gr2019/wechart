@@ -1,9 +1,12 @@
 <!--pages/component/lotteryResult/lotteryResult.wxml-->
 <view class='wrap'>
     <view class='result'>
-      <image src="{{resultIndex?'../../../image/result_ok.png':'../../../image/result_no.png'}}"></image>
+      <view class='success'>
+          <image src="{{resultIndex?'../../../image/result_ok.png':'../../../image/result_no.png'}}"></image><button class="share" open-type="share"></button>
+      </view>
       <view class='noTxt' wx:if="{{!resultIndex}}">您的累积中奖概率为<text>{{probability}}</text></view>
     </view>
+    <navigator url="/pages/component/winShare/winShare">分享</navigator>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
       <image src='../../../image/result_ok.png'></image>
