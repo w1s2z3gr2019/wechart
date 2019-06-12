@@ -1,8 +1,7 @@
 {
-  "component":true,
-  "navigationBarTitleText": "竞猜记录",
+  "navigationBarTitleText": "累积概率",
   "usingComponents": {
-    "footer":"../../../custom-tab-bar/index",
+    "footer": "../../../custom-tab-bar/index",
     "i-row": "../../dist/row/index",
     "i-col": "../../dist/col/index",
     "i-icon": "../../dist/icon/index"

@@ -1,13 +1,11 @@
 
-
+page{
+  background: #E9EDF1;
+}
 .wrap{
-  position: absolute;
   box-sizing: border-box;
   width: 100%;
-  background: #E9EDF1;
-  height: 100%;
   padding: 0px 10px 60px;
-  overflow: hidden;
   text-align: center;
   font-size: 14px;
   color: #999999

@@ -10,7 +10,9 @@
     "pages/component/contact/contact",
     "pages/component/guessRecord/guessRecord",
     "pages/component/lotteryResult/lotteryResult",
-    "pages/component/winShare/winShare"
+    "pages/component/winShare/winShare",
+    "pages/component/WinRecord/WinRecord",
+    "pages/component/gailv/gailv"
   ],
   "window": {
     "backgroundTextStyle": "light",

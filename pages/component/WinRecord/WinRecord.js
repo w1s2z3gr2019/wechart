@@ -1,27 +1,11 @@
-// pages/component/address/address.js
+// pages/component/WinRecord/WinRecord.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        select:0,
-        value:1
-      },
-      {
-        select: 1,
-        value: 1
-      }, {
-        select: 0,
-        value: 1
-      }
-      , {
-        select: 0,
-        value: 1
-      }
-    ]
+    list:[]
   },
 
   /**

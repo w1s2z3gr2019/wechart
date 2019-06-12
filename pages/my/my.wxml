@@ -17,14 +17,18 @@
                     <view>竞猜记录</view>
                   </i-col>
               </navigator>
-              <i-col span="12" i-class="col-class">
-                <view class='nub'>212</view>
-                <view>累计概率</view>
-              </i-col>
-              <i-col span="6" i-class="col-class">
-                <view class='nub'>212</view>
-                <view>中奖记录</view>
-              </i-col>
+              <navigator url="/pages/component/gailv/gailv?id=123456">
+                <i-col span="12" i-class="col-class">
+                  <view class='nub'>212</view>
+                  <view>累计概率</view>
+                </i-col>
+               </navigator>
+              <navigator url="/pages/component/WinRecord/WinRecord?id=123456">
+                <i-col span="6" i-class="col-class">
+                  <view class='nub'>212</view>
+                    <view>中奖记录</view>
+                  </i-col>
+                </navigator>
           </i-row>
       </view>
   </view>

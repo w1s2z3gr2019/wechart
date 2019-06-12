@@ -14,6 +14,7 @@ Component({
     }
   },
   data: {
+    list:[2,2,1,1,2,2,3],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,

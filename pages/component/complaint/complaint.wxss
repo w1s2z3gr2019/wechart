@@ -1,13 +1,12 @@
 /* pages/component/complaint/complaint.wxss */
-
+page{
+   background: #E9EDF1;
+}
 .wrap{
-  position: absolute;
   box-sizing: border-box;
   width: 100%;
   background: #E9EDF1;
-  height: 100%;
   padding: 0px 10px 60px;
-  overflow: hidden;
 }
 .title{
   font-size: 16px;

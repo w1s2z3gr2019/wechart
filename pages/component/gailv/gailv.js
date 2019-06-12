@@ -1,36 +1,21 @@
-// pages/component/address/address.js
+// pages/component/gailv/gailv.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        select:0,
-        value:1
-      },
-      {
-        select: 1,
-        value: 1
-      }, {
-        select: 0,
-        value: 1
-      }
-      , {
-        select: 0,
-        value: 1
-      }
-    ]
+    list:[1,1,1,1,1,1,1]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

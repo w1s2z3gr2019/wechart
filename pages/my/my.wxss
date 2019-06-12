@@ -1,8 +1,10 @@
 /* pages/my/my.wxss */
+page{
+  background: #E9EDF1;
+}
 .wrap{
   width: 100%;
   padding: 10px;
-  background: #E9EDF1;
   box-sizing: border-box;
   padding-bottom: 200rpx;
 }

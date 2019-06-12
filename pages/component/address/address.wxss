@@ -1,11 +1,13 @@
 /* pages/component/address/address.wxss */
+  
+page{
+  background: #E9EDF1;
+}
 .wrap{
   box-sizing: border-box;
   width: 100%;
-  background: #E9EDF1;
-  position: absolute;
-  height: 100%;
   padding: 10px;
+  padding-bottom: 100px;
 }
 .addressL{
   position: relative;

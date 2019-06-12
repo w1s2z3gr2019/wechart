@@ -1,5 +1,6 @@
 {
   "component": true,
+  "navigationBarTitleText": "分享中奖",
   "usingComponents": {
     "i-divider": "../../dist/divider/index",
     "i-row": "../../dist/row/index",

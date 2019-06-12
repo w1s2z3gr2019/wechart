@@ -12,7 +12,7 @@
   </view>
 </view>
 <view class='content'>
-  <view class='list'>
+  <view class='list' wx:for="{{list}}" wx:key="{{item}}">
     <view class='listHader'>
       <image src='../../image/title.png'></image><text>每周话题</text>
     </view>
@@ -63,59 +63,7 @@
       </view>
     </view>
   </view>
-<view class='list'>
-    <view class='listHader'>
-      <image src='../../image/title.png'></image><text>每周话题</text>
-    </view>
-    <view class='listText'>
-      <view class='listImg'>
-        <image src='../../image/tt.jpg'></image>
-        <view class='jp'>奖品:
-          <text>迪斯尼公仔一个</text>
-        </view>
-      </view>
-      <view class='listBot'>
-        <view class='firstTxt'>
-          <text class='first'>[娱乐]</text>
-          <text>陈晓陈妍希夫妇今年会不会</text>
-        </view>
-        <i-row class='time'>
-          <i-col span="16">
-            <text class="left">5月28日 20:00 自动开奖/每周一开</text>
-          </i-col>
-          <i-col span="5" class='red'>
-            <navigator>
-              <text>竞猜官方</text>
-            </navigator>
-          </i-col>
-          <i-col span="3" class='red'>
-            <navigator>
-              <text>赞助</text>
-            </navigator>
-          </i-col>
-        </i-row>
-        <i-divider i-class="divider"></i-divider>
-        <i-row i-class="more">
-            <i-col span="22">
-                <view class='left'>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                </view>
-                <view class='left'>
-                   <image src="../../image/more_03.png"></image>
-                   <view class='txt'>等参与了抽奖</view>
-                </view>
-            </i-col>
-            <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
-        </i-row>
-      </view>
-    </view>
+  <view class='contact'>
+    <image src='../../image/contact.png'></image><text>联系我们</text>
   </view>
-    <view class='contact'>
-      <image src='../../image/contact.png'></image><text>联系我们</text>
-    </view>
 </view>
-<!-- <footer state="1" /> -->

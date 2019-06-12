@@ -1,11 +1,10 @@
 /* pages/component/addAddress/addAddress.wxss */
+page{
+  background: #E9EDF1;
+}
 .wrap{
   width: 100%;
-  background: #E9EDF1;
-  position: absolute;
-  height: 100%;
-  padding-bottom: 60px;
-
+  padding-bottom: 100px;
 }
 .wrap .section{
   width: 100%;

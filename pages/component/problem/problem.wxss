@@ -1,13 +1,12 @@
 /* pages/component/problem/problem.wxss */
-
+page{
+   background: #E9EDF1;
+}
 .wrap{
   box-sizing: border-box;
   width: 100%;
-  background: #E9EDF1;
-  position: absolute;
-  height: 100%;
   padding: 10px;
-  overflow: hidden;
+  padding-bottom: 40px;
 }
 .list{
   box-sizing: border-box;

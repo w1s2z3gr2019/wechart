@@ -1,10 +1,10 @@
 <!--pages/component/addAddress/addAddress.wxml-->
 <view class='wrap'>
     <view class="section">
-      <input placeholder="收货人" value="{{}}"/>
+      <input placeholder="收货人" value="{{name}}" class='inp'/>
     </view>
     <view class="section">
-      <input placeholder="手机号码" type = "number"/>
+      <input placeholder="手机号码" type = "number" value="{{phone}}"/>
     </view>
     <view class="section sec_picker">
       <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">

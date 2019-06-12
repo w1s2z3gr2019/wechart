@@ -7,13 +7,10 @@ page{
   color: #999;
   text-align: center;
 }
-
 .wrap{
   box-sizing: border-box;
   width: 100%;
   background: #E9EDF1;
-  position: relative;
-  height: 100%;
   padding: 10px;
   padding-bottom: 100px;
 }
@@ -64,8 +61,25 @@ page{
   width: 240rpx;
   height: 50rpx;
 }
-
-
+.advice{
+  height: 2px;
+  border-bottom: 1px dotted #999999;
+  margin: 10px 0 15px;
+  width: 100%;
+}
+.gailv{
+  font-size: 16px;
+  color: #333333
+}
+.gailv .red{
+  color: #E70012;
+}
+.gailv .gailvLeft{
+  float: left;
+}
+.gailv .gailvRight{
+  float: right;
+}
 
 
 
