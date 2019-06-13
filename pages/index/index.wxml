@@ -44,22 +44,24 @@
           </i-col>
         </i-row>
         <i-divider i-class="divider"></i-divider>
-        <i-row i-class="more">
-            <i-col span="22">
-                <view class='left'>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                </view>
-                <view class='left'>
-                   <image src="../../image/more_03.png"></image>
-                   <view class='txt'>等参与了抽奖</view>
-                </view>
-            </i-col>
-            <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
-        </i-row>
+        <navigator url="/pages/component/guess/guess">
+          <i-row i-class="more">
+              <i-col span="22">
+                  <view class='left'>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  </view>
+                  <view class='left'>
+                    <image src="../../image/more_03.png"></image>
+                    <view class='txt'>等参与了抽奖</view>
+                  </view>
+              </i-col>
+              <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+          </i-row>
+          </navigator>
       </view>
     </view>
   </view>

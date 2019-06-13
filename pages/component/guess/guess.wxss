@@ -1,0 +1,207 @@
+page{
+  background: #fff;
+}
+.wrap{
+  padding: 10px 10px 0px 10px;
+}
+.listImg image{
+  width: 100%;
+}
+.listText{
+  font-size: 14px;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+.listBot{
+  padding: 0 10rpx 30rpx;
+}
+.listBot .firstTxt{
+  font-size: 16px;
+  padding: 20rpx 0;
+  font-weight: 800;
+}
+.listBot .firstTxt .first{
+  margin-right:10rpx;
+}
+.listBot .time{
+ font-size: 13px;
+ margin-bottom: 10px;
+}
+.listBot .left{
+  color: #999999;
+}
+.listBot .red{
+  text-align: left;
+  color: #E43E16
+}
+.listBot .redRight{
+  text-align: right;
+  color: #E43E16
+}
+.listBot .divider{
+  height:50rpx!important;
+}
+.more{
+  padding: 0 10px;
+}
+.more .left{
+  float: left;
+}
+.more .only .icon{
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.more .only{
+  height: 24px;
+  line-height: 24px;
+  vertical-align: middle;
+  color: #999999;
+  text-align: right
+}
+.more .left image{
+  float: left;
+  width: 25px;
+  height: 25px;
+  margin-right: 20rpx;
+}
+.more .left .txt{
+  float: left;
+  height:24px;
+  line-height: 24px;
+}
+.listBot .cell{
+  padding-top: 4rpx!important;
+}
+/* 问题一样式 */
+.question1{
+  padding: 5px 10px 5px;
+}
+.question1 .title{
+      text-align: center;
+      font-size: 20px;
+      color: #E43E16;
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 15px;
+}
+.question1 .title .dot{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #E43E16;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+.question1 .title .txt{
+  vertical-align: top;
+}
+.question1 .titleBt{
+  text-align: center;
+  font-size:18px;
+  color: #000000;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+.question1 .select{
+  margin-bottom: 30px;
+}
+.question1 .select .qLeft{
+  float:right;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom,#5FEEFF,#0D86ED);
+  line-height: 60px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  box-shadow:  0 0 5px #5FEEFF;
+}
+.question1 .select .qRight{
+  float: left;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom,#FFD75F,#ED4C0D);
+  line-height: 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow:  0 0 5px #FFD75F;
+}
+.question1 .select .vs{
+  height: 60px;
+  line-height: 60px;
+  font-size:16px;
+  text-align: center;
+  color: #333333;
+}
+.question1 .tishi{
+  font-size: 12px;
+  color: #999999;
+}
+.already{
+  padding: 0 10px 10px;
+  color: #999999;
+  font-size: 14px;
+}
+.share{
+ text-align: center;
+ padding: 30px 50px;
+}
+.share .shareTxt{
+  width: 200px;
+  padding: 10 20px;
+  background: #E43E16;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+}
+.huiColor{
+  height: 10px;
+  width: 100%;
+  background: #E9EDF1;
+}
+.wrapContent{
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.wrapContent .con{
+  text-align: justify;
+  color: #333333;
+  font-size: 14px;
+}
+.copy{
+  padding:30px 80px;
+  text-align: center;
+  background: #fff;
+}
+.copy .name{
+  font-size: 16px;
+  color: #333333;
+
+}
+.copy .wechart{
+  height: 40px;
+  line-height: 40px;
+  background: #E9EDF1;
+  font-size: 16px;
+  color: #666666;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.copy .yjCopy{
+  color: #0083FE;
+  font-size: 14px;
+}
+.huad{
+  padding: 40px 0 100px;
+  text-align: center;
+  color: #999999;
+  font-size: 14px;
+  background: #E9EDF1;
+}
+

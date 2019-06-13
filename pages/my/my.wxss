@@ -13,7 +13,7 @@ page{
   background: #EB070E;
   font-size: 14px;
   color:#fff;
-  border-radius: 16rpx;
+  border-radius: 4px;
 }
 .myHeader .txt{
   padding: 80rpx;

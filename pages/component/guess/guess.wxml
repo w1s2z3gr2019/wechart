@@ -1,0 +1,90 @@
+<view class='wrap'>
+ <view class='listText'>
+      <view class='listImg'>
+        <image src='../../../image/tt.jpg'></image>
+      </view>
+      <view class='listBot'>
+        <view class='firstTxt'>
+          <text class='first'>奖品 : </text>
+          <text>陈晓陈妍希夫妇今年会不会</text>
+        </view>
+        <view class='time'>
+          <text class="left">5月28日 20:00 自动开奖/每周一开</text>
+        </view>
+        <i-row >
+          <i-col span="5" class='red'>
+            <navigator>
+              <text>竞猜官方</text>
+            </navigator>
+          </i-col>
+          <i-col span="3" class='red'>
+            <navigator>
+              <text>赞助</text>
+            </navigator>
+          </i-col>
+          <i-col span="16" class='redRight'>
+            <navigator>
+              <text>猜猜玩小程序 ></text>
+            </navigator>
+          </i-col>
+        </i-row>
+        <i-divider i-class="divider"></i-divider>
+        
+        <view class='question1'>
+            <view class='title'>
+                <text class='dot'></text><text class='txt'>猜猜玩本月话题</text><text class='dot'></text> 
+            </view>
+            <view class='titleBt'>李胜利事件还会不会死灰复燃？</view>
+            <view class='select'>
+              <i-row>
+                <i-col span="8">
+                    <text class='qLeft'>会</text>
+                </i-col>
+                <i-col span="8" class="vs">VS</i-col>
+                <i-col span="8">
+                    <text class='qRight'>不会</text>
+                </i-col>
+              </i-row>
+            </view>
+            <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+        </view>
+
+
+        <i-divider i-class="divider"></i-divider>
+        <view class='already'>已有<text class="red">{{'21221'}}</text>个小伙伴参与了话题猜猜玩</view>
+        <navigator url="/pages/component/guess/guess">
+          <i-row i-class="more">
+              <i-col span="18">
+                  <view class='left'>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  </view>
+              </i-col>
+              <i-col span="6" i-class="only">查看全部<i-icon i-class="icon" type="enter" size="16" color="#999999" /></i-col>
+          </i-row>
+          </navigator>
+           <i-divider i-class="divider"></i-divider>
+           <view class='share'>
+              <button class='shareTxt' open-type="share">立即分享给朋友</button> 
+           </view>
+      </view>
+  </view>
+</view>
+<view class='huiColor'></view>
+<view class='wrapContent'>
+  <text class='con'>2019年3月10日李胜利事件彻底爆发了，韩国经过多日来的深挖和调查，将收获到的李胜利、郑俊英不雅聊天室的内容全部曝光在公众的视野中，这犹如一盆热油浇在了本已是熊熊的烈火之上，一场韩国娱乐圈的飓风暴已然开始了！
+  </text>
+</view>
+<view class='huiColor'></view>
+<view class='copy'>
+  <view class='name'>昵称：荣子宝贝</view>
+  <view class='wechart'>rongrong1026</view>
+  <view class='yjCopy'>点此一键复制微信号</view>
+</view>
+<view class='huad'>
+    <view>继续上滑,更多奖品在等你</view>
+</view>
+<footer />

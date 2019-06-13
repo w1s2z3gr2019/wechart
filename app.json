@@ -12,7 +12,8 @@
     "pages/component/lotteryResult/lotteryResult",
     "pages/component/winShare/winShare",
     "pages/component/WinRecord/WinRecord",
-    "pages/component/gailv/gailv"
+    "pages/component/gailv/gailv",
+    "pages/component/guess/guess"
   ],
   "window": {
     "backgroundTextStyle": "light",

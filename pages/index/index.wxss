@@ -16,7 +16,7 @@ page{
 .header>image{
   vertical-align: middle;
   margin-top: 6rpx;
-  height: 36rpx;
+  height: 30rpx;
   width: 400rpx;
 }
 .header .return{
