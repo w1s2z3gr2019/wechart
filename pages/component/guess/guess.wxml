@@ -1,4 +1,6 @@
-<view class='wrap'>
+
+
+<view class='wrap' >
  <view class='listText'>
       <view class='listImg'>
         <image src='../../../image/tt.jpg'></image>
@@ -34,19 +36,53 @@
             <view class='title'>
                 <text class='dot'></text><text class='txt'>猜猜玩本月话题</text><text class='dot'></text> 
             </view>
-            <view class='titleBt'>李胜利事件还会不会死灰复燃？</view>
-            <view class='select'>
-              <i-row>
-                <i-col span="8">
-                    <text class='qLeft'>会</text>
-                </i-col>
-                <i-col span="8" class="vs">VS</i-col>
-                <i-col span="8">
-                    <text class='qRight'>不会</text>
-                </i-col>
-              </i-row>
-            </view>
-            <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+            <view class='titleBt'>{{title[guessType-1]}}</view>
+
+            <view wx:if="{{guessType==1}}">
+              <view class='select' >
+                <i-row>
+                  <i-col span="8">
+                      <text class='qLeft'>会</text>
+                  </i-col>
+                  <i-col span="8" class="vs">VS</i-col>
+                  <i-col span="8">
+                      <text class='qRight'>不会</text>
+                  </i-col>
+                </i-row>
+              </view>
+              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+            </view> 
+
+            <view wx:if="{{guessType==2}}">
+              <view class='select' >
+                <i-row>
+                  <i-col span="16" class="inpGrounp">
+                        <input class='inpNub' placeholder='点击即可输入数据' value="{{val}}" />
+                        <view>立即输入参与</view>
+                  </i-col>
+                  <i-col span="8">
+                      <view class='cany'>参与</view>
+                  </i-col>
+                </i-row>
+              </view>
+              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+            </view>  
+
+            <view wx:if="{{guessType==3}}">
+              <view class='select' >
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <view wx:for="{{items}}" class='radioView' wx:key="{{item.name}}">
+                      <label class="radio" >
+                        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                      </label>
+                    </view>
+                </radio-group>
+              </view>
+              <view class='canYu'>
+                 参与
+              </view>
+              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+            </view>  
         </view>
 
 
@@ -81,10 +117,26 @@
 <view class='huiColor'></view>
 <view class='copy'>
   <view class='name'>昵称：荣子宝贝</view>
-  <view class='wechart'>rongrong1026</view>
-  <view class='yjCopy'>点此一键复制微信号</view>
+  <view class='wechart'>{{wechartName}}</view>
+  <view class='yjCopy' bindtap="copy">点此一键复制微信号</view>
 </view>
-<view class='huad'>
+<view class='huad' bindtouchmove="touchMove">
     <view>继续上滑,更多奖品在等你</view>
+    <view class='loadTxt' hidden="{{loadingHidden}}">数据加载中...</view>
 </view>
+<view id="loading" hidden="{{loadingHidden}}">
+        <view id="loading-center">
+            <view id="loading-center-absolute">
+                <view class="object" id="object_one"></view>
+                <view class="object" id="object_two"></view>
+                <view class="object" id="object_three"></view>
+                <view class="object" id="object_four"></view>
+                <view class="object" id="object_five"></view>
+                <view class="object" id="object_six"></view>
+                <view class="object" id="object_seven"></view>
+                <view class="object" id="object_eight"></view>
+                <view class="object" id="object_big"></view>
+            </view>
+        </view>
+    </view>
 <footer />

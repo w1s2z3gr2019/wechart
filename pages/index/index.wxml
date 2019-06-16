@@ -4,11 +4,9 @@
 <view>
   <view class='header'>
     <image src='../../image/titletext.png'></image>
-    <navigator url=''>
-        <view class='return'>
-            <image src='../../image/return.png'></image>
-        </view>
-    </navigator>
+    <view class='return' bindtap='shareFun'>
+        <image src='../../image/return.png'></image>
+    </view>
   </view>
 </view>
 <view class='content'>
@@ -44,7 +42,7 @@
           </i-col>
         </i-row>
         <i-divider i-class="divider"></i-divider>
-        <navigator url="/pages/component/guess/guess">
+        <navigator url="/pages/component/guess/guess?guessType={{item}}">
           <i-row i-class="more">
               <i-col span="22">
                   <view class='left'>
@@ -66,6 +64,42 @@
     </view>
   </view>
   <view class='contact'>
-    <image src='../../image/contact.png'></image><text>联系我们</text>
+    <button open-type='contact'><image src='../../image/contact.png'></image><text>联系我们</text></button>
   </view>
+  
 </view>
+<cover-view class='shareMode' hidden='{{shareState}}'>
+<cover-view class='share'>
+   <cover-view class='shareAddress'>
+      <cover-image class='shareTitleImg' src ="../../image/shareLeft.png"></cover-image>
+      <cover-view class='shareTitl'>分享到</cover-view>
+      <cover-image  class='shareTitleImg' src ="../../image/shareRight.png"></cover-image>
+   </cover-view>
+   <cover-view>
+      <cover-view class='href' >
+        <button open-type="share">
+          <cover-image class='img' src ="../../image/wechart.png"></cover-image>
+          <cover-view>微信好友</cover-view>
+        </button>
+      </cover-view>
+      <cover-view class='href' bindtap="saveImg">
+        <cover-image class='img' src ="../../image/saveIndex.png"></cover-image>
+        <cover-view>生成海报</cover-view>
+      </cover-view>
+   </cover-view>
+   <cover-view class='cancel' bindtap='cancelFun'>取消</cover-view>
+</cover-view>
+</cover-view>
+<!-- 保存海报 -->
+<view class='saveImg' hidden='{{saveImgState}}'>
+    <view class='close' bindtap='closeSave'>
+      <image src='../../image/indexClose.png'></image>
+    </view>
+    <canvas canvas-id='share' style='width:300px;height:400px' />
+    <button class='saveImageToPhotosAlbum' bindtap="savefile">保存图片</button>
+</view>
+
+
+
+ 
+

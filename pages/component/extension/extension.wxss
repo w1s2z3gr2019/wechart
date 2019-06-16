@@ -34,7 +34,7 @@
   font-size: 14px;
   color: #fff;
   border-radius: 10px;
-  background: linear-gradient(toright, #FF8C00,#FF003B)
+  background: linear-gradient(to right, #FF8C00,#FF003B)
 }
 .contact1{
   position: absolute;

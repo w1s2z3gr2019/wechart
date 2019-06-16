@@ -22,7 +22,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "custom": true,
+    "custom":true,
     "color": "#fff",
     "selectedColor": "#999999",
     "borderStyle": "white",
