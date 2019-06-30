@@ -7,6 +7,11 @@ page{
   padding: 10px;
   padding-bottom: 100px
 }
+.zhongJ{
+  color: #E43E16;
+  font-size: 14px;
+ margin-left: 13px
+}
 .addressL{
   position: relative;
   box-sizing: border-box;
@@ -49,17 +54,17 @@ page{
   width: 50px;
   height: 55px;
   display: inline-block;
-  margin-top: 10px;
   margin-left: 10px;
 }
 .title{
-  color: #E43E16;
-  font-size: 18px;
+  font-weight: 800;
+  color: #000;
+  font-size: 16px;
 }
 .jp{
   font-size: 14px;
-  margin: 5px 0px;
-  color: #333333;
+  margin: 10px 0px;
+  color: #E43E16;
   font-weight: 800;
 }
 .time{

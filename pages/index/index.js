@@ -13,10 +13,18 @@ Component({
     }
   },
   data: {
+    visible: true,
     saveImgState:true,
     shareState:true,
     shareImgPath:'',
     screenWidth:0,
+    actions: [
+      {
+        name: '登录',
+        color: '#2d8cf0',
+      },
+    
+    ],
     listData:[
       {
         imgUrl:'../../image/title.png',
@@ -74,6 +82,11 @@ Component({
     this.saveImageToPhotosAlbum()
   },
   methods:{
+    handleOpen() {
+      this.setData({
+        visible1: true
+      });
+    },
     shareFun(){
       this.setData({
         shareState:false
@@ -228,6 +241,11 @@ Component({
          console.log(res)
        }
      }
+    },
+    handleClick:function(){
+      this.setData({
+        hasUserInfo: true
+      })
     },
     getUserInfo: function (e) {
       console.log(e)

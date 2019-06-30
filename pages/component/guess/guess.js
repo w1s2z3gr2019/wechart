@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    successState:true,
     loadingHidden: true,
     topNub:0,
     wechartName:'rongrongBaby',
@@ -19,6 +20,17 @@ Page({
   },
   reachBottom:function(){
     console.log('到底了')
+  },
+  cancelGx:function(){
+    this.setData({
+      successState:true
+    })
+  },
+  //参与抽奖  Q2
+  canY_ques:function(){
+    this.setData({
+      successState: false
+    })
   },
 //选择问题3单选
   radioChange: function (e) {
@@ -134,7 +146,25 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res);
+      this.setData({
+        successState: true
+      })
+    }
+    let guessType = this.data.guessType;
+    console.log(guessType)
+    return {
+      title: '竞猜啦',
+      imageUrl: '../../../image/tt.jpg',
+      path: '/pages/component/guess/guess?type=' + guessType,
+      success: function (rest) {
+        
+      },
+      complete: function(){
+       
+　　　　}
+    }
   }
 })

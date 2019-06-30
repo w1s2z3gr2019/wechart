@@ -2,8 +2,12 @@
 <view class='wrap'>
     <view class='result'>
       <view class='success'>
-          <image src="{{resultIndex?'../../../image/result_ok.png':'../../../image/result_no.png'}}"></image><button class="share" open-type="share"></button>
+          <view class='fail' hidden='{{resultIndex}}' >很遗憾,您未中奖~</view>
+          <image class='sucImg' hidden='{{!resultIndex}}' src='../../../image/result_ok.png'></image>
+          <image class='failImg' hidden='{{resultIndex}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!resultIndex}}' open-type="share"></button>
+          <view class='huaTi'>话题:赵丽颖生的是男孩还是女孩？</view>
       </view>
+      <view class='title' hidden='{{resultIndex}}' >话题：赵丽颖生的是男孩还是女孩？</view>
       <view class='noTxt' wx:if="{{!resultIndex}}">您的累积中奖概率为<text>{{probability}}</text></view>
     </view>
     <navigator url="/pages/component/winShare/winShare">分享</navigator>
@@ -27,8 +31,8 @@
             </i-col>
             <i-col span="8" i-class="only"><text class='onlytxt'>查看全部</text><i-icon i-class="icon" type="enter" size="20" color="#999999" /></i-col>
         </i-row>
-     </view>
-   
+      </view>
+      
 </view>
  <view class='wrapColor'>
     <view class='list'>
@@ -79,6 +83,11 @@
             </i-col>
             <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
         </i-row>
+      </view>
+      <view class='redBtn'>
+        <navigator url="/pages/component/guess/guess?guessType={{item}}">
+          <text class='btn'>我要拿大奖</text>
+        </navigator>
       </view>
     </view>
     <view class='contact'>

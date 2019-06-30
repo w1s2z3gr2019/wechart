@@ -3,19 +3,13 @@
   <view class='jpImg'>
     <image class='ttImg' src='../../../image/shareImg.png'></image>
     <view class='content'>
-        <i-row>
-          <i-col span="8">
             <view class='head'>
               <image src="{{urlImg}}"></image>
             </view>
             <view class='name'>{{name}}</view> 
-          </i-col>
-          <i-col span="16" class="txtLeft">
-            <view class='bigTxt'>中奖啦</view>
             <view class='jp'>奖品：{{winP}}</view>
+            <view class='title'>话题：赵丽颖生的是男孩还是女孩？</view>
             <view>母猪还真能上树！！！</view>
-          </i-col>
-        </i-row>
       </view>
       <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
       

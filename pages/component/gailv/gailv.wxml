@@ -4,6 +4,7 @@
     <view wx:for="{{list}}" wx:key="{{item}}" data-index="{{item}}">
       <navigator url="/pages/component/lotteryResult/lotteryResult">
         <view class='addressL'>
+             <view class='title'>话题：赵丽颖生的是男孩还是女孩？</view>
             <i-row>
                 <i-col span="15" i-class="col-class">
                     <view class='bothTxt'>奖品：迪斯尼米奇公仔</view>
@@ -33,6 +34,5 @@
     <view class='footer'>
       <image src='../../../image/my6.png'></image>
     </view>
-   <footer />
 </view>
 

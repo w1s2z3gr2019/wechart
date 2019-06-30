@@ -61,7 +61,7 @@
                         <view>立即输入参与</view>
                   </i-col>
                   <i-col span="8">
-                      <view class='cany'>参与</view>
+                      <view class='cany' bindtap='canY_ques'>参与</view>
                   </i-col>
                 </i-row>
               </view>
@@ -84,8 +84,6 @@
               <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
             </view>  
         </view>
-
-
         <i-divider i-class="divider"></i-divider>
         <view class='already'>已有<text class="red">{{'21221'}}</text>个小伙伴参与了话题猜猜玩</view>
         <navigator url="/pages/component/guess/guess">
@@ -139,4 +137,13 @@
             </view>
         </view>
     </view>
-<footer />
+    <view class='module' hidden='{{successState}}'>
+      <view class='welCon'>
+          <view class='successCy'>恭喜您参与成功</view>
+          <i-row class="shareOk">
+            <i-col span="12" class="item ljShare"><button open-type='share'>立即分享</button></i-col>
+            <i-col span="12" class="item" bindtap="cancelGx">拉倒吧</i-col>
+          </i-row>
+      </view>
+    </view>
+

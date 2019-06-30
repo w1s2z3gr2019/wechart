@@ -7,6 +7,12 @@ page{
   color: #999;
   text-align: center;
 }
+.title{
+  font-optical-sizing: 14px;
+  color: #000;
+  font-weight: 800;
+  margin: 10px 0px;
+}
 .wrap{
   box-sizing: border-box;
   width: 100%;
@@ -31,7 +37,7 @@ page{
 .addressL .bothTxt{
   font-size: 16px;
   font-weight: 800;
-  color: #333333;
+  color: #E43E16;
   margin-bottom: 10px;
 }
 .addressL .nub{

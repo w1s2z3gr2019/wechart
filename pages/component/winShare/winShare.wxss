@@ -32,8 +32,9 @@
   height: 100%;
 }
 .content{
+  text-align: center;
+  position: relative;
   width: 100%;
-  overflow: hidden;
   background: #E70012;
   clear: both;
   margin-top: -10px;
@@ -42,36 +43,43 @@
   font-size: 14px;
   box-sizing: border-box;
   border-radius:  0 0 5px 5px;
+  z-index: 10;
 }
-
+.content .name{
+  margin: 10px 15px;
+}
 .content .head{
   background: #fff;
   padding: 2px;
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  margin-left: -30px;
+  top: -30px;
   box-sizing: border-box;
   width: 60px;
   height: 60px;
   overflow: hidden;
   border-radius: 50%;
-  margin-left: 10px;
-  margin-bottom: 10px;
 }
-
 .content .bigTxt{
   font-size: 18px;
 }
 .content .jp{
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .content .head image{
   display:inline-block; 
   width: 100%;
   height: 100%;
   border-radius:50%;
-  
-  
 }
-
+.divider{
+  height: 30px!important;
+}
+.content .title{
+ margin-bottom: 10px;
+}
 .person{
   clear: both;
   overflow: hidden

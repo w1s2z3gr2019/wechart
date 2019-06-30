@@ -7,9 +7,10 @@
               <i-row>
                   <i-col span="6" i-class="col-class">
                       <image class='trophy' src='../../../image/jiangbei.png'></image>
+                      <view class='zhongJ'>中奖啦</view>
                   </i-col>
                   <i-col span="16" i-class="col-class">
-                      <view class='title'>恭喜您中奖啦</view>
+                      <view class='title'>话题：赵丽颖生的是男？</view>
                       <view class='jp'>奖品：<text>华为最新款手机P30 </text></view>
                       <view class='time'>2019-06-05</view>
                   </i-col>
@@ -28,5 +29,4 @@
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
-   <footer />
 </view>
