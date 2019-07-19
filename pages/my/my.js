@@ -1,4 +1,6 @@
 // pages/my/my.js
+import { api } from '../../utils/util.js';
+const { $Message } = require('../dist/base/index');
 const app = getApp();
 Component({
   pageLifetimes: {
@@ -9,6 +11,8 @@ Component({
           selected:1
         })
       }
+      wx.hideLoading();
+      this.loadData();
     }
   },
   /**
@@ -24,6 +28,7 @@ Component({
    * 生命周期函数--监听页面加载
    */
   attached() {
+    
     if (app.globalData.userInfo) {
       this.setData({
         name: app.globalData.userInfo.nickName,
@@ -52,5 +57,37 @@ Component({
       })
     }
   },
-  
+  methods:{
+    loadData:function(){
+      wx.showLoading({
+        title: 'Loading...',
+      })
+      let token = wx.getStorageSync('token')
+      wx.request({
+        method: 'GET',
+        url: api + '/api/user/getMyDetails',
+        data: {
+          token:token
+        },
+        success(res) {
+          console.log(res.data)
+          if (res.error && res.error.length) {
+            wx.hideLoading()
+            $Message({
+              content: res.error[0].message,
+              type: 'warning'
+            });
+            return;
+          }
+        },
+        error: function (err) {
+          wx.hideLoading();
+          $Message({
+            content: '数据请求失败',
+            type: 'error'
+          });
+        }
+      })
+    }
+  }
 })

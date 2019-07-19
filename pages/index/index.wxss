@@ -21,6 +21,13 @@ page{
   border-radius: 20rpx;
   overflow: hidden;
 }
+.onlyData{
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  line-height:30rpx;
+  color: #ccc; 
+}
 .modalCon button{
   color: #09BA07;
   font-size: 36rpx;
@@ -73,7 +80,7 @@ page{
 .header>image{
   vertical-align: middle;
   margin-top: 6rpx;
-  height: 30rpx;
+  height: 60rpx;
   width: 400rpx;
 }
 .header .return{
@@ -106,13 +113,10 @@ page{
   padding: 40rpx 0 ;
 }
 .listHader image{
-  position: absolute;
-  width:250rpx;
+  vertical-align: bottom;
+  margin:0 20rpx;
+  width:60rpx;
   height: 60rpx;
-  z-index: 12;
-  left: 50%;
-  top: 26rpx;
-  margin-left: -125rpx;
 }
 .listImg{
   position: relative;
@@ -186,7 +190,7 @@ page{
   width: 240rpx;
   height: 80rpx;
   line-height:80rpx;
-  margin: 80rpx auto; 
+  margin: 40rpx auto; 
   background: #fff;
   color: #666666;
   font-size:32rpx;

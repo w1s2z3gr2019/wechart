@@ -1,5 +1,6 @@
 {
   "component":true,
+  "navigationBarTitleText": "猜奖",
   "usingComponents": {
     "i-card": "../dist/card/index",
     "i-row": "../dist/row/index",
@@ -9,6 +10,8 @@
     "i-cell": "../dist/cell/index",
     "i-icon": "../dist/icon/index",
     "i-avatar": "../dist/avatar/index",
-    "i-modal": "../dist/modal/index"
+    "i-modal": "../dist/modal/index",
+    "i-message": "../dist/message/index",
+    "i-load-more": "../dist/load-more/index"
   }
 }
