@@ -41,6 +41,7 @@ Component({
   },
   //初始
   attached() {
+    wx.removeStorageSync('idList')
     wx.hideTabBar({})
     if (app.globalData.userInfo) {
       this.login(app.globalData)
@@ -117,12 +118,15 @@ Component({
               //请求数据
               loadData();
             },
-            error: function (err) {
+            fail: function (err) {
               wx.hideLoading();
               $Message({
                 content: '数据请求失败',
                 type: 'error'
               });
+            },
+            complete: function () {
+              wx.hideLoading();
             }
           })
         }
@@ -158,7 +162,7 @@ Component({
               });
               return;
             }
-           
+            let idList = [];
             (resDate.list).map(item=>{
               let beginT = item.drawTimes,md='',mh='';
               if (beginT){
@@ -168,7 +172,7 @@ Component({
                 md=yy[1]+'月'+yy[2]+'日';
                 mh = mm[0]+':'+mm[1];
               }
-              
+              idList.push(item.id)
               list.push({
                 title:item.title,
                 id:item.id,
@@ -181,7 +185,8 @@ Component({
                 prizeDescription: item.prizeDescription,
                 sponsorshipType: item.sponsorshipType,
                 sponsorshipTypeValue: item.sponsorshipTypeValue,
-                sponsor: item.sponsor && item.sponsor.length >5?item.sponsor.substr(0,5)+'...':item.sponsor,
+                sponsor: item.sponsor && item.sponsor.length >8?item.sponsor.substr(0,8)+'...':item.sponsor,
+                userListAll:item.userList,
                 userList: item.userList && item.userList.length > 6 ? item.userList.length=6:item.userList || [{ avatarUrl:'https://wx.qlogo.cn/mmopen/vi_32/wnicEL0zgiaOv78exJS4fCQUo5icC9Q05NFe41d9Dw4aA8qpRFHqMSkmp3eQGC9ucsb88v9kcze1q3RzsZn54V9qQ/132',id:'1'}],
               })
             })
@@ -195,15 +200,19 @@ Component({
                 total: resDate.totalCount,
                 listData: list
               })
+              wx.setStorageSync('idList', idList)
             }
            
           },
-          error: function (err) {
+          fail: function (err) {
             wx.hideLoading();
             $Message({
               content: '数据请求失败',
               type: 'error'
             });
+          },
+          complete: function () {
+            wx.hideLoading();
           }
         })
       }
@@ -211,7 +220,11 @@ Component({
       function lower(resData) {
         //此处放后台获取的数据
         var result = _this.data.listData;
-        var cont = result.concat(resData);
+        var cont = result.concat(resData),idList=[];
+        cont.map(item=>{
+          idList.push(item.id)
+        })
+        wx.setStorageSync('idList', idList)
         wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
           title: '加载中',
           icon: 'loading',
@@ -228,7 +241,7 @@ Component({
     //下滑加载
     onReachBottom: function () {
       let total = this.data.total,
-        listLen = this.data.listData.length;
+          listLen = this.data.listData.length;
       let pageNum = this.data.pageNum + 1;
       if (listLen >= total) {
         return;
@@ -251,6 +264,13 @@ Component({
     cancelFun(){
       this.setData({
         shareState: true
+      })
+    },
+    //用户查看跳转
+    jumpUser(e){
+      let id = e.currentTarget.dataset.id||'';
+      wx.navigateTo({
+        url: '/pages/user/user?id='+id　　// 页面 B
       })
     },
     closeSave(){
@@ -280,8 +300,8 @@ Component({
       var canvasHead = '../../image/canvasHead.png';
       var tit = '['+data.typeValue+']';
       var title = data.title||'';
-      var dec = data.md ? data.md + ' ' + data.mh + ' 自动开奖/每月一次' :'自动开奖/每月一次';
-      var zanZhu = data.sponsorshipType?'赞助-'+data.sponsor&&data.sponsor.length>5?data.sponsor.substr(0,5)+'...':data.sponsor:'竞猜官方';
+      var dec = data.md ? data.md + ' ' + data.mh + ' 自动开奖':'自动开奖';
+      var zanZhu = data.sponsorshipType ? data.sponsor && data.sponsor.length > 5 ? data.sponsor.substr(0, 5) + '... 赞助' : data.sponsor +' 赞助':'竞猜官方 赞助';
       var headImg = '../../image/wechart.png';
       var canvasBot = '../../image/canvasBot.png';
       var gzhImg = '../../image/gzhImg.png'
@@ -299,9 +319,10 @@ Component({
       context.setFillStyle("#999");
       context.fillText(dec, 12, 240);
       context.setFillStyle("#E43E16");
-      context.fillText(zanZhu, 210, 240);
+      console.log(300 - 30 - (zanZhu.length) * 13);
+      context.fillText(zanZhu, 300-(zanZhu.length)*12.5, 240);
       context.setFillStyle("#F5F5F5");
-      context.fillRect(12, 250, 276, 1);
+      context.fillRect(12, 260, 276, 1);
       //底部绘制
       context.drawImage(canvasBot, 0, 300, 300, 100)
       context.setFillStyle('#ddd');
@@ -310,16 +331,16 @@ Component({
       context.setFontSize(16);
       context.setFillStyle("#fff");
       context.fillText('长按识别小程序二维码', 75, 380)
-      for (let i = 0; i < data.userList.length;i++){
-          context.arc(12+10*(i+1), 270, 10, 0, 2 * Math.PI, false);
-          context.drawImage(data.userList[i].avatarUrl, 12 + i * 20, 260, 20, 20);
-        if (i == (data.userList.length-1)){
-          context.setFillStyle("#999");
-          context.fillText('等参与了抽奖', 18 + data.userList.length* 20, 275)
-          context.fillText('>', 276, 275)
-        }
+      // for (let i = 0; i < data.userList.length;i++){
+      //     context.arc(12+10*(i+1), 270, 10, 0, 2 * Math.PI, false);
+      //     context.drawImage(data.userList[i].avatarUrl, 12 + i * 20, 260, 20, 20);
+      //   if (i == (data.userList.length-1)){
+      //     context.setFillStyle("#999");
+      //     context.fillText('等参与了抽奖', 18 + data.userList.length* 20, 275)
+      //     context.fillText('>', 276, 275)
+      //   }
            
-      }
+      // }
      
       //把画板内容绘制成图片，并回调 画板图片路径
       context.draw(false, function () {
@@ -387,7 +408,7 @@ Component({
         shareState: true
       })
      return {
-       title:'猜猜玩',
+       title:'猜奖',
        path:'/pages/index/index',
        success:function(res){
          console.log(res)

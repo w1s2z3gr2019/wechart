@@ -10,7 +10,9 @@
     "i-avatar": "../../dist/avatar/index",
     "i-radio-group": "../../dist/radio-group/index",
     "i-radio": "../../dist/radio/index",
-    "loading":"../loading/loading"
+    "loading":"../loading/loading",
+    "i-load-more": "../../dist/load-more/index",
+    "i-message": "../../dist/message/index"
   }
   
 }

@@ -19,31 +19,32 @@
     <view class='listHader'>
       <image src='../../image/title_left.png'></image><text>{{item.frequencyValue||'暂无'}}</text><image src='../../image/title_right.png'></image>
     </view>
-    <view class='listText'>
-      <view class='listImg'>
-        <image src="{{item.pictureUrl?apiUrl+item.pictureUrl:initImg}}"></image>
-        <view class='jp'>奖品:
-          <text>{{item.prizeDescription}}</text>
+    <navigator url="/pages/component/guess/guess?id={{item.id}}">
+      <view class='listText'>
+        <view class='listImg'>
+          <image src="{{item.pictureUrl?apiUrl+item.pictureUrl:initImg}}"></image>
+          <view class='jp'>奖品:
+            <text>{{item.prizeDescription}}</text>
+          </view>
         </view>
-      </view>
-      <view class='listBot'>
-        <view class='firstTxt'>
-          <text class='first'>[{{item.typeValue}}]</text>
-          <text>{{item.title}}</text>
-        </view>
-        <i-row class='time'>
-          <i-col span="16">
-            <text class="left">{{item.md+' '+item.mh}} 自动开奖/每{{frequencyData[item.frequency-1]}}一开</text>
-          </i-col>
-          <i-col span="8" wx:if="{{!item.sponsorshipType}}" class='red'>
-              <text>竞猜官方  赞助</text>
-          </i-col>
-          <i-col span="8" wx:else="{{item.sponsorshipType}}" class='red'>
-              <text>{{item.sponsor}}  赞助</text>
-          </i-col>
-        </i-row>
-        <i-divider i-class="divider"></i-divider>
-          <i-row i-class="more" wx:if="{{item.userList.length}}">
+        <view class='listBot'>
+          <view class='firstTxt'>
+            <text class='first'>[{{item.typeValue}}]</text>
+            <text>{{item.title}}</text>
+          </view>
+          <i-row class='time'>
+            <i-col span="16">
+              <text class="left">{{item.md+' '+item.mh}} 自动开奖</text>
+            </i-col>
+            <i-col span="8" wx:if="{{!item.sponsorshipType}}" class='red'>
+                <text>竞猜官方  赞助</text>
+            </i-col>
+            <i-col span="8" wx:else="{{item.sponsorshipType}}" class='red'>
+                <text>{{item.sponsor}}  赞助</text>
+            </i-col>
+          </i-row>
+          <i-divider i-class="divider"></i-divider>
+          <i-row i-class="more" wx:if="{{item.userList.length}}" data-id="{{item.id}}" catchtap='jumpUser'>
               <i-col span="22">
                   <view class='left' wx:for="{{item.userList}}" wx:key="{{index}}" wx:for-item="atem">
                     <i-avatar  src="{{atem.avatarUrl}}" size="small"></i-avatar>
@@ -55,13 +56,13 @@
               </i-col>
               <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
           </i-row>
+          <view wx:else class='noUser'>暂无参与者</view>
+        </view>
+        <view class='redBtn'>
+            <text class='btn'>我要拿大奖</text>
+        </view>
       </view>
-      <view class='redBtn'>
-        <navigator url="/pages/component/guess/guess?id={{item.id}}">
-          <text class='btn'>我要拿大奖</text>
-        </navigator>
-      </view>
-    </view>
+    </navigator>
   </view>
   <view class='onlyData' wx:if="{{total&&(listData.length>=total)}}">已加载全部数据</view>
   <i-load-more loading="{{ loading }}" />

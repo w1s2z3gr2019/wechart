@@ -10,6 +10,10 @@ page{
   height: 100%;
   background: rgba(0, 0, 0, .5)
 }
+.noUser{
+  font-size: 32rpx;
+  color: #999;
+}
 .modal .modalCon{
   position: absolute;
   left: 20%;
@@ -174,8 +178,8 @@ page{
 }
 .more .left image{
   float: left;
-  width: 50rpx;
-  height: 50rpx;
+  width: 48rpx;
+  height: 48rpx;
   margin-right: 20rpx;
 }
 .more .left .txt{

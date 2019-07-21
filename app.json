@@ -13,7 +13,8 @@
     "pages/component/winShare/winShare",
     "pages/component/WinRecord/WinRecord",
     "pages/component/gailv/gailv",
-    "pages/component/guess/guess"
+    "pages/component/guess/guess",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +23,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "custom":true,
+    "custom": true,
     "color": "#fff",
     "selectedColor": "#999999",
     "borderStyle": "white",

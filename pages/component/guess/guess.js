@@ -1,4 +1,6 @@
 // pages/component/guess/guess.js
+import { api, apiUrl } from '../../../utils/util.js';
+const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
@@ -40,13 +42,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   touchMove: function () {
-    console.log('按住不松')
     var nub = this.data.topNub;
     nub++
     this.setData({
       topNub: nub
     })
-    console.log(nub)
     if (nub == 7) {
       this.setData({
         loadingHidden:false
@@ -67,23 +67,69 @@ Page({
       })
     }
   },
-  loadData:function(){
-    let arr =[1,2,3];
-    let nub = Math.floor(Math.random()*3);
-    setTimeout(()=>{
-      this.setData({
-        guessType: arr[nub],
-        topNub:0,
-        loadingHidden:true
+  loadData:function(id){
+    let _this = this;
+    let idList = wx.getStorageSync('idList') || [],
+        nub = Math.floor(Math.random()*idList.length)
+    let ids = id;
+    if(!id){
+      ids=idList[nub];
+    }else{
+      wx.showLoading({
+        title: 'Loading...',
       })
-      this.goTop();
-    },3000)
+    }
+    console.log(ids)
+    wx.request({
+      method: 'get',
+      url: api + '/api/portal/topicDetails',
+      data: {
+        id:ids
+      },
+      success(res) {
+        console.log(res.data)
+        if (res.error && res.error.length) {
+          wx.hideLoading()
+          $Message({
+            content: res.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        if(!res.data||!res.data.length) return;
+        let theData = res.data;
+        
+        //渲染页面回到顶部
+        setTimeout(() => {
+          _this.setData({
+            guessType: arr[nub],
+            topNub: 0,
+            loadingHidden: true
+          })
+          this.goTop();
+        }, 3000)
+      },
+      fail: function (err) {
+        wx.hideLoading();
+        $Message({
+          content: '数据请求失败',
+          type: 'error'
+        });
+      },
+      complete: function () {
+        _this.setData({
+          topNub: 0,
+          loadingHidden:true
+        })
+        wx.hideLoading();
+      }
+    })
+    
   },
   onLoad: function (options) {
     console.log(options)
-    this.setData({
-      guessType: options.guessType
-    })
+    if (!options) return;
+    this.loadData(options.id)
   },
   //复制到剪贴板
   copy:function(){

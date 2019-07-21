@@ -1,6 +1,6 @@
 <!--pages/component/problem/problem.wxml-->
 <view class='wrap'>
-  <view class='list'>
+  <view class='list' >
       <view class='title'>Q：什么是累计概率？</view>
       <view class='txt'>A：累计概率就是中奖的次数除以累计参与的次数
           所得，累计概率只作为参考，不是百分百的准确。
@@ -8,11 +8,8 @@
           字说明都是瞎编，需要再次确认文案。开发请不要
           按这里的文字编辑到界面上。谢谢。</view>
   </view>
-  <view class='list'>
-      <view class='title'>Q：中奖后需要怎么兑换奖品？</view>
-      <view class='txt'>A：中奖后，可以在我的-中奖记录，里面查看中奖信息。只要填写了收货地址等信息，猜猜玩会在开奖后3个工作日内给您寄送奖品。如果没有收到奖品可以通过我的-联系我们，来跟我们取得联系。</view>
-  </view>
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
 </view>
+<i-message id="message" />

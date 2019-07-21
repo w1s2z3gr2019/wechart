@@ -120,7 +120,7 @@
 </view>
 <view class='huad' bindtouchmove="touchMove">
     <view>继续上滑,更多奖品在等你</view>
-    <view class='loadTxt' hidden="{{loadingHidden}}">数据加载中...</view>
+     <i-load-more loading="{{ !loadingHidden }}" />
 </view>
 <view id="loading" hidden="{{loadingHidden}}">
         <view id="loading-center">
@@ -146,4 +146,4 @@
           </i-row>
       </view>
     </view>
-
+<i-message id="message" />

@@ -28,7 +28,6 @@ Component({
    * 生命周期函数--监听页面加载
    */
   attached() {
-    
     if (app.globalData.userInfo) {
       this.setData({
         name: app.globalData.userInfo.nickName,
@@ -80,12 +79,15 @@ Component({
             return;
           }
         },
-        error: function (err) {
+        fail: function (err) {
           wx.hideLoading();
           $Message({
             content: '数据请求失败',
             type: 'error'
           });
+        },
+        complete:function(){
+          wx.hideLoading();
         }
       })
     }
