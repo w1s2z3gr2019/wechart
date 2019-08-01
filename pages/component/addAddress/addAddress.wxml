@@ -1,10 +1,10 @@
 <!--pages/component/addAddress/addAddress.wxml-->
 <view class='wrap'>
     <view class="section">
-      <input placeholder="收货人" value="{{name}}" class='inp'/>
+      <input placeholder="收货人" value="{{name}}" bindblur='namefun' class='inp'/>
     </view>
     <view class="section">
-      <input placeholder="手机号码" type = "number" value="{{phone}}"/>
+      <input placeholder="手机号码" type = "number" value="{{phone}}" bindblur='phoneFun'/>
     </view>
     <view class="section sec_picker">
       <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -15,7 +15,7 @@
         </view>
       </picker>
     </view>
-    <textarea class='textarea' auto-height bindblur="bindTextAreaBlur" placeholder="详细地址：如道路、门牌、小区、楼栋号、单元室等" type = "number"/>
+    <textarea class='textarea' auto-height bindblur="bindTextAreaBlur" placeholder="详细地址：如道路、门牌、小区、楼栋号、单元室等" type = "number" value="{{addressVal}}"/>
     <view class='initAddress'>
       <view class='left'>设为默认地址</view>
       <view class='right'>
@@ -26,7 +26,9 @@
     <view class='footer'>
         <image src='../../../image/my6.png'></image>
     </view>
-    <view class='submit'>
+    <view class='submit' bindtap="submit">
         保存
     </view>
+    <i-message id="message" />
 </view>
+

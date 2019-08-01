@@ -200,9 +200,8 @@ Component({
                 total: resDate.totalCount,
                 listData: list
               })
-              wx.setStorageSync('idList', idList)
             }
-           
+            wx.setStorageSync('idList', idList)
           },
           fail: function (err) {
             wx.hideLoading();

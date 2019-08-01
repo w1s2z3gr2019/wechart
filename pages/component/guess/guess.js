@@ -7,18 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    initImg:'../../../image/tt.jpg',
+    apiUrl: apiUrl,
+    theData:{},
     successState:true,
     loadingHidden: true,
     topNub:0,
     wechartName:'rongrongBaby',
     guessType:1,
-    title: ["李胜利事件还会不会死灰复燃？", "黄金今日行情最高多少点？","美国封锁下的华为将以什么样的结果收场？"],
-    items: [
-      { name: 'USA', value: '华为终将用5G技术占领美国' },
-      { name: 'CHN', value: '美国的国家力量会让华为破产', checked: 'true' },
-      { name: 'BRA', value: '听说有瓜，我是来当吃瓜群众的' },
-    ],
-    
   },
   reachBottom:function(){
     console.log('到底了')
@@ -37,6 +33,7 @@ Page({
 //选择问题3单选
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -96,18 +93,27 @@ Page({
           });
           return;
         }
-        if(!res.data||!res.data.length) return;
-        let theData = res.data;
-        
+        let theData = res.data.data;
+        console.log(theData)
+        let beginT = theData.drawTimes, md = '', mh = '';
+        if (beginT) {
+          let arrT = beginT.split(' ');
+          let y = arrT[0], mhs = arrT[1];
+          let yy = arrT[0].split('-'), mm = mhs.split(':');
+          md = yy[1] + '月' + yy[2] + '日';
+          mh = mm[0] + ':' + mm[1];
+        }
+        theData.pictureUrl = apiUrl + theData.pictureUrl;
+        theData.md=md;
+        theData.mh=mh;
         //渲染页面回到顶部
-        setTimeout(() => {
           _this.setData({
-            guessType: arr[nub],
+            theData:theData,
+            guessType: theData.drawType,
             topNub: 0,
             loadingHidden: true
           })
-          this.goTop();
-        }, 3000)
+          _this.goTop();
       },
       fail: function (err) {
         wx.hideLoading();
@@ -125,6 +131,37 @@ Page({
       }
     })
     
+  },
+  //参与
+  canY_ques(e){
+    console.log(e)
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    wx.request({
+      method: 'post',
+      url: api + '/api/user/addChoose',
+      data: {
+        tid: this.data.theData.id,
+        chooseValue: e.currentTarget.dataset.val,
+        did: e.currentTarget.dataset.id
+      },
+      success(res) {
+        console.log(res.data)
+        if (res.error && res.error.length) {
+          wx.hideLoading()
+          $Message({
+            content: res.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        wx.hideLoading()
+      },
+      fail(){
+        wx.hideLoading()
+      }
+    })
   },
   onLoad: function (options) {
     console.log(options)

@@ -20,12 +20,11 @@ Page({
     console.log(options)
     let userRow = this.data.userRow;
     let winW = wx.getSystemInfoSync().windowWidth;
-    console.log(winW)
     let userW = (winW - 20 - 2 * userRow) / userRow;
-    console.log(userW)
     this.setData({
       userW: userW.toFixed(2)
     })
+    this.loadData(id)
   },
 
   /**
@@ -34,7 +33,50 @@ Page({
   onReady: function () {
     
   },
-
+  loadData(id){
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    let token = wx.getStorageSync('token')
+    wx.request({
+      method: 'post',
+      url: api + '/api/portal/selectByTcUser',
+      data: {
+        id: id
+      },
+      success(res) {
+        console.log(res.data)
+        wx.hideLoading() 
+        if (res.error && res.error.length) {
+          $Message({
+            content: res.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        let theData = res.data&&res.data.data.list||[],userT=[];
+        theData.map(item=>{
+          userT.push({
+            avatarUrl: item.headUrl
+          })
+        })
+        _this.setData({
+          totalCount: res.data.data.totalCount,
+          list: userT
+        })
+      },
+      fail: function (err) {
+        wx.hideLoading();
+        $Message({
+          content: '数据请求失败',
+          type: 'error'
+        });
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

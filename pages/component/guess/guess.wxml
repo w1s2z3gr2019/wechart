@@ -3,57 +3,51 @@
 <view class='wrap' >
  <view class='listText'>
       <view class='listImg'>
-        <image src='../../../image/tt.jpg'></image>
+        <image src='{{theData.pictureUrl||initImg}}'></image>
       </view>
       <view class='listBot'>
         <view class='firstTxt'>
           <text class='first'>奖品 : </text>
-          <text>陈晓陈妍希夫妇今年会不会</text>
+          <text>{{theData.prizeDescription}}</text>
         </view>
         <view class='time'>
-          <text class="left">5月28日 20:00 自动开奖/每周一开</text>
+          <text class="left">{{theData.md+' '+theData.mh}} 自动开奖</text>
         </view>
         <i-row >
-          <i-col span="5" class='red'>
-            <navigator>
-              <text>竞猜官方</text>
-            </navigator>
+          <i-col span="12" class='red' wx:if="{{!theData.sponsorshipType}}">
+              <text>竞猜官方  赞助</text>
           </i-col>
-          <i-col span="3" class='red'>
-            <navigator>
-              <text>赞助</text>
-            </navigator>
+          <i-col span="12" class='red' wx:else="{{theData.sponsorshipType}}">
+              <text>{{theData.sponsor}}  赞助</text>
           </i-col>
-          <i-col span="16" class='redRight'>
-            <navigator>
-              <text>猜猜玩小程序 ></text>
+          <i-col span="12" class='redRight'>
+            <navigator >
+              <text>赞助方小程序 ></text>
             </navigator>
           </i-col>
         </i-row>
         <i-divider i-class="divider"></i-divider>
-        
         <view class='question1'>
             <view class='title'>
-                <text class='dot'></text><text class='txt'>猜猜玩本月话题</text><text class='dot'></text> 
+                <text class='dot'></text><text class='txt'>猜猜玩{{theData.frequencyValue}}</text><text class='dot'></text> 
             </view>
-            <view class='titleBt'>{{title[guessType-1]}}</view>
-
-            <view wx:if="{{guessType==1}}">
+            <view class='titleBt'>{{theData.title}}</view>
+            <view wx:if="{{theData.drawType==0}}">
               <view class='select' >
                 <i-row>
                   <i-col span="8">
-                      <text class='qLeft'>会</text>
+                      <text class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</text>
                   </i-col>
                   <i-col span="8" class="vs">VS</i-col>
                   <i-col span="8">
-                      <text class='qRight'>不会</text>
+                      <text class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</text>
                   </i-col>
                 </i-row>
               </view>
               <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
             </view> 
 
-            <view wx:if="{{guessType==2}}">
+            <view wx:if="{{theData.drawType==1}}">
               <view class='select' >
                 <i-row>
                   <i-col span="16" class="inpGrounp">
@@ -61,40 +55,40 @@
                         <view>立即输入参与</view>
                   </i-col>
                   <i-col span="8">
-                      <view class='cany' bindtap='canY_ques'>参与</view>
+                      <view class='cany' data-val="{{val}}" bindtap='canY_ques'>参与</view>
                   </i-col>
                 </i-row>
               </view>
               <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
             </view>  
 
-            <view wx:if="{{guessType==3}}">
+            <view wx:if="{{theData.drawType==2}}">
               <view class='select' >
-                <radio-group class="radio-group" bindchange="radioChange">
-                    <view wx:for="{{items}}" class='radioView' wx:key="{{item.name}}">
+                <radio-group class="radio-group"  bindchange="radioChange">
+                    <view wx:for="{{theData.drawList}}" class='radioView' wx:key="{{item.id}}">
                       <label class="radio" >
-                        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                        <radio value="{{item.content}}" checked="{{item.checked}}"/>{{item.value}}
                       </label>
                     </view>
                 </radio-group>
               </view>
-              <view class='canYu'>
+              <view class='canYu' data-id="{{}}" bindtap='canY_ques'>
                  参与
               </view>
               <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
             </view>  
         </view>
         <i-divider i-class="divider"></i-divider>
-        <view class='already'>已有<text class="red">{{'21221'}}</text>个小伙伴参与了话题猜猜玩</view>
-        <navigator url="/pages/component/guess/guess">
-          <i-row i-class="more">
+        <view class='already'>已有<text class="red">{{theData.userCount}}</text>个小伙伴参与了话题猜猜玩</view>
+        <navigator url="/pages/user/user?id={{theData.id}}">
+          <i-row i-class="more" wx:if="{{theData.userList.length}}">
               <i-col span="18">
+                 <view class='left' wx:for="{{theData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                    <i-avatar  src="{{atem.avatarUrl}}" size="small"></i-avatar>
+                  </view>
                   <view class='left'>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                    <image src="../../../image/more_03.png"></image>
+                    <view class='txt'>等参与了抽奖</view>
                   </view>
               </i-col>
               <i-col span="6" i-class="only">查看全部<i-icon i-class="icon" type="enter" size="16" color="#999999" /></i-col>
@@ -109,8 +103,7 @@
 </view>
 <view class='huiColor'></view>
 <view class='wrapContent'>
-  <text class='con'>2019年3月10日李胜利事件彻底爆发了，韩国经过多日来的深挖和调查，将收获到的李胜利、郑俊英不雅聊天室的内容全部曝光在公众的视野中，这犹如一盆热油浇在了本已是熊熊的烈火之上，一场韩国娱乐圈的飓风暴已然开始了！
-  </text>
+  <text class='con'>{{theData.content}}</text>
 </view>
 <view class='huiColor'></view>
 <view class='copy'>

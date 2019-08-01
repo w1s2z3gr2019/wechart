@@ -1,27 +1,13 @@
 // pages/component/address/address.js
+import { api, apiUrl } from '../../../utils/util.js';
+const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        select:0,
-        value:1
-      },
-      {
-        select: 1,
-        value: 1
-      }, {
-        select: 0,
-        value: 1
-      }
-      , {
-        select: 0,
-        value: 1
-      }
-    ]
+    list:[]
   },
 
   /**
@@ -42,9 +28,46 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadData()
   },
-
+  loadData(){
+    let token = wx.getStorageSync('token');
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    let _this =this;
+    wx.request({
+      method: 'post',
+      url: api + '/api/user/userContactList',
+      data: {
+        token: token,
+        pageSize: 999,
+        pageNo:1
+      },
+      success(res) {
+        console.log(res.data)
+        if (res.error && res.error.length) {
+          wx.hideLoading();
+          $Message({
+            content: res.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        let theData = res.data.data.list||[];
+        theData.map((item,index)=>{
+          theData[index].firstName = (item.contacts).substr(0,1)
+        })
+        _this.setData({
+          list: theData
+        })
+        wx.hideLoading()
+      },
+      fail() {
+        wx.hideLoading()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

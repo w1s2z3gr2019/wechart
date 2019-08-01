@@ -4,14 +4,14 @@
       <view wx:for="{{list}}" wx:key="{{item.value}}">
           <navigator url="/pages/component/addAddress/addAddress">
             <view class='addressL'>
-                <view class='headImg'>符</view>
+                <view class='headImg'>{{item.firstName}}</view>
                 <view class='left'>
                   <view>
-                    <text class="name">符先生</text>
-                    <text class='phone'>18320743829</text>
+                    <text class="name">{{item.contacts}}</text>
+                    <text class='phone'>{{item.contactNumber}}</text>
                   </view>
                   <view class='addressTxt'>
-                    上海 上海市 浦东新区 陆家金融广场2号7楼282室
+                    {{item.pname+item.cname+item.aname+item.address}}
                   </view>
                 </view>
                 <i-icon i-class='icon' type="enter" size="22" color="#999999" />
@@ -31,4 +31,5 @@
             <text>+添加地址</text>
       </view>
    </navigator>
+    <i-message id="message" />
 </view>
