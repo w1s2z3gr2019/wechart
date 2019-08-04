@@ -2,6 +2,19 @@
 page{
   background: #E9EDF1;
 }
+.contact{
+  text-align: center;
+  
+}
+.contact button{
+  background: #3972db;
+  color: #fff;
+  width: 60%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 32prx;
+  margin-top: 200rpx;
+}
 .wrap{
   box-sizing: border-box;
   width: 100%;

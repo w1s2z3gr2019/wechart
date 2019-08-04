@@ -1,18 +1,18 @@
 <!--pages/component/guessRecord/guessRecord.wxml-->
 <view class='wrap'>
-    <view wx:if="{{list.length}}">
-      <view wx:for="{{list}}" wx:key="{{item}}" data-index="{{item}}">
-        <navigator url="/pages/component/lotteryResult/lotteryResult">
+    <view wx:if="{{listData.length}}">
+      <view wx:for="{{listData}}" wx:key="{{item}}" data-index="{{item}}">
+        <navigator url="/pages/component/guess/guess?id={{item.id}}">
           <view class='addressL'>
-              <view class='title'>话题：赵丽颖生的是男孩还是女孩？</view>
+              <view class='title'>{{item.title}}</view>
               <i-row>
                   <i-col span="15" i-class="col-class">
-                      <view class='bothTxt'>奖品：迪斯尼米奇公仔</view>
-                      <view class='nub'>限量<text>1</text>个</view>
+                      <view class='bothTxt'>奖品：{{item.prizeDescription}}</view>
+                      <view class='nub'>{{item.statusValue}}</view>
                   </i-col>
                   <i-col span="7" i-class="col-class">
-                      <view class='hms'>10:44:53</view>
-                      <view class='ymd'>2019-06-05</view>
+                      <view class='hms'>{{item.hms}}</view>
+                      <view class='ymd'>{{item.yy}}</view>
                   </i-col>
                   <i-col span="2" i-class="col-class">
                     <i-icon type="enter" i-class="icon" size="20" color="#80848f" />
@@ -22,11 +22,14 @@
         </navigator>
       </view>
      </view>
-    <view wx:if="{{!list.length}}" class='noRecord'>
-      <image mode="aspectFit"  src = "../../../image/noRecord.png"></image>
+    <view wx:if="{{!listData.length}}" class='noRecord'>
+      <image src = "../../../image/noRecord.png"></image>
       <view class='noTxt'>暂无竞猜记录</view>
     </view>
+    <view class='onlyData' wx:if="{{total&&(listData.length>=total)}}">已加载全部数据</view>
+    <i-load-more loading="{{ loading }}" />
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
+   <i-message id="message" />
 </view>

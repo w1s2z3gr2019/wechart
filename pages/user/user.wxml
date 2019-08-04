@@ -1,5 +1,5 @@
 <!--pages/user/user.wxml-->
-<view class='title' wx:if="{{list.length}}">{{nub}} 位参与者</view>
+<view class='title' wx:if="{{list.length}}">{{totalCount}} 位参与者</view>
 <view class='title' wx:else>暂无参与者</view>
 <view class='wrap'>
     <view class='list' wx:if="{{list.length}}" wx:for="{{list}}" wx:key="index" style="width:{{userW}}px;height:{{userW}}px">
@@ -9,3 +9,4 @@
       <image src='../../image/my6.png'></image>
   </view>
 </view>
+<i-message id="message" />

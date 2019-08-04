@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "投诉建议",
-  "usingComponents": {}
+  "usingComponents": {
+    "i-message": "../../dist/message/index"
+  }
 }

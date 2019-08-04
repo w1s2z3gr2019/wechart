@@ -11,7 +11,14 @@ Page({
     region: [],
     name:'',
     phone:'',
-    detailedAddress:''
+    theData:{},
+    detailedAddress:'',
+    switchValue:false
+  },
+  switch1Change(e){
+    this.setData({
+      switchValue: !this.data.switchValue
+    })
   },
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -28,7 +35,7 @@ Page({
   },
   bindTextAreaBlur(e){
     this.setData({
-      addressVal:e.details.value
+      addressVal:e.detail.value
     })
   },
   /**
@@ -36,12 +43,12 @@ Page({
    */
   namefun(e){
     this.setData({
-      name:e.details.value
+      name:e.detail.value
     })
   },
   phoneFun(e){
     this.setData({
-     phone:e.details.value
+     phone:e.detail.value
     })
   },
   submit(){
@@ -50,28 +57,69 @@ Page({
       title: 'Loading...',
     })
     let cityArr = this.data.region;
+    console.log(this.data.theData)
+    let url = this.data.theData.id ? '/api/user/updateUserContact' : '/api/user/addUserContact'
     wx.request({
       method: 'post',
-      url: api + '/api/user/addUserContact',
+      url: api + url,
+      header:{
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       data: {
+        id:this.data.theData.id?this.data.theData.id:'',
         token: token,
         province: cityArr[0],
         city: cityArr[1],
         area:cityArr[2],
         address: this.data.addressVal,
         contacts: this.data.name,
-        contactNumber:this.data.phone
+        contactNumber:this.data.phone,
+        status: this.data.switchValue?1:0
       },
       success(res) {
         console.log(res.data)
-        if (res.error && res.error.length) {
+        if (res.data.error && res.data.error.length) {
           wx.hideLoading()
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;
         }
+        wx.navigateBack();
+        wx.hideLoading()
+      },
+      fail() {
+        wx.hideLoading()
+      }
+    })
+  },
+  del(){
+    let token = wx.getStorageSync('token');
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    wx.request({
+      method: 'post',
+      url: api +  '/api/user/deleteUserContact',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        id: this.data.theData.id,
+        token:token
+      },
+      success(res) {
+        console.log(res.data)
+        if (res.data.error && res.data.error.length) {
+          wx.hideLoading()
+          $Message({
+            content: res.data.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        wx.navigateBack();
         wx.hideLoading()
       },
       fail() {
@@ -80,7 +128,17 @@ Page({
     })
   },
   onLoad: function (options) {
-
+    if(options.id){
+      console.log()
+      this.setData({
+        theData: options,
+        addressVal:options.address,
+        region: [options.province, options.city, options.area],
+        name: options.contacts,
+        phone: options.contactNumber,
+        switchValue: options.status=='1'?true:false
+      })
+    }
   },
 
   /**

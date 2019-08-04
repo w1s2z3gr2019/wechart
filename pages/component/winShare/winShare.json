@@ -6,6 +6,7 @@
     "i-row": "../../dist/row/index",
     "i-col": "../../dist/col/index",
     "i-icon": "../../dist/icon/index",
-    "i-avatar": "../../dist/avatar/index"
+    "i-avatar": "../../dist/avatar/index",
+    "i-message": "../../dist/message/index"
   }
 }

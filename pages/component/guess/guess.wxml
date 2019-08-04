@@ -1,9 +1,15 @@
 
 
 <view class='wrap' >
+<view class='modal' wx:if="{{!hasUserInfo && canIUse}}" >
+    <view class='modalCon'>
+        <view class='place'>请授权登录</view>
+        <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+    </view>
+ </view>
  <view class='listText'>
       <view class='listImg'>
-        <image src='{{theData.pictureUrl||initImg}}'></image>
+        <image  src='{{theData.pictureUrl||initImg}}'></image>
       </view>
       <view class='listBot'>
         <view class='firstTxt'>
@@ -11,19 +17,18 @@
           <text>{{theData.prizeDescription}}</text>
         </view>
         <view class='time'>
-          <text class="left">{{theData.md+' '+theData.mh}} 自动开奖</text>
+          <text class="left" wx:if="{{theData.drawT&&theData.drawT!='00:00:00'}}">{{theData.md+' '+theData.mh}} 自动开奖</text>
+          <text class='left' wx:else>开奖时间待定</text>
         </view>
         <i-row >
-          <i-col span="12" class='red' wx:if="{{!theData.sponsorshipType}}">
+          <i-col span="12" class='red red_Zan' wx:if="{{!theData.sponsorshipType}}">
               <text>竞猜官方  赞助</text>
           </i-col>
-          <i-col span="12" class='red' wx:else="{{theData.sponsorshipType}}">
+          <i-col span="12" class='red red_Zan' wx:else="{{theData.sponsorshipType}}">
               <text>{{theData.sponsor}}  赞助</text>
           </i-col>
           <i-col span="12" class='redRight'>
-            <navigator >
-              <text>赞助方小程序 ></text>
-            </navigator>
+              <button open-type='contact'>赞助方小程序 ></button>
           </i-col>
         </i-row>
         <i-divider i-class="divider"></i-divider>
@@ -32,59 +37,62 @@
                 <text class='dot'></text><text class='txt'>猜猜玩{{theData.frequencyValue}}</text><text class='dot'></text> 
             </view>
             <view class='titleBt'>{{theData.title}}</view>
-            <view wx:if="{{theData.drawType==0}}">
-              <view class='select' >
-                <i-row>
-                  <i-col span="8">
-                      <text class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</text>
-                  </i-col>
-                  <i-col span="8" class="vs">VS</i-col>
-                  <i-col span="8">
-                      <text class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</text>
-                  </i-col>
-                </i-row>
-              </view>
-              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
-            </view> 
+            <view wx:if="{{theData.resultOk}}" class='resultOk'><text class='resTxt'>已选:{{theData.resultOk}}</text></view>
+            <view class='over' wx:if="{{theData.status==3}}">话题已开奖</view>
+            <view wx:if="{{!theData.resultOk&&theData!=3}}"> 
+              <view wx:if="{{theData.drawType==0}}">
+                <view class='select' >
+                  <i-row>
+                    <i-col span="8">
+                        <text class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</text>
+                    </i-col>
+                    <i-col span="8" class="vs">VS</i-col>
+                    <i-col span="8">
+                        <text class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</text>
+                    </i-col>
+                  </i-row>
+                </view>
+                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+              </view> 
 
-            <view wx:if="{{theData.drawType==1}}">
-              <view class='select' >
-                <i-row>
-                  <i-col span="16" class="inpGrounp">
-                        <input class='inpNub' placeholder='点击即可输入数据' value="{{val}}" />
-                        <view>立即输入参与</view>
-                  </i-col>
-                  <i-col span="8">
-                      <view class='cany' data-val="{{val}}" bindtap='canY_ques'>参与</view>
-                  </i-col>
-                </i-row>
-              </view>
-              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
-            </view>  
-
-            <view wx:if="{{theData.drawType==2}}">
-              <view class='select' >
-                <radio-group class="radio-group"  bindchange="radioChange">
-                    <view wx:for="{{theData.drawList}}" class='radioView' wx:key="{{item.id}}">
-                      <label class="radio" >
-                        <radio value="{{item.content}}" checked="{{item.checked}}"/>{{item.value}}
-                      </label>
-                    </view>
-                </radio-group>
-              </view>
-              <view class='canYu' data-id="{{}}" bindtap='canY_ques'>
-                 参与
-              </view>
-              <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
-            </view>  
-        </view>
+              <view wx:if="{{theData.drawType==1}}">
+                <view class='select' >
+                  <i-row>
+                    <i-col span="16" class="inpGrounp">
+                          <input class='inpNub' bindinput='inpChange' placeholder='点击即可输入数据' value="{{val}}" />
+                          <view>立即输入参与</view>
+                    </i-col>
+                    <i-col span="8">
+                        <view class='cany' data-val="{{val}}" bindtap='canY_ques'>参与</view>
+                    </i-col>
+                  </i-row>
+                </view>
+                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+              </view>  
+              <view wx:if="{{theData.drawType==2}}">
+                <view class='select' >
+                  <radio-group class="radio-group"  bindchange="radioChange">
+                      <view wx:for="{{theData.drawList}}" class='radioView' wx:key="{{item.id}}">
+                        <label class="radio" >
+                          <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.content}}
+                        </label>
+                      </view>
+                  </radio-group>
+                </view>
+                <view class='canYu' data-id="{{0}}" bindtap='canY_ques'>
+                  参与
+                </view>
+                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
+              </view>  
+          </view>
+         </view>
         <i-divider i-class="divider"></i-divider>
         <view class='already'>已有<text class="red">{{theData.userCount}}</text>个小伙伴参与了话题猜猜玩</view>
         <navigator url="/pages/user/user?id={{theData.id}}">
           <i-row i-class="more" wx:if="{{theData.userList.length}}">
               <i-col span="18">
-                 <view class='left' wx:for="{{theData.userList}}" wx:key="{{index}}" wx:for-item="atem">
-                    <i-avatar  src="{{atem.avatarUrl}}" size="small"></i-avatar>
+                  <view class='left' wx:for="{{theData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                    <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
                   </view>
                   <view class='left'>
                     <image src="../../../image/more_03.png"></image>
@@ -102,7 +110,7 @@
   </view>
 </view>
 <view class='huiColor'></view>
-<view class='wrapContent'>
+<view class='wrapContent' wx:if="{{theData.content}}">
   <text class='con'>{{theData.content}}</text>
 </view>
 <view class='huiColor'></view>

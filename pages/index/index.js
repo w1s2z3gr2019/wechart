@@ -12,6 +12,7 @@ Component({
           selected: 0
         })
       }
+      this.login();
     }
   },
   data: {
@@ -106,10 +107,10 @@ Component({
               remember: false
             },
             success(res) {
-              if (res.error&&res.error.length){
+              if (res.data.error && res.data.error.length) {
                 wx.hideLoading()
                 $Message({
-                  content: res.error[0].message,
+                  content: res.data.error[0].message,
                   type: 'warning'
                 });
                 return;
@@ -141,14 +142,16 @@ Component({
           method: 'GET',
           url: api + '/api/portal/selectByTC',
           data: {
+            status:5,
             pageNo:nub,
             pageSize:6
           },
           success(res) {
             wx.hideLoading()
-            if (res.error && res.error.length) {
+            if (res.data.error && res.data.error.length) {
+              wx.hideLoading()
               $Message({
-                content: res.error[0].message,
+                content: res.data.error[0].message,
                 type: 'warning'
               });
               return;
@@ -174,6 +177,7 @@ Component({
               }
               idList.push(item.id)
               list.push({
+                drawTimes: item.drawTimes ? item.drawTimes.split(' ')[1]:'',
                 title:item.title,
                 id:item.id,
                 md:md,
@@ -187,7 +191,7 @@ Component({
                 sponsorshipTypeValue: item.sponsorshipTypeValue,
                 sponsor: item.sponsor && item.sponsor.length >8?item.sponsor.substr(0,8)+'...':item.sponsor,
                 userListAll:item.userList,
-                userList: item.userList && item.userList.length > 6 ? item.userList.length=6:item.userList || [{ avatarUrl:'https://wx.qlogo.cn/mmopen/vi_32/wnicEL0zgiaOv78exJS4fCQUo5icC9Q05NFe41d9Dw4aA8qpRFHqMSkmp3eQGC9ucsb88v9kcze1q3RzsZn54V9qQ/132',id:'1'}],
+                userList: item.userList && item.userList.length > 6 ? item.userList.length=6:item.userList || [],
               })
             })
             if (pageNum) {
@@ -295,7 +299,8 @@ Component({
       }
      
       //设置画板显示，才能开始绘图
-      var path1 = data.pictureUrl?data.pictureUrl:"../../image/tt.jpg"
+      var path1 = data.pictureUrl ?apiUrl+data.pictureUrl:"../../image/tt.jpg";
+      console.log(data.pictureUrl)
       var canvasHead = '../../image/canvasHead.png';
       var tit = '['+data.typeValue+']';
       var title = data.title||'';
@@ -421,12 +426,14 @@ Component({
     },
     getUserInfo: function (e) {
       console.log(e)
-      app.globalData.userInfo = e.detail.userInfo
-      this.login(e.detail)
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true
-      })
+      if (e.detail.userInfo){
+        app.globalData.userInfo = e.detail.userInfo
+        this.login(e.detail)
+        this.setData({
+          userInfo: e.detail.userInfo,
+          hasUserInfo: true
+        })
+      }
     }
   },
   

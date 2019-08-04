@@ -10,6 +10,8 @@
 .red{
   color: #E43E16;
 }
+
+
 .wrap .jpImg{
   box-sizing: border-box;
   padding: 0 10px;

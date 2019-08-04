@@ -19,6 +19,7 @@ Component({
    * 页面的初始数据
    */
   data: {
+    theData:{},
     name: '',
     imgUrl: '../../image/tt.jpg',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -58,6 +59,7 @@ Component({
   },
   methods:{
     loadData:function(){
+      const _this = this;
       wx.showLoading({
         title: 'Loading...',
       })
@@ -70,14 +72,18 @@ Component({
         },
         success(res) {
           console.log(res.data)
-          if (res.error && res.error.length) {
+          if (res.data.error && res.data.error.length) {
             wx.hideLoading()
             $Message({
-              content: res.error[0].message,
+              content: res.data.error[0].message,
               type: 'warning'
             });
             return;
           }
+          let theData = res.data.data;
+          _this.setData({
+            theData
+          })
         },
         fail: function (err) {
           wx.hideLoading();

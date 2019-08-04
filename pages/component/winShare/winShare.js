@@ -1,5 +1,6 @@
 // pages/component/winShare/winShare.js
-
+import { api, apiUrl } from '../../../utils/util.js';
+const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
@@ -10,16 +11,54 @@ Page({
     name:'TTT',
     winP:'iPhoneX 512G 一台',
     name: '',
-    urlImg: ''
+    urlImg: '',
+    theData:{}
+  },
+  loadData: function (id) {
+    let _this = this;
+    let token = wx.getStorageSync('token');
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    wx.request({
+      method: 'get',
+      url: api + '/api/portal/topicDetails',
+      data: {
+        id: id,
+      },
+      success(res) {
+        if (res.data.error && res.data.error.length) {
+          wx.hideLoading()
+          $Message({
+            content: res.data.error[0].message,
+            type: 'warning'
+          });
+          return;
+        }
+        let theData = res.data.data;
+          //渲染页面回到顶部
+          _this.setData({
+            theData: theData,
+          })
+      },
+      fail: function (err) {
+        wx.hideLoading();
+        $Message({
+          content: '数据请求失败',
+          type: 'error'
+        });
+      },
+      complete: function () {
+        wx.hideLoading();
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-
+    this.loadData(options.id)
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

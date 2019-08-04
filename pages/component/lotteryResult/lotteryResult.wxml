@@ -2,35 +2,34 @@
 <view class='wrap'>
     <view class='result'>
       <view class='success'>
-          <view class='fail' hidden='{{resultIndex}}' >很遗憾,您未中奖~</view>
-          <image class='sucImg' hidden='{{!resultIndex}}' src='../../../image/result_ok.png'></image>
-          <image class='failImg' hidden='{{resultIndex}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!resultIndex}}' open-type="share"></button>
-          <view class='huaTi'>话题:赵丽颖生的是男孩还是女孩？</view>
+          <view class='fail' hidden='{{theData.resultIndex}}' >很遗憾,您未中奖~</view>
+          <image class='sucImg' hidden='{{!theData.resultIndex}}' src='../../../image/result_ok.png'></image>
+          <image class='failImg' hidden='{{theData.resultIndex}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!theData.resultIndex}}' open-type="share"></button>
+          <view class='huaTi' hidden='{{!theData.resultIndex}}'>话题:{{theData.title}}</view>
       </view>
-      <view class='title' hidden='{{resultIndex}}' >话题：赵丽颖生的是男孩还是女孩？</view>
-      <view class='noTxt' wx:if="{{!resultIndex}}">您的累积中奖概率为<text>{{probability}}</text></view>
+      <view class='title' hidden='{{theData.resultIndex}}' >话题：{{theData.title}}</view>
+      <view class='noTxt' wx:if="{{!theData.resultIndex}}">您的累积中奖概率为<text>{{(theData.probability||0)*100}}%</text></view>
     </view>
-    <navigator url="/pages/component/winShare/winShare">分享</navigator>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
-      <image src='../../../image/result_ok.png'></image>
-      <view class='red'>Mr.li</view>
-      <view class='prize'>奖品：iPhoneX 512G 一台</view>
+      <image src='{{theData.userList[0].headUrl}}'></image>
+      <view class='red'>{{theData.userList[0].name}}</view>
+      <view class='prize'>奖品：{{theData.prizeDescription}}</view>
     </view>
      <i-divider lineColor="#F5F5F5"></i-divider>
      <view class='person'>
-        <view class='txt'>本次<text class='red'>100</text>个小伙伴参与</view>
-        <i-row i-class="more">
-            <i-col span="16">
-                <view class='left'>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                </view>
-            </i-col>
-            <i-col span="8" i-class="only"><text class='onlytxt'>查看全部</text><i-icon i-class="icon" type="enter" size="20" color="#999999" /></i-col>
-        </i-row>
+        <view class='txt'>本次<text class='red'>{{theData.userCount||0}}</text>个小伙伴参与</view>
+         <navigator url="/pages/user/user?id={{theData.id}}">
+          <i-row i-class="more" wx:if="{{theData.userList.length}}">
+              <i-col span="16">
+                    <view class='left' wx:for="{{theData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                      <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
+                    </view>
+              </i-col>
+              <i-col span="8" i-class="only"><text class='onlytxt'>查看全部</text><i-icon i-class="icon" type="enter" size="20" color="#999999" /></i-col>
+          </i-row>
+        </navigator>
+         <view wx:if="{{!theData.userList.length}}" class='noUser'>暂无参与者</view>
       </view>
       
 </view>
@@ -41,48 +40,44 @@
     </view>
     <view class='listText'>
       <view class='listImg'>
-        <image src='../../../image/tt.jpg'></image>
+        <image src='{{apiUrl+otherData.pictureUrl}}'></image>
         <view class='jp'>奖品:
-          <text>迪斯尼公仔一个</text>
+          <text>{{otherData.prizeDescription}}</text>
         </view>
       </view>
       <view class='listBot'>
         <view class='firstTxt'>
-          <text class='first'>[娱乐]</text>
-          <text>陈晓陈妍希夫妇今年会不会</text>
+          <text class='first'>[{{otherData.typeValue}}]</text>
+          <text>{{otherData.title}}</text>
         </view>
         <i-row class='time'>
           <i-col span="16">
-            <text class="left">5月28日 20:00 自动开奖/每周一开</text>
+            <text class="left" wx:if="{{otherData.mh&&otherData.mh!='00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
+              <text class='left' wx:else>开奖时间待定</text>
           </i-col>
-          <i-col span="5" class='red'>
-            <navigator>
-              <text>竞猜官方</text>
-            </navigator>
-          </i-col>
-          <i-col span="3" class='red'>
-            <navigator>
-              <text>赞助</text>
-            </navigator>
-          </i-col>
+          <i-col span="8" wx:if="{{!otherData.sponsorshipType}}" class='red'>
+                <text>竞猜官方  赞助</text>
+            </i-col>
+            <i-col span="8" wx:else="{{otherData.sponsorshipType}}" class='red'>
+                <text>{{otherData.sponsor}}  赞助</text>
+            </i-col>
         </i-row>
         <i-divider i-class="divider"></i-divider>
-        <i-row i-class="more">
-            <i-col span="22">
-                <view class='left'>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                  <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                </view>
-                <view class='left'>
-                   <image src="../../../image/more_03.png"></image>
-                   <view class='txt'>等参与了抽奖</view>
-                </view>
-            </i-col>
-            <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
-        </i-row>
+        <navigator url="/pages/user/user?id={{otherData.id}}">
+          <i-row i-class="more" wx:if="{{otherData.userList.length}}">
+              <i-col span="22">
+                  <view class='left' wx:for="{{otherData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                        <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
+                  </view>
+                  <view class='left'>
+                    <image src="../../../image/more_03.png"></image>
+                    <view class='txt'>等参与了抽奖</view>
+                  </view>
+              </i-col>
+              <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+          </i-row>
+        </navigator>
+        <view wx:if="{{!otherData.userList.length}}" class='noUser'>暂无参与者</view>
       </view>
       <view class='redBtn'>
         <navigator url="/pages/component/guess/guess?guessType={{item}}">
@@ -100,4 +95,5 @@
     <image src='../../../image/my6.png'></image>
   </view>
 </view>
+<i-message id="message" />
 

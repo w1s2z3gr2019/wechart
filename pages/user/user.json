@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "话题参与用户",
-  "usingComponents": {}
+  "usingComponents": {
+    "i-message": "../dist/message/index"
+  }
 }

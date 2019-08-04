@@ -19,7 +19,7 @@
     <view class='listHader'>
       <image src='../../image/title_left.png'></image><text>{{item.frequencyValue||'暂无'}}</text><image src='../../image/title_right.png'></image>
     </view>
-    <navigator url="/pages/component/guess/guess?id={{item.id}}">
+    <navigator url="/pages/component/guess/guess?id={{item.id}}&type=1">
       <view class='listText'>
         <view class='listImg'>
           <image src="{{item.pictureUrl?apiUrl+item.pictureUrl:initImg}}"></image>
@@ -34,7 +34,8 @@
           </view>
           <i-row class='time'>
             <i-col span="16">
-              <text class="left">{{item.md+' '+item.mh}} 自动开奖</text>
+              <text class="left" wx:if="{{item.drawTimes&&item.drawTimes!='00:00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
+              <text class='left' wx:else>开奖时间待定</text>
             </i-col>
             <i-col span="8" wx:if="{{!item.sponsorshipType}}" class='red'>
                 <text>竞猜官方  赞助</text>
@@ -47,7 +48,7 @@
           <i-row i-class="more" wx:if="{{item.userList.length}}" data-id="{{item.id}}" catchtap='jumpUser'>
               <i-col span="22">
                   <view class='left' wx:for="{{item.userList}}" wx:key="{{index}}" wx:for-item="atem">
-                    <i-avatar  src="{{atem.avatarUrl}}" size="small"></i-avatar>
+                    <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
                   </view>
                   <view class='left'>
                     <image src="../../image/more_03.png"></image>

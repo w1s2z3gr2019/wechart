@@ -2,10 +2,22 @@
 page{
   background: #E9EDF1;
 }
+
 .noRecord{
   padding: 20px;
   color: #999;
   text-align: center;
+}
+.noRecord image{
+  width: 270px;
+  height: 200px;
+}
+.onlyData{
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  line-height:30rpx;
+  color: #ccc; 
 }
 .title{
   font-optical-sizing: 14px;

@@ -10,13 +10,32 @@ page{
 }
 .myHeader{
   width: 100%;
-  background: #EB070E;
+  height:200px;
+  position: relative;
   font-size: 14px;
   color:#fff;
   border-radius: 4px;
 }
+.myHeader .myHeadBj{
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  border-radius:4px;
+  top: 0;
+  left: 0; 
+  z-index: 20
+}
+.myHeader .headTxt{
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  border-radius:4px;
+  top: 0;
+  left: 0; 
+  z-index: 22
+}
 .myHeader .txt{
-  padding: 80rpx;
+  padding: 80rpx 60rpx;
   clear: both;
   overflow: hidden;
   text-align: center;

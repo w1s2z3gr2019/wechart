@@ -1,12 +1,8 @@
 <!--pages/component/problem/problem.wxml-->
 <view class='wrap'>
-  <view class='list' >
-      <view class='title'>Q：什么是累计概率？</view>
-      <view class='txt'>A：累计概率就是中奖的次数除以累计参与的次数
-          所得，累计概率只作为参考，不是百分百的准确。
-          猜猜玩参与次数越多累计概率也会越高。这里的文
-          字说明都是瞎编，需要再次确认文案。开发请不要
-          按这里的文字编辑到界面上。谢谢。</view>
+  <view class='list' wx:for="{{list}}" wx:key='index'>
+      <view class='title'>{{item.title}}</view>
+      <view class='txt'>{{item.content}}</view>
   </view>
    <view class='footer'>
       <image src='../../../image/my6.png'></image>

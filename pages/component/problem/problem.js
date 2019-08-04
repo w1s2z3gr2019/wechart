@@ -8,8 +8,6 @@ Page({
    */
   data: {
     list:[],
-    guessType:0,
-
   },
 
   /**
@@ -33,27 +31,32 @@ Page({
     this.loadData()
   },
   loadData(){
+    const _this = this;
     wx.showLoading({
       title: 'Loading...',
     })
     let token = wx.getStorageSync('token')
     wx.request({
       method: 'GET',
-      url: api + '/api/admin/selectCommonProblemList',
+      url: api + '/api/portal/selectCommonProblemList',
       data: {
         pageNo:1,
         pageSize:9999
       },
       success(res) {
         console.log(res.data)
-        wx.hideLoading()
-        if (res.error && res.error.length) {
+        wx.hideLoading();
+        if (res.data.error && res.data.error.length) {
+          wx.hideLoading()
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;
         }
+        _this.setData({
+          list:res.data.data.list
+        })
       },
       fail: function (err) {
         wx.hideLoading();

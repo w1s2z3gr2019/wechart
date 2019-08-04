@@ -1,20 +1,24 @@
 // pages/component/guess/guess.js
 import { api, apiUrl } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    hasUserInfo:false,
+    userInfo:{},
+    initId:'',
     initImg:'../../../image/tt.jpg',
     apiUrl: apiUrl,
-    theData:{},
+    theData: {},
     successState:true,
     loadingHidden: true,
     topNub:0,
     wechartName:'rongrongBaby',
     guessType:1,
+    gv_id:''
   },
   reachBottom:function(){
     console.log('到底了')
@@ -24,16 +28,17 @@ Page({
       successState:true
     })
   },
-  //参与抽奖  Q2
-  canY_ques:function(){
+  inpChange(e){
     this.setData({
-      successState: false
+      val:e.detail.value
     })
   },
 //选择问题3单选
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
-
+    this.setData({
+      gv_id: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -66,6 +71,7 @@ Page({
   },
   loadData:function(id){
     let _this = this;
+    let token = wx.getStorageSync('token');
     let idList = wx.getStorageSync('idList') || [],
         nub = Math.floor(Math.random()*idList.length)
     let ids = id;
@@ -81,14 +87,14 @@ Page({
       method: 'get',
       url: api + '/api/portal/topicDetails',
       data: {
-        id:ids
+        id:ids,
+        token:token
       },
       success(res) {
-        console.log(res.data)
-        if (res.error && res.error.length) {
+        if (res.data.error && res.data.error.length) {
           wx.hideLoading()
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;
@@ -106,8 +112,10 @@ Page({
         theData.pictureUrl = apiUrl + theData.pictureUrl;
         theData.md=md;
         theData.mh=mh;
+        theData.drawT = theData.drawTimes ? theData.drawTimes.split(' ')[1] : '',
         //渲染页面回到顶部
           _this.setData({
+            gv_id:'',
             theData:theData,
             guessType: theData.drawType,
             topNub: 0,
@@ -134,28 +142,52 @@ Page({
   },
   //参与
   canY_ques(e){
-    console.log(e)
+    let token = wx.getStorageSync('token');
+    const _this = this;
+    console.log(e.currentTarget.dataset)
+    let val = e.currentTarget.dataset.val||'';
+    let id = e.currentTarget.dataset.id||'';
+    let theData = this.data.theData||{};
+    if (theData.drawType==2){
+      id=this.data.gv_id
+    }
+    if (theData.drawType == 1) {
+      id = theData.drawList[0].id
+    }
+    if (!id) {
+      $Message({
+        content: '请选择话题答案',
+        type: 'warning'
+      });
+      return;
+    }
+    console.log()
     wx.showLoading({
       title: 'Loading...',
     })
     wx.request({
       method: 'post',
       url: api + '/api/user/addChoose',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       data: {
+        token:token,
         tid: this.data.theData.id,
-        chooseValue: e.currentTarget.dataset.val,
-        did: e.currentTarget.dataset.id
+        chooseValue: val,
+        did: id
       },
       success(res) {
         console.log(res.data)
-        if (res.error && res.error.length) {
+        if (res.data.error && res.data.error.length) {
           wx.hideLoading()
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;
         }
+        _this.loadData(_this.data.initId)
         wx.hideLoading()
       },
       fail(){
@@ -164,9 +196,91 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(options)
     if (!options) return;
+    this.setData({
+      initId: options.id
+    })
+    //处理分享出去的页面
+    // if(options.type){
+    //   this.login(options)
+    // }
     this.loadData(options.id)
+  },
+  login(){
+    const _this = this;
+    if (app.globalData.userInfo) {
+      _this.shareLogin(app.globalData)
+      _this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (_this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        _this.shareLogin(res)
+        _this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          _this.shareLogin(res)
+          _this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  },
+  shareLogin(res){
+    const _this = this;
+    wx.login({
+      success: ret => {
+        wx.request({
+          method: 'GET',
+          url: api + '/open/signin',
+          data: {
+            code: ret.code,
+            nickName: res.userInfo.nickName,
+            avatarUrl: res.userInfo.avatarUrl,
+            remember: false
+          },
+          success(res) {
+          wx.showModal({
+            title: '登录了',
+            content: '的撒打算',
+          })
+            if (res.data.error && res.data.error.length) {
+              wx.hideLoading()
+              $Message({
+                content: res.data.error[0].message,
+                type: 'warning'
+              });
+              return;
+            }
+            wx.setStorageSync('token', res.data.token)
+            //请求数据
+            _this.loadData(_this.data.initId);
+          },
+          fail: function (err) {
+            wx.hideLoading();
+            $Message({
+              content: '数据请求失败',
+              type: 'error'
+            });
+          },
+          complete: function () {
+            wx.hideLoading();
+          }
+        })
+      }
+    })
   },
   //复制到剪贴板
   copy:function(){
@@ -194,7 +308,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      gv_id:''
+    })
   },
 
   /**
@@ -225,7 +341,17 @@ Page({
     console.log('触底了')
    
   },
-
+  getUserInfo: function (e) {
+    console.log(e)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.login(e.detail)
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    }
+  },
   /**
    * 用户点击右上角分享
    */
@@ -240,14 +366,13 @@ Page({
     console.log(guessType)
     return {
       title: '竞猜啦',
-      imageUrl: '../../../image/tt.jpg',
-      path: '/pages/component/guess/guess?type=' + guessType,
+      path: '/pages/component/guess/guess?id='+this.data.theData.id+'&type=1',
       success: function (rest) {
         
       },
       complete: function(){
        
-　　　　}
+　　　}
     }
   }
 })

@@ -4,27 +4,25 @@
     <image class='ttImg' src='../../../image/shareImg.png'></image>
     <view class='content'>
             <view class='head'>
-              <image src="{{urlImg}}"></image>
+              <image src="{{theData.userList[0].headUrl}}"></image>
             </view>
-            <view class='name'>{{name}}</view> 
-            <view class='jp'>奖品：{{winP}}</view>
-            <view class='title'>话题：赵丽颖生的是男孩还是女孩？</view>
-            <view>母猪还真能上树！！！</view>
+            <view class='name'>{{theData.userList[0].name}}</view> 
+            <view class='jp'>奖品：{{theData.prizeDescription}}</view>
+            <view class='title'>话题：{{theData.title}}</view>
+            <view>{{theData.result}}</view>
       </view>
       <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
-      
       <view class='person'>
-          <view class='txt'>本次<text class='red'>100</text>个小伙伴参与</view>
+          <view class='txt'>本次<text class='red'>{{theData.userCount}}</text>个小伙伴参与</view>
           <i-row i-class="more">
+            <navigator url="/pages/user/user?id={{theData.id}}">
               <i-col span="16">
-                  <view class='left'>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
-                    <i-avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="small"></i-avatar>
+                  <view class='left' wx:for="{{theData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                    <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
                   </view>
               </i-col>
               <i-col span="8" i-class="only"><text class='onlytxt'>查看全部</text><i-icon i-class="icon" type="enter" size="20" color="#999999" /></i-col>
+            </navigator>
           </i-row>
       </view>
       <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
@@ -36,3 +34,4 @@
       </view>
   </view>
 </view>
+<i-message id="message" />

@@ -1,13 +1,14 @@
 // pages/user/user.js
+import { api, apiUrl } from '../../utils/util.js';
+const { $Message } = require('../dist/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nub:100,
     userRow:8,
-    pageSize:100,
+    totalCount:0,
     userW:0,
     list: []
   },
@@ -24,7 +25,7 @@ Page({
     this.setData({
       userW: userW.toFixed(2)
     })
-    this.loadData(id)
+    this.loadData(options.id)
   },
 
   /**
@@ -37,9 +38,10 @@ Page({
     wx.showLoading({
       title: 'Loading...',
     })
-    let token = wx.getStorageSync('token')
+    let token = wx.getStorageSync('token');
+    const _this=this;
     wx.request({
-      method: 'post',
+      method: 'get',
       url: api + '/api/portal/selectByTcUser',
       data: {
         id: id
@@ -47,9 +49,9 @@ Page({
       success(res) {
         console.log(res.data)
         wx.hideLoading() 
-        if (res.error && res.error.length) {
+        if (res.data.error && res.data.error.length) {
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;
@@ -81,15 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let res = [];
-    for(let i=0;i<100;i++){
-      res.push({
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/wnicEL0zgiaOv78exJS4fCQUo5icC9Q05NFe41d9Dw4aA8qpRFHqMSkmp3eQGC9ucsb88v9kcze1q3RzsZn54V9qQ/132'
-      })
-    }
-    this.setData({
-      list:res
-    })
+    
   },
 
   /**

@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -37,7 +37,7 @@ Page({
     })
     let _this =this;
     wx.request({
-      method: 'post',
+      method: 'get',
       url: api + '/api/user/userContactList',
       data: {
         token: token,
@@ -45,11 +45,10 @@ Page({
         pageNo:1
       },
       success(res) {
-        console.log(res.data)
-        if (res.error && res.error.length) {
-          wx.hideLoading();
+        if (res.data.error && res.data.error.length) {
+          wx.hideLoading()
           $Message({
-            content: res.error[0].message,
+            content: res.data.error[0].message,
             type: 'warning'
           });
           return;

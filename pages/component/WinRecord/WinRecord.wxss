@@ -7,6 +7,13 @@ page{
   padding: 10px;
   padding-bottom: 100px
 }
+.onlyData{
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  line-height:30rpx;
+  color: #ccc; 
+}
 .zhongJ{
   color: #E43E16;
   font-size: 14px;
@@ -83,6 +90,10 @@ page{
   padding: 20px;
   color: #999;
   text-align: center;
+}
+.noRecord image{
+  width: 270px;
+  height: 200px;
 }
 
 

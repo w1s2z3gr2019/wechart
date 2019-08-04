@@ -2,7 +2,7 @@
 <view class='wrap'>
    <view wx:if="{{list.length>0}}">
       <view wx:for="{{list}}" wx:key="{{item.value}}">
-          <navigator url="/pages/component/addAddress/addAddress">
+          <navigator url="/pages/component/addAddress/addAddress?id={{item.id}}&status={{item.status}}&province={{item.province}}&city={{item.city}}&area={{item.area}}&address={{item.address}}&contacts={{item.contacts}}&contactNumber={{item.contactNumber}}">
             <view class='addressL'>
                 <view class='headImg'>{{item.firstName}}</view>
                 <view class='left'>
@@ -11,11 +11,11 @@
                     <text class='phone'>{{item.contactNumber}}</text>
                   </view>
                   <view class='addressTxt'>
-                    {{item.pname+item.cname+item.aname+item.address}}
+                    {{item.province+item.city+item.area+item.address}}
                   </view>
                 </view>
                 <i-icon i-class='icon' type="enter" size="22" color="#999999" />
-                <view class='init' wx:if="{{item.select}}">默认</view>
+                <view class='init' wx:if="{{item.status}}">默认</view>
             </view>
           </navigator>
         </view>

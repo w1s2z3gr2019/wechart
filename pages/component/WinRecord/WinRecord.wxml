@@ -1,8 +1,8 @@
 <!--pages/component/guessRecord/guessRecord.wxml-->
 <view class='wrap'>
-    <view wx:if="{{list.length}}">
-      <view wx:for="{{list}}" wx:key="{{item}}">
-        <navigator url="/pages/component/lotteryResult/lotteryResult">
+    <view wx:if="{{listData.length}}">
+      <view wx:for="{{listData}}" wx:key="index">
+        <navigator url="/pages/component/lotteryResult/lotteryResult?id={{item.id}}">
           <view class='addressL'>
               <i-row>
                   <i-col span="6" i-class="col-class">
@@ -10,9 +10,9 @@
                       <view class='zhongJ'>中奖啦</view>
                   </i-col>
                   <i-col span="16" i-class="col-class">
-                      <view class='title'>话题：赵丽颖生的是男？</view>
-                      <view class='jp'>奖品：<text>华为最新款手机P30 </text></view>
-                      <view class='time'>2019-06-05</view>
+                      <view class='title'>话题：{{item.title}}</view>
+                      <view class='jp'>奖品：<text>{{item.prizeDescription}}</text></view>
+                      <view class='time'>{{item.yy}}</view>
                   </i-col>
                   <i-col span="2" i-class="col-class">
                     <i-icon type="enter" i-class="icon" size="20" color="#80848f" />
@@ -22,11 +22,15 @@
         </navigator>
       </view>
     </view>
-    <view wx:if="{{!list.length}}" class='noRecord'>
-      <image mode="aspectFit"  src = "../../../image/noRecord.png"></image>
+    <view wx:if="{{!listData.length}}" class='noRecord'>
+      <image src = "../../../image/noRecord.png"></image>
       <view class='noTxt'>暂无中奖记录</view>
     </view>
+    <view class='onlyData' wx:if="{{total&&(listData.length>=total)}}">已加载全部数据</view>
+    <i-load-more loading="{{ loading }}" />
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
+   <i-message id="message" />
+
 </view>
