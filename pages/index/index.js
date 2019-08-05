@@ -12,6 +12,7 @@ Component({
           selected: 0
         })
       }
+      this.data.pageNum=1;
       this.login();
     }
   },
@@ -157,14 +158,6 @@ Component({
               return;
             }
             let resDate = res.data&&res.data.data,list=[];
-            console.log(resDate.list);
-            if (resDate.list && !resDate.list.length){
-              $Message({
-                content: '暂无数据',
-                type: 'success'
-              });
-              return;
-            }
             let idList = [];
             (resDate.list).map(item=>{
               let beginT = item.drawTimes,md='',mh='';

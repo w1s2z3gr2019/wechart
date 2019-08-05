@@ -18,10 +18,12 @@ Page({
     topNub:0,
     wechartName:'rongrongBaby',
     guessType:1,
-    gv_id:''
+    gv_id:'',
+    val:'',
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   reachBottom:function(){
-    console.log('到底了')
+   
   },
   cancelGx:function(){
     this.setData({
@@ -47,6 +49,7 @@ Page({
     var nub = this.data.topNub;
     nub++
     this.setData({
+      val:'',
       topNub: nub
     })
     if (nub == 7) {
@@ -82,7 +85,6 @@ Page({
         title: 'Loading...',
       })
     }
-    console.log(ids)
     wx.request({
       method: 'get',
       url: api + '/api/portal/topicDetails',
@@ -100,7 +102,6 @@ Page({
           return;
         }
         let theData = res.data.data;
-        console.log(theData)
         let beginT = theData.drawTimes, md = '', mh = '';
         if (beginT) {
           let arrT = beginT.split(' ');
@@ -144,7 +145,6 @@ Page({
   canY_ques(e){
     let token = wx.getStorageSync('token');
     const _this = this;
-    console.log(e.currentTarget.dataset)
     let val = e.currentTarget.dataset.val||'';
     let id = e.currentTarget.dataset.id||'';
     let theData = this.data.theData||{};
@@ -161,9 +161,11 @@ Page({
       });
       return;
     }
-    console.log()
     wx.showLoading({
       title: 'Loading...',
+    })
+    wx.showToast({
+      title: token,
     })
     wx.request({
       method: 'post',
@@ -201,10 +203,18 @@ Page({
       initId: options.id
     })
     //处理分享出去的页面
-    // if(options.type){
-    //   this.login(options)
-    // }
-    this.loadData(options.id)
+    if(options.type){
+      this.setData({
+        hasUserInfo:false
+      })
+      let token = wx.removeStorageSync('token');
+      this.login(options)
+    }else{
+      this.setData({
+        hasUserInfo:true
+      })
+      this.loadData(options.id)
+    }
   },
   login(){
     const _this = this;
@@ -252,10 +262,6 @@ Page({
             remember: false
           },
           success(res) {
-          wx.showModal({
-            title: '登录了',
-            content: '的撒打算',
-          })
             if (res.data.error && res.data.error.length) {
               wx.hideLoading()
               $Message({
@@ -338,11 +344,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('触底了')
    
   },
   getUserInfo: function (e) {
-    console.log(e)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
       this.login(e.detail)
@@ -357,13 +361,10 @@ Page({
    */
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
-      console.log(res);
       this.setData({
         successState: true
       })
     }
-    let guessType = this.data.guessType;
-    console.log(guessType)
     return {
       title: '竞猜啦',
       path: '/pages/component/guess/guess?id='+this.data.theData.id+'&type=1',

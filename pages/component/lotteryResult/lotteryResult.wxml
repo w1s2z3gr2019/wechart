@@ -2,13 +2,13 @@
 <view class='wrap'>
     <view class='result'>
       <view class='success'>
-          <view class='fail' hidden='{{theData.resultIndex}}' >很遗憾,您未中奖~</view>
-          <image class='sucImg' hidden='{{!theData.resultIndex}}' src='../../../image/result_ok.png'></image>
-          <image class='failImg' hidden='{{theData.resultIndex}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!theData.resultIndex}}' open-type="share"></button>
-          <view class='huaTi' hidden='{{!theData.resultIndex}}'>话题:{{theData.title}}</view>
+          <view class='fail' hidden='{{theData.myWin}}' >很遗憾,您未中奖~</view>
+          <image class='sucImg' hidden='{{!theData.myWin}}' src='../../../image/result_ok.png'></image>
+          <image class='failImg' hidden='{{theData.myWin}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!theData.myWin}}' open-type="share"></button>
+          <view class='huaTi' hidden='{{!theData.myWin}}'>话题:{{theData.title}}</view>
       </view>
-      <view class='title' hidden='{{theData.resultIndex}}' >话题：{{theData.title}}</view>
-      <view class='noTxt' wx:if="{{!theData.resultIndex}}">您的累积中奖概率为<text>{{(theData.probability||0)*100}}%</text></view>
+      <view class='title' hidden='{{theData.myWin}}' >话题：{{theData.title}}</view>
+      <view class='noTxt' wx:if="{{!theData.myWin}}">您的累积中奖概率为<text>{{(theData.myProbability*100||0)*100}}%</text></view>
     </view>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
@@ -58,7 +58,7 @@
           <i-col span="8" wx:if="{{!otherData.sponsorshipType}}" class='red'>
                 <text>竞猜官方  赞助</text>
             </i-col>
-            <i-col span="8" wx:else="{{otherData.sponsorshipType}}" class='red'>
+            <i-col span="8" wx:if="{{otherData.sponsorshipType}}" class='red'>
                 <text>{{otherData.sponsor}}  赞助</text>
             </i-col>
         </i-row>

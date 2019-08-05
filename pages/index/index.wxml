@@ -19,7 +19,7 @@
     <view class='listHader'>
       <image src='../../image/title_left.png'></image><text>{{item.frequencyValue||'暂无'}}</text><image src='../../image/title_right.png'></image>
     </view>
-    <navigator url="/pages/component/guess/guess?id={{item.id}}&type=1">
+    <navigator url="/pages/component/guess/guess?id={{item.id}}">
       <view class='listText'>
         <view class='listImg'>
           <image src="{{item.pictureUrl?apiUrl+item.pictureUrl:initImg}}"></image>

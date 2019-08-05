@@ -37,9 +37,9 @@
                 <text class='dot'></text><text class='txt'>猜猜玩{{theData.frequencyValue}}</text><text class='dot'></text> 
             </view>
             <view class='titleBt'>{{theData.title}}</view>
-            <view wx:if="{{theData.resultOk}}" class='resultOk'><text class='resTxt'>已选:{{theData.resultOk}}</text></view>
+            <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选:{{theData.resultOk}}</text></view>
             <view class='over' wx:if="{{theData.status==3}}">话题已开奖</view>
-            <view wx:if="{{!theData.resultOk&&theData!=3}}"> 
+            <view wx:if="{{!theData.myJoin&&theData!=3}}"> 
               <view wx:if="{{theData.drawType==0}}">
                 <view class='select' >
                   <i-row>
