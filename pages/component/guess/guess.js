@@ -113,7 +113,14 @@ Page({
         theData.pictureUrl = apiUrl + theData.pictureUrl;
         theData.md=md;
         theData.mh=mh;
-        theData.drawT = theData.drawTimes ? theData.drawTimes.split(' ')[1] : '',
+        theData.drawT = theData.drawTimes ? theData.drawTimes.split(' ')[1] : '';
+        let endt = new Date(theData.endTimes||'').getTime();
+        let nowT = new Date().getTime();
+        let timeState=true; //
+        if (nowT > endt){
+          timeState=false
+        }
+        theData.timeState = timeState;
         //渲染页面回到顶部
           _this.setData({
             gv_id:'',

@@ -2,13 +2,13 @@
 <view class='wrap'>
     <view class='result'>
       <view class='success'>
-          <view class='fail' hidden='{{theData.myWin}}' >很遗憾,您未中奖~</view>
-          <image class='sucImg' hidden='{{!theData.myWin}}' src='../../../image/result_ok.png'></image>
-          <image class='failImg' hidden='{{theData.myWin}}' src='../../../image/noRecord.png'></image><button class="share" hidden='{{!theData.myWin}}' open-type="share"></button>
-          <view class='huaTi' hidden='{{!theData.myWin}}'>话题:{{theData.title}}</view>
+          <view class='fail'wx:if='{{!theData.myWin}}' >很遗憾,您未中奖~</view>
+          <image class='sucImg' wx:if='{{theData.myWin}}' src='../../../image/result_ok.png'></image>
+          <image class='failImg' wx:if='{{!theData.myWin}}' src='../../../image/noRecord.png'></image><button class="share" wx:if='{{theData.myWin}}' open-type="share"></button>
+          <view class='huaTi' wx:if='{{theData.myWin}}'>话题:{{theData.title}}</view>
       </view>
-      <view class='title' hidden='{{theData.myWin}}' >话题：{{theData.title}}</view>
-      <view class='noTxt' wx:if="{{!theData.myWin}}">您的累积中奖概率为<text>{{(theData.myProbability*100||0)*100}}%</text></view>
+      <view class='title' wx:if='{{!theData.myWin}}' >话题：{{theData.title}}</view>
+      <view class='noTxt' wx:if="{{!theData.myWin}}">您的累积中奖概率为<text>{{(theData.myProbability||0)*100}}%</text></view>
     </view>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
@@ -30,8 +30,7 @@
           </i-row>
         </navigator>
          <view wx:if="{{!theData.userList.length}}" class='noUser'>暂无参与者</view>
-      </view>
-      
+      </view> 
 </view>
  <view class='wrapColor'>
     <view class='list'>

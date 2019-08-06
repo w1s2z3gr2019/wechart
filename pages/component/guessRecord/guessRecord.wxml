@@ -1,10 +1,10 @@
 <!--pages/component/guessRecord/guessRecord.wxml-->
 <view class='wrap'>
     <view wx:if="{{listData.length}}">
-      <view wx:for="{{listData}}" wx:key="{{item}}" data-index="{{item}}">
+      <view wx:for="{{listData}}" wx:key="index">
         <navigator url="/pages/component/guess/guess?id={{item.id}}">
           <view class='addressL'>
-              <view class='title'>{{item.title}}</view>
+              <view class='title'>话题 : {{item.title}}</view>
               <i-row>
                   <i-col span="15" i-class="col-class">
                       <view class='bothTxt'>奖品：{{item.prizeDescription}}</view>

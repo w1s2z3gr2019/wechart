@@ -37,10 +37,10 @@
                 <text class='dot'></text><text class='txt'>猜猜玩{{theData.frequencyValue}}</text><text class='dot'></text> 
             </view>
             <view class='titleBt'>{{theData.title}}</view>
-            <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选:{{theData.resultOk}}</text></view>
+            <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选 : {{theData.chooseList.length&&theData.chooseList[0].content||''}}</text></view>
             <view class='over' wx:if="{{theData.status==3}}">话题已开奖</view>
             <view wx:if="{{!theData.myJoin&&theData!=3}}"> 
-              <view wx:if="{{theData.drawType==0}}">
+              <view wx:if="{{theData.drawType==0&&theData.timeState}}">
                 <view class='select' >
                   <i-row>
                     <i-col span="8">
@@ -55,7 +55,7 @@
                 <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view> 
 
-              <view wx:if="{{theData.drawType==1}}">
+              <view wx:if="{{theData.drawType==1&&theData.timeState}}">
                 <view class='select' >
                   <i-row>
                     <i-col span="16" class="inpGrounp">
@@ -69,7 +69,7 @@
                 </view>
                 <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view>  
-              <view wx:if="{{theData.drawType==2}}">
+              <view wx:if="{{theData.drawType==2&&theData.timeState}}">
                 <view class='select' >
                   <radio-group class="radio-group"  bindchange="radioChange">
                       <view wx:for="{{theData.drawList}}" class='radioView' wx:key="{{item.id}}">
@@ -84,6 +84,7 @@
                 </view>
                 <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view>  
+              <view class='timeState' wx:if="{{!theData.timeState}}">已过该话题参与时间</view>
           </view>
          </view>
         <i-divider i-class="divider"></i-divider>

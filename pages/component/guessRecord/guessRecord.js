@@ -26,7 +26,7 @@ Page({
       data: {
         pageNo: nub,
         pageSize: 10,
-        status:1,
+        status:0,
         token:token
       },
       success(res) {

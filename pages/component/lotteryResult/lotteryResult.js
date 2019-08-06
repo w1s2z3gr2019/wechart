@@ -2,7 +2,6 @@
 import { api, apiUrl } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
 const app =getApp();
-console.log(app)
 Page({
   
   /**
