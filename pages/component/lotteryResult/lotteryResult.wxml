@@ -1,5 +1,6 @@
 <!--pages/component/lotteryResult/lotteryResult.wxml-->
 <view class='wrap'>
+<navigator url="/pages/component/winShare/winShare?id={{theData.id}}">分享</navigator>
     <view class='result'>
       <view class='success'>
           <view class='fail'wx:if='{{!theData.myWin}}' >很遗憾,您未中奖~</view>
@@ -51,7 +52,7 @@
         </view>
         <i-row class='time'>
           <i-col span="16">
-            <text class="left" wx:if="{{otherData.mh&&otherData.mh!='00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
+            <text class="left" wx:if="{{otherData.mh&&otherData.mh!='00:00'}}">{{otherData.md+' '+otherData.mh}} 自动开奖</text>
               <text class='left' wx:else>开奖时间待定</text>
           </i-col>
           <i-col span="8" wx:if="{{!otherData.sponsorshipType}}" class='red'>

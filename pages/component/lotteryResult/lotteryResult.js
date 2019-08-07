@@ -61,7 +61,14 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.loadData(options.id)
-    let ids = wx.getStorageSync('idList')
+    let idList = wx.getStorageSync('idList')
+    let nub = Math.floor(Math.random() * idList.length)
+    let ids ='';
+    if (idList[nub] != options.id){
+      ids = idList[nub]
+    }else{
+      ids = idList[Math.floor(Math.random() * idList.length)]
+    }
     this.otherData(ids)
   },
   otherData: function (id) {
@@ -84,16 +91,17 @@ Page({
           return;
         }
         let otherData = res.data.data;
-        let beginT = item.drawTimes, md = '', mh = '';
+        let beginT = otherData.drawTimes, md = '', mh = '';
         if (beginT) {
           let arrT = beginT.split(' ');
           let y = arrT[0], mhs = arrT[1];
           let yy = arrT[0].split('-'), mm = mhs.split(':');
           md = yy[1] + '月' + yy[2] + '日';
-          mh = mm[0] + ':' + mm[1];
+          mh = mm[0] + ':' + mm[1] + ':' + mm[2];
         }
         otherData.md=md;
         otherData.mh=mh;
+        console.log(otherData)
         _this.setData({
           otherData: otherData,
         })
@@ -160,9 +168,10 @@ Page({
     if (res.from === 'button') {
       console.log(res);
     }
+    console.log(this.data.theData)
     return {
       title: '中奖啦!!!',
-      path: '/pages/component/winShare/winShare',
+      path: '/pages/component/winShare/winShare?id='+this.data.theData.id,
       success: function (res) {
         console.log('成功', res)
       }

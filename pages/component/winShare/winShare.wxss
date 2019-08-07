@@ -64,6 +64,9 @@
   overflow: hidden;
   border-radius: 50%;
 }
+.more .left{
+  float: left;
+}
 .content .bigTxt{
   font-size: 18px;
 }
