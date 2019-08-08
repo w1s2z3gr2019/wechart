@@ -66,10 +66,7 @@ Page({
         scrollTop: 0
       })
     } else {
-      wx.showModal({
-        title: '提示',
-        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
-      })
+     
     }
   },
   loadData:function(id){
@@ -120,7 +117,26 @@ Page({
         if (nowT > endt){
           timeState=false
         }
+        let userArr = [];
+        if (theData.userList&&theData.userList.length > 7) {
+          theData.userList.map((item, index) => {
+            if (index < 7) {
+              userArr.push(item)
+            }
+          })
+          theData.userList = userArr
+        }
+        let choosValue='';
+        if (theData.chooseList.length){
+          if (theData.drawType != 1){
+            choosValue = theData.chooseList[0].content;
+          }else{
+            choosValue = theData.chooseList[0].chooseValue;
+          }
+        }
         theData.timeState = timeState;
+        theData.choosValue = choosValue;
+        console.log(theData)
         //渲染页面回到顶部
           _this.setData({
             gv_id:'',
@@ -297,7 +313,7 @@ Page({
   },
   //复制到剪贴板
   copy:function(){
-    let val = this.data.wechartName;
+    let val = this.data.theData.releaseWechat;
     wx.setClipboardData({
       data: val,
       success(res){
@@ -306,7 +322,7 @@ Page({
         })
         setTimeout(()=>{
           wx.hideToast()
-        },1500)
+        }, 1500)
       }
     })
   },

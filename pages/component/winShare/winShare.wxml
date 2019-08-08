@@ -9,7 +9,6 @@
             <view class='name'>{{theData.userList[0].name}}</view> 
             <view class='jp'>奖品：{{theData.prizeDescription}}</view>
             <view class='title'>话题：{{theData.title}}</view>
-            <view>{{theData.result}}</view>
       </view>
       <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
       <view class='person'>
@@ -27,8 +26,8 @@
       </view>
       <i-divider i-class="divider" lineColor="#F5F5F5"></i-divider>
       <view class='gzh'>
-         <image src="../../../image/gzhImg.png" mode="widthFix"  
-    data-src="../../../image/gzhImg.png" 
+         <image src="{{ewmImg}}" mode="widthFix"  
+    data-src="{{ewmImg}}" 
     bindtap="previewImage"></image>
           <view>长按识别小程序,立即参与猜奖</view>
       </view>

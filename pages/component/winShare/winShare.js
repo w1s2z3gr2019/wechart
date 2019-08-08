@@ -8,6 +8,7 @@ Page({
    */
  
   data: {
+    ewmImg:'https://static.xcustom.net/upload/static/940609329bc1911eb272d39b2999500.png',
     name:'TTT',
     winP:'iPhoneX 512G 一台',
     name: '',
@@ -35,8 +36,15 @@ Page({
           });
           return;
         }
-        let theData = res.data.data;
-          //渲染页面回到顶部
+        let theData = res.data.data, userArr = [];
+        if (theData.userList&&theData.userList.length > 7) {
+          theData.userList.map((item, index) => {
+            if (index < 7) {
+              userArr.push(item)
+            }
+          })
+          theData.userList = userArr
+        }
           _this.setData({
             theData: theData,
           })

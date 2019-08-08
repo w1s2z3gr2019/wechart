@@ -40,7 +40,16 @@ Page({
           });
           return;
         }
-        let theData = res.data.data;
+        let theData = res.data.data,userArr=[];
+        if (theData.userList&&theData.userList.length > 7){
+          theData.userList.map((item,index)=>{
+            if(index<7){
+              userArr.push(item)
+            }
+          })
+          theData.userList = userArr
+        }
+ 
         //渲染页面回到顶部
         _this.setData({
           theData: theData,
@@ -59,7 +68,6 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(options)
     this.loadData(options.id)
     let idList = wx.getStorageSync('idList')
     let nub = Math.floor(Math.random() * idList.length)
@@ -99,9 +107,17 @@ Page({
           md = yy[1] + '月' + yy[2] + '日';
           mh = mm[0] + ':' + mm[1] + ':' + mm[2];
         }
+        let userArr = [];
+        if (otherData.userList && otherData.userList.length > 7) {
+          otherData.userList.map((item, index) => {
+            if (index < 7) {
+              userArr.push(item)
+            }
+          })
+          otherData.userList = userArr
+        }
         otherData.md=md;
         otherData.mh=mh;
-        console.log(otherData)
         _this.setData({
           otherData: otherData,
         })
@@ -124,7 +140,12 @@ Page({
   onReady: function () {
 
   },
-
+  //用户查看跳转
+  jumpUser(e) {
+    wx.navigateTo({
+      url: '/pages/user/user?id=' + this.data.otherData.id　　// 页面 B
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -164,16 +185,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    console.log(res)
     if (res.from === 'button') {
-      console.log(res);
     }
-    console.log(this.data.theData)
     return {
       title: '中奖啦!!!',
       path: '/pages/component/winShare/winShare?id='+this.data.theData.id,
       success: function (res) {
-        console.log('成功', res)
       }
     }
   },

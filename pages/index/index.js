@@ -168,6 +168,15 @@ Component({
                 md=yy[1]+'月'+yy[2]+'日';
                 mh = mm[0]+':'+mm[1];
               }
+              let userArr = [];
+              if (item.userList&&item.userList.length > 7) {
+                item.userList.map((atem, index) => {
+                  if (index < 7) {
+                    userArr.push(atem)
+                  }
+                })
+                item.userList = userArr
+              }
               idList.push(item.id)
               list.push({
                 drawTimes: item.drawTimes ? item.drawTimes.split(' ')[1]:'',
@@ -184,7 +193,7 @@ Component({
                 sponsorshipTypeValue: item.sponsorshipTypeValue,
                 sponsor: item.sponsor && item.sponsor.length >8?item.sponsor.substr(0,8)+'...':item.sponsor,
                 userListAll:item.userList,
-                userList: item.userList && item.userList.length > 6 ? item.userList.length=6:item.userList || [],
+                userList: item.userList||[],
               })
             })
             if (pageNum) {

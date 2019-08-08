@@ -34,10 +34,10 @@
         <i-divider i-class="divider"></i-divider>
         <view class='question1'>
             <view class='title'>
-                <text class='dot'></text><text class='txt'>猜猜玩{{theData.frequencyValue}}</text><text class='dot'></text> 
+                <text class='dot'></text><text class='txt'>{{theData.frequencyValue}}</text><text class='dot'></text> 
             </view>
             <view class='titleBt'>{{theData.title}}</view>
-            <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选 : {{theData.chooseList.length&&theData.chooseList[0].content||''}}</text></view>
+            <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选 : {{theData.choosValue}}</text></view>
             <view class='over' wx:if="{{theData.status==3}}">话题已开奖</view>
             <view wx:if="{{!theData.myJoin&&theData!=3}}"> 
               <view wx:if="{{theData.drawType==0&&theData.timeState}}">
@@ -115,9 +115,9 @@
   <text class='con'>{{theData.content}}</text>
 </view>
 <view class='huiColor'></view>
-<view class='copy'>
-  <view class='name'>昵称：荣子宝贝</view>
-  <view class='wechart'>{{wechartName}}</view>
+<view class='copy' wx:if="{{theData.releaseName || theData.releaseWechat}}">
+  <view class='name'>昵称：{{theData.releaseName||''}}</view>
+  <view class='wechart'>{{theData.releaseWechat||''}}</view>
   <view class='yjCopy' bindtap="copy">点此一键复制微信号</view>
 </view>
 <view class='huad' bindtouchmove="touchMove">

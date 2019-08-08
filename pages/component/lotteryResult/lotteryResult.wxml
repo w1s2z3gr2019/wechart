@@ -1,6 +1,6 @@
 <!--pages/component/lotteryResult/lotteryResult.wxml-->
 <view class='wrap'>
-<navigator url="/pages/component/winShare/winShare?id={{theData.id}}">分享</navigator>
+<!-- <navigator url='/pages/component/winShare/winShare?id={{theData.id}}'>aaa</navigator> -->
     <view class='result'>
       <view class='success'>
           <view class='fail'wx:if='{{!theData.myWin}}' >很遗憾,您未中奖~</view>
@@ -38,53 +38,51 @@
     <view class='listHader'>
       <image src='../../../image/title.png'></image><text>更多猜奖推荐</text>
     </view>
-    <view class='listText'>
-      <view class='listImg'>
-        <image src='{{apiUrl+otherData.pictureUrl}}'></image>
-        <view class='jp'>奖品:
-          <text>{{otherData.prizeDescription}}</text>
+    <navigator url="/pages/component/guess/guess?id={{otherData.id}}">
+      <view class='listText'>
+        <view class='listImg'>
+          <image src='{{apiUrl+otherData.pictureUrl}}'></image>
+          <view class='jp'>奖品:
+            <text>{{otherData.prizeDescription}}</text>
+          </view>
         </view>
-      </view>
-      <view class='listBot'>
-        <view class='firstTxt'>
-          <text class='first'>[{{otherData.typeValue}}]</text>
-          <text>{{otherData.title}}</text>
-        </view>
-        <i-row class='time'>
-          <i-col span="16">
-            <text class="left" wx:if="{{otherData.mh&&otherData.mh!='00:00'}}">{{otherData.md+' '+otherData.mh}} 自动开奖</text>
-              <text class='left' wx:else>开奖时间待定</text>
-          </i-col>
-          <i-col span="8" wx:if="{{!otherData.sponsorshipType}}" class='red'>
-                <text>竞猜官方  赞助</text>
+        <view class='listBot'>
+          <view class='firstTxt'>
+            <text class='first'>[{{otherData.typeValue}}]</text>
+            <text>{{otherData.title}}</text>
+          </view>
+          <i-row class='time'>
+            <i-col span="16">
+              <text class="left" wx:if="{{otherData.mh&&otherData.mh!='00:00'}}">{{otherData.md+' '+otherData.mh}} 自动开奖</text>
+                <text class='left' wx:else>开奖时间待定</text>
             </i-col>
-            <i-col span="8" wx:if="{{otherData.sponsorshipType}}" class='red'>
-                <text>{{otherData.sponsor}}  赞助</text>
-            </i-col>
-        </i-row>
-        <i-divider i-class="divider"></i-divider>
-        <navigator url="/pages/user/user?id={{otherData.id}}">
-          <i-row i-class="more" wx:if="{{otherData.userList.length}}">
-              <i-col span="22">
-                  <view class='left' wx:for="{{otherData.userList}}" wx:key="{{index}}" wx:for-item="atem">
-                        <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
-                  </view>
-                  <view class='left'>
-                    <image src="../../../image/more_03.png"></image>
-                    <view class='txt'>等参与了抽奖</view>
-                  </view>
+            <i-col span="8" wx:if="{{!otherData.sponsorshipType}}" class='red'>
+                  <text>竞猜官方  赞助</text>
               </i-col>
-              <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+              <i-col span="8" wx:if="{{otherData.sponsorshipType}}" class='red'>
+                  <text>{{otherData.sponsor}}  赞助</text>
+              </i-col>
           </i-row>
-        </navigator>
-        <view wx:if="{{!otherData.userList.length}}" class='noUser'>暂无参与者</view>
+          <i-divider i-class="divider"></i-divider>
+            <i-row i-class="more" catchtap='jumpUser' wx:if="{{otherData.userList.length}}">
+                <i-col span="22">
+                    <view class='left' wx:for="{{otherData.userList}}" wx:key="{{index}}" wx:for-item="atem">
+                          <i-avatar  src="{{atem.headUrl}}" size="small"></i-avatar>
+                    </view>
+                    <view class='left'>
+                      <image src="../../../image/more_03.png"></image>
+                      <view class='txt'>等参与了抽奖</view>
+                    </view>
+                </i-col>
+                <i-col span="2"><i-icon type="enter" size="18" color="#999999" /></i-col>
+            </i-row>
+          <view wx:if="{{!otherData.userList.length}}" class='noUser'>暂无参与者</view>
+        </view>
+        <view class='redBtn'>
+            <text class='btn'>我要拿大奖</text>
+        </view>
       </view>
-      <view class='redBtn'>
-        <navigator url="/pages/component/guess/guess?guessType={{item}}">
-          <text class='btn'>我要拿大奖</text>
-        </navigator>
-      </view>
-    </view>
+    </navigator>
     <view class='contact'>
       <navigator url="/pages/index/index" open-type="switchTab" hover-class="navigator-hover">
           回到首页

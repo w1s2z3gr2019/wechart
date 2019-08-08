@@ -11,7 +11,7 @@ Page({
     pageNum: 1,
     total: 0,
     listData: [],
-    list: [1,2,12,1]
+    list: [1]
   },
   loadData(pageNum) {
     const _this = this;
@@ -55,6 +55,7 @@ Page({
             hms = arrT[1];
           }
           list.push({
+            status:item.status,
             title: item.title,
             prizeDescription: item.prizeDescription,
             probability: item.probability*100,
