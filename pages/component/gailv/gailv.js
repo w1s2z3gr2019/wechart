@@ -69,7 +69,7 @@ Page({
           _this.setData({
             pageNum
           });
-          lower(list);
+          _this.lower(list);
         } else {
           _this.setData({
             total: resDate.totalCount,
@@ -93,6 +93,7 @@ Page({
   //数据滚动加载
   lower(resData) {
     //此处放后台获取的数据
+    const _this = this;
     var result = _this.data.listData;
     var cont = result.concat(resData);
     wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
