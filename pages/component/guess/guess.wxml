@@ -21,13 +21,13 @@
           <text class='left' wx:else>开奖时间待定</text>
         </view>
         <i-row >
-          <i-col span="12" class='red red_Zan' wx:if="{{!theData.sponsorshipType}}">
+          <i-col span="14" class='red red_Zan' wx:if="{{!theData.sponsorshipType}}">
               <text>竞猜官方  赞助</text>
           </i-col>
-          <i-col span="12" class='red red_Zan' wx:else="{{theData.sponsorshipType}}">
+          <i-col span="14" class='red red_Zan' wx:else="{{theData.sponsorshipType}}">
               <text>{{theData.sponsor}}  赞助</text>
           </i-col>
-          <i-col span="12" class='redRight'>
+          <i-col span="10" class='redRight'>
               <button open-type='contact'>赞助方小程序 ></button>
           </i-col>
         </i-row>

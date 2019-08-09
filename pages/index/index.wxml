@@ -15,6 +15,7 @@
   </view>
 </view>
 <view class='content'>
+  
   <view class='list' wx:for="{{listData}}" wx:key="{{item}}">
     <view class='listHader'>
       <image src='../../image/title_left.png'></image><text>{{item.frequencyValue||'暂无'}}</text><image src='../../image/title_right.png'></image>
@@ -33,14 +34,14 @@
             <text>{{item.title}}</text>
           </view>
           <i-row class='time'>
-            <i-col span="16">
+            <i-col span="12">
               <text class="left" wx:if="{{item.drawTimes&&item.drawTimes!='00:00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
               <text class='left' wx:else>开奖时间待定</text>
             </i-col>
-            <i-col span="8" wx:if="{{!item.sponsorshipType}}" class='red'>
+            <i-col span="12" wx:if="{{!item.sponsorshipType}}" class='red'>
                 <text>竞猜官方  赞助</text>
             </i-col>
-            <i-col span="8" wx:else="{{item.sponsorshipType}}" class='red'>
+            <i-col span="12" wx:else="{{item.sponsorshipType}}" class='red'>
                 <text>{{item.sponsor}}  赞助</text>
             </i-col>
           </i-row>
@@ -70,7 +71,7 @@
   <view class='contact' wx:if="{{total&&(listData.length>=total)}}">
     <button open-type='contact'><image src='../../image/contact.png'></image><text>联系我们</text></button>
   </view>
-  
+  <view class='noData' wx:if="{{!listData.length}}">暂无话题</view>
 </view>
 <cover-view class='shareMode' hidden='{{shareState}}'>
 <cover-view class='share'>

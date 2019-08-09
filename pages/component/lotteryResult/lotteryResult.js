@@ -13,6 +13,7 @@ Page({
     id:'123456',
     theData:{},
     otherData:{},
+    idList:[],
     apiUrl:apiUrl
   },
   /**
@@ -41,6 +42,7 @@ Page({
           return;
         }
         let theData = res.data.data,userArr=[];
+        console.log(theData)
         if (theData.userList&&theData.userList.length > 7){
           theData.userList.map((item,index)=>{
             if(index<7){
@@ -49,7 +51,7 @@ Page({
           })
           theData.userList = userArr
         }
- 
+        console.log(theData.userList)
         //渲染页面回到顶部
         _this.setData({
           theData: theData,
@@ -77,6 +79,9 @@ Page({
     }else{
       ids = idList[Math.floor(Math.random() * idList.length)]
     }
+    this.setData({
+      idList
+    })
     this.otherData(ids)
   },
   otherData: function (id) {

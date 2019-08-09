@@ -34,8 +34,8 @@
       </view> 
 </view>
  <view class='wrapColor'>
-    <view class='list'>
-    <view class='listHader'>
+    <view class='list' wx:if="{{idList.length}}">
+    <view class='listHader' >
       <image src='../../../image/title.png'></image><text>更多猜奖推荐</text>
     </view>
     <navigator url="/pages/component/guess/guess?id={{otherData.id}}">

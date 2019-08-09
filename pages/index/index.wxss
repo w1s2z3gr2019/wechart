@@ -1,6 +1,12 @@
 page{
   background: #E9EDF1;
 }
+.noData{
+  font-size: 32rpx;
+  color: #999;
+  margin-top: 120rpx;
+  text-align: center;
+}
 .modal{
   position: fixed;
   left: 0;

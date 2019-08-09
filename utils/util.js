@@ -17,6 +17,5 @@ const formatNumber = n => {
 module.exports = {
   formatTime: formatTime,
   api: "https://api.xcustom.net",
-  apiOld:'https://www.xcustom.net',
   apiUrl: 'https://static.xcustom.net/upload'
 }

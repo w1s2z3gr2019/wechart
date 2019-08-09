@@ -127,7 +127,7 @@ Page({
           theData.userList = userArr
         }
         let choosValue='';
-        if (theData.chooseList.length){
+        if (theData.chooseList&&theData.chooseList.length){
           if (theData.drawType != 1){
             choosValue = theData.chooseList[0].content;
           }else{
@@ -180,6 +180,13 @@ Page({
     if (!id) {
       $Message({
         content: '请选择话题答案',
+        type: 'warning'
+      });
+      return;
+    }
+    if(val&&isNaN(val)){
+      $Message({
+        content: '请输入数字',
         type: 'warning'
       });
       return;
