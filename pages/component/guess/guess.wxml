@@ -112,7 +112,12 @@
 </view>
 <view class='huiColor'></view>
 <view class='wrapContent' wx:if="{{theData.content}}">
-  <text class='con'>{{theData.content}}</text>
+  <view class='ql-container'>
+    <view class="ql-editor">
+      <rich-text nodes="{{theData.content}}"></rich-text>
+    </view>
+  </view>
+  
 </view>
 <view class='huiColor'></view>
 <view class='copy' wx:if="{{theData.releaseName || theData.releaseWechat}}">

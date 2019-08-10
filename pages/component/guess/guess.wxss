@@ -1,3 +1,4 @@
+@import "./quill.wxss";
 page{
   background: #fff;
 }

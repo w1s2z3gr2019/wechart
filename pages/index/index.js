@@ -149,6 +149,8 @@ Component({
           },
           success(res) {
             wx.hideLoading()
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh();
             if (res.data.error && res.data.error.length) {
               wx.hideLoading()
               $Message({
@@ -242,6 +244,14 @@ Component({
           wx.hideLoading();
         }, 1500)
       }
+    },
+    //下拉刷新
+    onPullDownRefresh(){
+      wx.showNavigationBarLoading();
+      this.setData({
+        pageNum:1
+      })
+      this.login()
     },
     //下滑加载
     onReachBottom: function () {

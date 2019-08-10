@@ -1,5 +1,6 @@
 {
   "component":true,
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "猜奖",
   "usingComponents": {
     "i-card": "../dist/card/index",

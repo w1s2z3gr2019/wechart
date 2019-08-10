@@ -44,7 +44,9 @@ Page({
       method: 'get',
       url: api + '/api/portal/selectByTcUser',
       data: {
-        id: id
+        id: id,
+        pageNo: 1,
+        pageSize: 9999999,
       },
       success(res) {
         console.log(res.data)

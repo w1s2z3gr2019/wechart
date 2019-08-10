@@ -17,7 +17,7 @@
     "pages/user/user"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#E70012",
     "navigationBarTitleText": "猜猜玩",
     "navigationBarTextStyle": "white"
