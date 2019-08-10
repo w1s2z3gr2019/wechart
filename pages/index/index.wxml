@@ -14,8 +14,7 @@
     </view>
   </view>
 </view>
-<view class='content'>
-  
+<view class="{{!saveImgState?'content-bar':'content'}}" >
   <view class='list' wx:for="{{listData}}" wx:key="{{item}}">
     <view class='listHader'>
       <image src='../../image/title_left.png'></image><text>{{item.frequencyValue||'暂无'}}</text><image src='../../image/title_right.png'></image>
@@ -100,7 +99,7 @@
     <view class='close' bindtap='closeSave'>
       <image src='../../image/indexClose.png'></image>
     </view>
-    <canvas canvas-id='share' style='width:300px;height:400px' />
+    <canvas style="pointer-events: none;" disable-scroll="true" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" class='canvas' bindtouchstart="" disable-scroll="false" canvas-id='share' style='width:300px;height:400px' />
     <button class='saveImageToPhotosAlbum' bindtap="savefile">保存图片</button>
 </view>
 <i-message id="message" />

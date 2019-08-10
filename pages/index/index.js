@@ -309,7 +309,7 @@ Component({
       if(!data){
         return;
       }
-     
+      console.log(apiUrl + data.pictureUrl)
       //设置画板显示，才能开始绘图
       var path1 = data.pictureUrl ?apiUrl+data.pictureUrl:"../../image/tt.jpg";
       console.log(data.pictureUrl)
@@ -325,8 +325,24 @@ Component({
       //绘制标题
       context.setFillStyle('#fff');
       context.fillRect(0, 0, 300, 400);
-      context.drawImage(canvasHead, 0, 0, 300, 65)
-      context.drawImage(path1, 10, 75, 280, 125)
+      context.drawImage(canvasHead, 0, 0, 300, 65);
+      wx.showLoading({
+        title: 'Loading...',
+      })
+      wx.getImageInfo({
+        src: path1,//服务器返回的图片地址
+        success: function (res) {
+          console.log(res.path)
+          //res.path是网络图片的本地地址
+          context.drawImage(res.path, 10, 75, 280, 125)
+          context.draw(true);
+          wx.hideLoading()
+        },
+        fail: function (res) {
+          wx.hideLoading()
+          //失败回调
+        }
+      });
       context.setFontSize(14);
       context.setFillStyle("#000000");
       context.fillText(tit, 12, 220);
@@ -446,6 +462,15 @@ Component({
           hasUserInfo: true
         })
       }
+    },
+    touchEnd(){
+
+    },
+    touchMove(){
+
+    },
+    touchStart(){
+
     }
   },
   
