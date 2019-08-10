@@ -47,10 +47,13 @@ Page({
       success(res) {
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon: 'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
         let theData = res.data.data.list||[];

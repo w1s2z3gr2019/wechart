@@ -15,6 +15,7 @@ const formatNumber = n => {
 }
 
 module.exports = {
+  winState:['待开奖','待开奖','正在开奖','已开奖','已撤销'],
   formatTime: formatTime,
   api: "https://api.xcustom.net",
   apiUrl: 'https://static.xcustom.net/upload'

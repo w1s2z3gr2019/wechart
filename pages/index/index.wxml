@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
- <view class='modal' wx:if="{{!hasUserInfo && canIUse}}" >
+ <view class='modal' style="display:{{(!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>
         <view class='place'>请授权登录</view>
         <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
@@ -75,9 +75,9 @@
 <cover-view class='shareMode' hidden='{{shareState}}'>
 <cover-view class='share'>
    <cover-view class='shareAddress'>
-      <cover-image class='shareTitleImg' src ="../../image/shareLeft.png"></cover-image>
+      <!-- <cover-image class='shareTitleImg' src ="../../image/shareLeft.png"></cover-image> -->
       <cover-view class='shareTitl'>分享到</cover-view>
-      <cover-image  class='shareTitleImg' src ="../../image/shareRight.png"></cover-image>
+      <!-- <cover-image  class='shareTitleImg' src ="../../image/shareRight.png"></cover-image> -->
    </cover-view>
    <cover-view>
       <cover-view class='href' >

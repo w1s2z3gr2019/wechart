@@ -92,10 +92,13 @@ Page({
       success(res) {
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon:'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
         let theData = res.data.data;
@@ -149,10 +152,13 @@ Page({
       },
       fail: function (err) {
         wx.hideLoading();
-        $Message({
-          content: '数据请求失败',
-          type: 'error'
-        });
+        wx.showToast({
+          icon:'none',
+          title: '系统异常',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
       },
       complete: function () {
         _this.setData({
@@ -178,24 +184,30 @@ Page({
       id = theData.drawList[0].id
     }
     if (!id) {
-      $Message({
-        content: '请选择话题答案',
-        type: 'warning'
-      });
+      wx.showToast({
+        icon:'none',
+        title: '请选择话题答案',
+      })
+      setTimeout(() => {
+        wx.hideToast()
+      }, 1500)
       return;
     }
-    if(val&&isNaN(val)){
-      $Message({
-        content: '请输入数字',
-        type: 'warning'
-      });
-      return;
+    console.log(val)
+    if (this.data.theData.drawType==1){
+      if (!val || isNaN(val)) {
+        wx.showToast({
+          icon: 'none',
+          title: '请输入数字',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
+        return;
+      }
     }
     wx.showLoading({
       title: 'Loading...',
-    })
-    wx.showToast({
-      title: token,
     })
     wx.request({
       method: 'post',
@@ -210,17 +222,25 @@ Page({
         did: id
       },
       success(res) {
-        console.log(res.data)
+        wx.hideLoading()
         if (res.data.error && res.data.error.length) {
-          wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon: 'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
-        _this.loadData(_this.data.initId)
-        wx.hideLoading()
+        wx.showToast({
+          icon: 'success',
+          title: '参与成功',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+          _this.loadData(_this.data.initId)
+        }, 1500)
       },
       fail(){
         wx.hideLoading()
@@ -294,10 +314,13 @@ Page({
           success(res) {
             if (res.data.error && res.data.error.length) {
               wx.hideLoading()
-              $Message({
-                content: res.data.error[0].message,
-                type: 'warning'
-              });
+              wx.showToast({
+                icon: 'none',
+                title: res.data.error[0].message,
+              })
+              setTimeout(() => {
+                wx.hideToast()
+              }, 1500)
               return;
             }
             wx.setStorageSync('token', res.data.token)
@@ -306,10 +329,13 @@ Page({
           },
           fail: function (err) {
             wx.hideLoading();
-            $Message({
-              content: '数据请求失败',
-              type: 'error'
-            });
+            wx.showToast({
+              icon: 'none',
+              title: '系统异常',
+            })
+            setTimeout(() => {
+              wx.hideToast()
+            }, 1500)
           },
           complete: function () {
             wx.hideLoading();

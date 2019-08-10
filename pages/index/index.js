@@ -31,7 +31,6 @@ Component({
         name: '登录',
         color: '#2d8cf0',
       },
-    
     ],
     pageNum:1,
     total:0,
@@ -80,7 +79,6 @@ Component({
         this.setData({
           screenWidth: res.screenWidth
         })
-        console.log(this.data.screenWidth)
       }
     })
     this.saveImageToPhotosAlbum()
@@ -110,10 +108,13 @@ Component({
             success(res) {
               if (res.data.error && res.data.error.length) {
                 wx.hideLoading()
-                $Message({
-                  content: res.data.error[0].message,
-                  type: 'warning'
-                });
+                wx.showToast({
+                  icon: 'none',
+                  title: res.data.error[0].message,
+                })
+                setTimeout(() => {
+                  wx.hideToast()
+                }, 1500)
                 return;
               }
               wx.setStorageSync('token', res.data.token)
@@ -122,10 +123,13 @@ Component({
             },
             fail: function (err) {
               wx.hideLoading();
-              $Message({
-                content: '数据请求失败',
-                type: 'error'
-              });
+              wx.showToast({
+                icon: 'none',
+                title: '系统异常',
+              })
+              setTimeout(() => {
+                wx.hideToast()
+              }, 1500)
             },
             complete: function () {
               wx.hideLoading();
@@ -135,9 +139,7 @@ Component({
       })
 
       function loadData(pageNum) {
-        wx.showLoading({
-          title: '加载中...',
-        })
+       
         let nub = pageNum ? pageNum : _this.data.pageNum;
         wx.request({
           method: 'GET',
@@ -153,10 +155,13 @@ Component({
             wx.stopPullDownRefresh();
             if (res.data.error && res.data.error.length) {
               wx.hideLoading()
-              $Message({
-                content: res.data.error[0].message,
-                type: 'warning'
-              });
+              wx.showToast({
+                icon: 'none',
+                title: res.data.error[0].message,
+              })
+              setTimeout(() => {
+                wx.hideToast()
+              }, 1500)
               return;
             }
             let resDate = res.data&&res.data.data,list=[];
@@ -213,10 +218,13 @@ Component({
           },
           fail: function (err) {
             wx.hideLoading();
-            $Message({
-              content: '数据请求失败',
-              type: 'error'
-            });
+            wx.showToast({
+              icon: 'none',
+              title: '系统异常',
+            })
+            setTimeout(() => {
+              wx.hideToast()
+            }, 1500)
           },
           complete: function () {
             wx.hideLoading();

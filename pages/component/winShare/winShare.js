@@ -30,10 +30,13 @@ Page({
       success(res) {
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon: 'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
         let theData = res.data.data, userArr = [];
@@ -51,10 +54,13 @@ Page({
       },
       fail: function (err) {
         wx.hideLoading();
-        $Message({
-          content: '数据请求失败',
-          type: 'error'
-        });
+        wx.showToast({
+          icon: 'none',
+          title:'系统异常',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
       },
       complete: function () {
         wx.hideLoading();

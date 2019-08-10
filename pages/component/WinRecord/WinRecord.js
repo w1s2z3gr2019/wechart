@@ -1,7 +1,6 @@
 // pages/component/WinRecord/WinRecord.js
 // pages/component/guessRecord/guessRecord.js
 import { api, apiUrl } from '../../../utils/util.js';
-const { $Message } = require('../../dist/base/index');
 Page({
 
   /**
@@ -35,18 +34,17 @@ Page({
         wx.hideLoading();
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon: 'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
         let resDate = res.data && res.data.data, list = [];
         if (resDate.list && !resDate.list.length) {
-          $Message({
-            content: '暂无数据',
-            type: 'success'
-          });
           return;
         }
         (resDate.list).map(item => {
@@ -80,10 +78,13 @@ Page({
       },
       fail: function (err) {
         wx.hideLoading();
-        $Message({
-          content: '数据请求失败',
-          type: 'error'
-        });
+        wx.showToast({
+          icon: 'none',
+          title: '系统异常',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
       },
       complete: function () {
         wx.hideLoading();

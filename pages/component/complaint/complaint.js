@@ -25,20 +25,27 @@ Page({
   },
   submit(){
     const _this = this;
-    if (!this.data.phone){
-      $Message({
-        content: '请填写您的联系方式',
-        type: 'warning'
-      });
-      return
-    }
     if (!this.data.textVal) {
-      $Message({
-        content: '请填写投诉内容',
-        type: 'warning'
-      });
+      wx.showToast({
+        icon: 'none',
+        title: '请填写投诉内容',
+      })
+      setTimeout(() => {
+        wx.hideToast()
+      }, 1500)
       return
     }
+    if (!this.data.phone){
+      wx.showToast({
+        icon: 'none',
+        title: '请填写您的联系方式',
+      })
+      setTimeout(() => {
+        wx.hideToast()
+      }, 1500)
+      return
+    }
+    
     wx.showLoading({
       title: 'Loading...',
     })

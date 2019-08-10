@@ -8,7 +8,7 @@
               <i-row>
                   <i-col span="15" i-class="col-class">
                       <view class='bothTxt'>奖品：{{item.prizeDescription}}</view>
-                      <view class='nub'>{{item.statusValue}}</view>
+                      <view class='nub'>{{winState[item.status]}}</view>
                   </i-col>
                   <i-col span="7" i-class="col-class">
                       <view class='hms'>{{item.hms}}</view>

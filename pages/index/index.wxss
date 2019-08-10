@@ -22,7 +22,7 @@ page{
   z-index: 100000;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .5)
+  background: rgba(0, 0, 0, .5);
 }
 .noUser{
   font-size: 32rpx;
@@ -296,11 +296,11 @@ button wx-cover-view{
   text-align: center;
 }
 .shareTitl{
-  float: left;
+  text-align: center;
+  /* float: left; */
   margin: 0 10px;
   font-size: 38rpx;
   color: #333;
-  
 }
 /* 保存海报 */
 .saveImg{
