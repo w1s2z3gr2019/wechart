@@ -1,16 +1,15 @@
 <!--pages/component/complaint/complaint.wxml-->
 <view class='wrap'>
-  <!-- <view class='qrCode'>
-       <image src="https://img.fetow.com/Public/Index/images/shewm.jpg" mode="widthFix"  
-    data-src="https://img.fetow.com/Public/Index/images/shewm.jpg" 
+  <view class='qrCode'>
+       <image src="https://static.xcustom.net/upload/static/20190811153440.jpg" mode="widthFix"  
+    data-src="https://static.xcustom.net/upload/static/20190811153440.jpg" 
     bindtap="previewImage"></image>
   </view>
-  <view>长按识别二维码</view>
-  <view>关注猜猜玩公众号</view> -->
+  <view>关注猜猜玩公众号</view>
+  <view class='email'>1038881666@qq.com</view>
   <view class='contact'>
-     <button  open-type='contact' >客服-联系我们</button>
+     <button  open-type='contact'>客服</button>
   </view>
-
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>

@@ -204,9 +204,10 @@ Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
     }
+    ///pages/component/winShare/winShare?id='+this.data.theData.id
     return {
       title: '中奖啦!!!',
-      path: '/pages/component/winShare/winShare?id='+this.data.theData.id,
+      path: '/pages/index/index?id='+this.data.theData.id+'&time='+new Date().getTime(),
       success: function (res) {
       }
     }

@@ -60,10 +60,20 @@ Component({
   methods:{
     loadData:function(){
       const _this = this;
+      let token = wx.getStorageSync('token')
+      if(!token){
+        wx.showToast({
+          icon: 'none',
+          title: '未授权'
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
+        return;
+      }
       wx.showLoading({
         title: 'Loading...',
       })
-      let token = wx.getStorageSync('token')
       wx.request({
         method: 'GET',
         url: api + '/api/user/getMyDetails',

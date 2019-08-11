@@ -174,6 +174,21 @@ Page({
   canY_ques(e){
     let token = wx.getStorageSync('token');
     const _this = this;
+    if(!token){
+      wx.showToast({
+        icon: 'none',
+        title: '微信授权才能参与话题',
+      })
+      setTimeout(() => {
+        wx.openSetting({
+          success: function (res) {    // 这里重新调用代码，比如这里的重新显示头像昵称
+            _this.shareLogin(res)
+          }
+        });
+        wx.hideToast()
+      }, 2000)
+      return;
+    }
     let val = e.currentTarget.dataset.val||'';
     let id = e.currentTarget.dataset.id||'';
     let theData = this.data.theData||{};

@@ -4,17 +4,70 @@ page{
 }
 .contact{
   text-align: center;
-  
+  margin-top: 160rpx;
+  position: relative;
+  height: 300rpx;
+}
+.email{
+  margin-top: 20rpx;
 }
 .contact button{
-  background: #3972db;
+  overflow: initial;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -100rpx;
+  z-index: 100;
+  background: radial-gradient(circle,rgb(245, 98, 98),#f00);
   color: #fff;
-  width: 60%;
-  height: 60px;
-  line-height: 60px;
-  font-size: 32prx;
-  margin-top: 200rpx;
+  width:200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  line-height: 200rpx;
+  font-size: 28prx;
+  box-shadow: 0 0 10px #ccc;
+  
 }
+.contact button::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  width: 200rpx;
+  height: 200rpx;
+  opacity: 1;
+  border: 1px solid rgb(243, 133, 133);
+  border-radius: 50%;
+  z-index: 19;
+  animation: move1 linear 2s 1s infinite;
+}
+@keyframes move1{
+  0%{
+    width:200rpx;
+    height: 200rpx;
+    opacity: 1
+  }
+  100%{
+    width:320rpx;
+    height: 320rpx;
+    opacity: 0
+  }
+}
+.contact button::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width:200rpx;
+  height: 200rpx;
+  opacity: 1;
+  border:  1px solid rgb(243, 133, 133);
+  border-radius: 50%;
+  z-index: 10;
+  animation: move1 linear 2s infinite;
+} 
 .wrap{
   box-sizing: border-box;
   width: 100%;
@@ -24,7 +77,7 @@ page{
   color: #999999
 }
 .qrCode{
-  margin: 80px auto 15px;
+  margin: 40px auto 15px;
   width: 120px;
   height: 120px;
   background: #fff;

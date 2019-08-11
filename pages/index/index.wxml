@@ -1,12 +1,12 @@
 <!--index.wxml-->
 
- <view class='modal' style="display:{{(!hasUserInfo && canIUse)?'block':'none'}}" >
+ <!-- <view class='modal' style="display:{{(!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>
         <view class='place'>请授权登录</view>
         <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
     </view>
- </view>
-<view>
+ </view>-->
+<view> 
   <view class='header'>
     <image src='../../image/titletext.png'></image>
     <view class='return' bindtap='shareFun'>
@@ -70,7 +70,7 @@
   <view class='contact' wx:if="{{total&&(listData.length>=total)}}">
     <button open-type='contact'><image src='../../image/contact.png'></image><text>联系我们</text></button>
   </view>
-  <view class='noData' wx:if="{{!listData.length}}">暂无话题</view>
+  <view class='noData' wx:if="{{!listData.length}}"></view>
 </view>
 <cover-view class='shareMode' hidden='{{shareState}}'>
 <cover-view class='share'>

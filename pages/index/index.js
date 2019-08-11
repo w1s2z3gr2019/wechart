@@ -6,6 +6,16 @@ const app = getApp()
 Component({
   pageLifetimes: {
     show() {
+      let options = this.options;
+      let time = wx.getStorageSync('time');
+      if (options.id && (time !=options.time)){
+        wx.setStorageSync('time', options.time)
+
+        wx.navigateTo({
+          url: '/pages/component/winShare/winShare?id='+options.id
+        })
+        return;
+      }
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
@@ -42,6 +52,7 @@ Component({
   },
   //初始
   attached() {
+    wx.removeStorageSync('time');
     wx.removeStorageSync('idList')
     wx.hideTabBar({})
     if (app.globalData.userInfo) {
