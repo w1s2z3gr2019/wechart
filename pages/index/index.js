@@ -28,7 +28,6 @@ Component({
         const _this = this;
         let token = wx.getStorageSync('token');
         let oldData = this.data.listData;
-        console.log(detailId)
         wx.request({
           method: 'get',
           url: api + '/api/portal/topicDetails',
@@ -74,7 +73,6 @@ Component({
                 oldData[index] = resDate;
               }
             })
-            console.log(oldData)
             _this.setData({
               listData: oldData
             })
@@ -384,10 +382,8 @@ Component({
       if(!data){
         return;
       }
-      console.log(apiUrl + data.pictureUrl)
       //设置画板显示，才能开始绘图
       var path1 = data.pictureUrl ?apiUrl+data.pictureUrl:"../../image/tt.jpg";
-      console.log(data.pictureUrl)
       var canvasHead = '../../image/canvasHead.png';
       var tit = '['+data.typeValue+']';
       var title = data.title||'';
@@ -407,7 +403,6 @@ Component({
       wx.getImageInfo({
         src: path1,//服务器返回的图片地址
         success: function (res) {
-          console.log(res.path)
           //res.path是网络图片的本地地址
           context.drawImage(res.path, 10, 75, 280, 125)
           context.draw(true);
@@ -426,7 +421,6 @@ Component({
       context.setFillStyle("#999");
       context.fillText(dec, 12, 240);
       context.setFillStyle("#E43E16");
-      console.log(300 - 30 - (zanZhu.length) * 13);
       context.fillText(zanZhu, 300-(zanZhu.length)*12.5, 240);
       context.setFillStyle("#F5F5F5");
       context.fillRect(12, 260, 276, 1);
@@ -465,9 +459,7 @@ Component({
               shareImgPath: res.tempFilePath
             })
             if (!res.tempFilePath) {
-              console.log(res.tempFilePath)
             }
-            console.log(that.data.shareImgPath)
           }
         })
       });
@@ -481,7 +473,6 @@ Component({
           filePath: this.data.shareImgPath,
           //保存成功失败之后，都要隐藏画板，否则影响界面显示。
           success: (res) => {
-            console.log(res)
             this.setData({
               saveImgState: true
             })
@@ -494,7 +485,6 @@ Component({
             },1500)
           },
           fail: (err) => {
-            console.log(err)
             wx.showToast({
               icon:'none',
               title: '保存失败'
@@ -509,7 +499,6 @@ Component({
         })
       },
     onShareAppMessage: function (options) {
-      console.log(options)
       let _this = this;
       _this.setData({
         shareState: true
@@ -518,7 +507,6 @@ Component({
        title:'猜奖',
        path:'/pages/index/index',
        success:function(res){
-         console.log(res)
        }
      }
     },
@@ -528,7 +516,6 @@ Component({
       })
     },
     getUserInfo: function (e) {
-      console.log(e)
       if (e.detail.userInfo){
         app.globalData.userInfo = e.detail.userInfo
         this.login(e.detail)

@@ -13,7 +13,7 @@
     </view>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
-      <image src='{{theData.userList[0].headUrl}}'></image>
+      <image src='{{theData.userList.length&&theData.userList[0].headUrl}}'></image>
       <view class='red'>{{theData.userList[0].name}}</view>
       <view class='prize'>奖品：{{theData.prizeDescription}}</view>
     </view>

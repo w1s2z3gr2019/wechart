@@ -2,7 +2,7 @@
 <view class='wrap'>
     <view wx:if="{{listData.length}}">
       <view wx:for="{{listData}}" wx:key="index">
-        <navigator url="/pages/component/lotteryResult/lotteryResult?id={{item.id}}">
+        <navigator url="/pages/component/lotteryResult/lotteryResult?id={{item.id}}&type=1">
           <view class='addressL'>
               <i-row>
                   <i-col span="6" i-class="col-class">

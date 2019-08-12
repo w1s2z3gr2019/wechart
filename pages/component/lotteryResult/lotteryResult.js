@@ -45,7 +45,6 @@ Page({
           return;
         }
         let theData = res.data.data,userArr=[];
-        console.log(theData)
         if (theData.userList&&theData.userList.length > 7){
           theData.userList.map((item,index)=>{
             if(index<7){
@@ -76,6 +75,14 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options)
+    if(options.type){
+      let theData={};
+      theData.myWin=true;
+      this.setData({
+        theData
+      })
+    }
     this.loadData(options.id)
     let idList = wx.getStorageSync('idList')
     let nub = Math.floor(Math.random() * idList.length)

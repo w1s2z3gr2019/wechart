@@ -4,12 +4,20 @@ page{
 }
 .contact{
   text-align: center;
-  margin-top: 160rpx;
+  margin-top: 110rpx;
   position: relative;
   height: 300rpx;
 }
-.email{
-  margin-top: 20rpx;
+.deviceWrap{
+  padding: 30rpx 0;
+  width: 80%;
+  margin: 30rpx auto 0;
+  border-top: 1px dotted #ccc;
+  border-bottom: 1px dotted #ccc;
+}
+
+.deviceWrap view{
+  line-height: 100rpx;
 }
 .contact button{
   overflow: initial;

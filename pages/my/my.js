@@ -71,9 +71,6 @@ Component({
         }, 1500)
         return;
       }
-      wx.showLoading({
-        title: 'Loading...',
-      })
       wx.request({
         method: 'GET',
         url: api + '/api/user/getMyDetails',
