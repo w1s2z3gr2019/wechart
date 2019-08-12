@@ -10,7 +10,6 @@ Component({
       let time = wx.getStorageSync('time');
       if (options.id && (time !=options.time)){
         wx.setStorageSync('time', options.time)
-
         wx.navigateTo({
           url: '/pages/component/winShare/winShare?id='+options.id
         })
@@ -22,8 +21,66 @@ Component({
           selected: 0
         })
       }
-      this.data.pageNum=1;
-      this.login();
+      // this.data.pageNum=1;
+      // this.login();
+      let detailId = app.globalData.detailId;
+      if (detailId){
+        const _this = this;
+        let token = wx.getStorageSync('token');
+        let oldData = this.data.listData;
+        console.log(detailId)
+        wx.request({
+          method: 'get',
+          url: api + '/api/portal/topicDetails',
+          data: {
+            id: detailId,
+            token: token
+          },
+          success(res) {
+            if (res.data.error && res.data.error.length) {
+              wx.hideLoading()
+              wx.showToast({
+                icon: 'none',
+                title: res.data.error[0].message,
+              })
+              setTimeout(() => {
+                wx.hideToast()
+              }, 1500)
+              return;
+            }
+            let resDate = res.data && res.data.data;
+            let beginT = resDate.drawTimes, md = '', mh = '';
+              if (beginT) {
+                let arrT = beginT.split(' ');
+                let y = arrT[0], mhs = arrT[1];
+                let yy = arrT[0].split('-'), mm = mhs.split(':');
+                md = yy[1] + '月' + yy[2] + '日';
+                mh = mm[0] + ':' + mm[1];
+              }
+                let userArr = [];
+                if (resDate.userList && resDate.userList.length > 7) {
+                  resDate.userList.map((atem, index) => {
+                  if (index < 7) {
+                    userArr.push(atem)
+                  }
+                })
+                  resDate.userList = userArr
+              }
+                resDate.md=md;
+                resDate.mh=mh;
+            resDate.drawT = resDate.drawTimes ? resDate.drawTimes.split(' ')[1] : '';
+            oldData.map((item,index)=>{
+              if (item.id == detailId){
+                oldData[index] = resDate;
+              }
+            })
+            console.log(oldData)
+            _this.setData({
+              listData: oldData
+            })
+          }
+        })
+      }
     }
   },
   data: {
@@ -150,7 +207,6 @@ Component({
       })
 
       function loadData(pageNum) {
-       
         let nub = pageNum ? pageNum : _this.data.pageNum;
         wx.request({
           method: 'GET',
@@ -197,7 +253,7 @@ Component({
               }
               idList.push(item.id)
               list.push({
-                drawTimes: item.drawTimes ? item.drawTimes.split(' ')[1]:'',
+                drawT: item.drawTimes ? item.drawTimes.split(' ')[1]:'',
                 title:item.title,
                 id:item.id,
                 md:md,

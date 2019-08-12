@@ -34,7 +34,7 @@
           </view>
           <i-row class='time'>
             <i-col span="12">
-              <text class="left" wx:if="{{item.drawTimes&&item.drawTimes!='00:00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
+              <text class="left" wx:if="{{item.drawT&&item.drawT!='00:00:00'}}">{{item.md+' '+item.mh}} 自动开奖</text>
               <text class='left' wx:else>开奖时间待定</text>
             </i-col>
             <i-col span="12" wx:if="{{!item.sponsorshipType}}" class='red'>

@@ -208,7 +208,6 @@ Page({
       }, 1500)
       return;
     }
-    console.log(val)
     if (this.data.theData.drawType==1){
       if (!val || isNaN(val)) {
         wx.showToast({
@@ -267,6 +266,7 @@ Page({
     this.setData({
       initId: options.id
     })
+    app.globalData.detailId=options.id;
     //处理分享出去的页面
     if(options.type){
       this.setData({
