@@ -387,7 +387,7 @@ Component({
       var canvasHead = '../../image/canvasHead.png';
       var tit = '['+data.typeValue+']';
       var title = data.title||'';
-      var dec = data.md ? data.md + ' ' + data.mh + ' 自动开奖':'自动开奖';
+      var dec = data.drawT && (data.drawT != '00:00:00') ? data.md + ' ' + data.mh + ' 自动开奖':'开奖时间待定';
       var zanZhu = data.sponsorshipType ? data.sponsor && data.sponsor.length > 5 ? data.sponsor.substr(0, 5) + '... 赞助' : data.sponsor +' 赞助':'竞猜官方 赞助';
       var headImg = '../../image/wechart.png';
       var canvasBot = '../../image/canvasBot.png';

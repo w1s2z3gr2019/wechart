@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    listState:false,
     winState: winState,
     loading:false,
     pageNum: 1,
@@ -72,6 +73,7 @@ Page({
           _this.lower(list);
         } else {
           _this.setData({
+            listState:true,
             total: resDate.totalCount,
             listData: list
           })

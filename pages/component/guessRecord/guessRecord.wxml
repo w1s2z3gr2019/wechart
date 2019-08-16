@@ -1,6 +1,6 @@
 <!--pages/component/guessRecord/guessRecord.wxml-->
 <view class='wrap'>
-    <view wx:if="{{listData.length}}">
+    <view wx:if="{{listData.length&&listState}}">
       <view wx:for="{{listData}}" wx:key="index">
         <navigator url="{{item.status!=3?'/pages/component/guess/guess?id='+item.id:'/pages/component/lotteryResult/lotteryResult?id='+item.id}}">
           <view class='addressL'>
@@ -22,7 +22,7 @@
         </navigator>
       </view>
      </view>
-    <view wx:if="{{!listData.length}}" class='noRecord'>
+    <view wx:if="{{!listData.length&&listState}}" class='noRecord'>
       <image src = "../../../image/noRecord.png"></image>
       <view class='noTxt'>暂无竞猜记录</view>
     </view>
