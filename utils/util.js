@@ -13,8 +13,18 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
+const showToastFun=function(icon,title){
+  wx.showToast({
+    icon: icon,
+    title: title,
+  })
+  setTimeout(() => {
+    wx.hideToast()
+  }, 1500)
+  return;
+}
 module.exports = {
+  showToastFun,
   winState:['待开奖','待开奖','正在开奖','已开奖','已撤销'],
   formatTime: formatTime,
   api: "https://api.xcustom.net",

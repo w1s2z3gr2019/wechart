@@ -1,5 +1,5 @@
 // pages/component/addAddress/addAddress.js
-import { api, apiUrl } from '../../../utils/util.js';
+import { api, apiUrl, showToastFun } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
 Page({
 
@@ -56,6 +56,22 @@ Page({
     wx.showLoading({
       title: 'Loading...',
     })
+    if (!this.data.name) {
+      showToastFun('none', '请填写收货人')
+      return;
+    }
+    if (!this.data.phone) {
+      showToastFun('none', '请填写收货人手机号码')
+      return;
+    }
+    if (!(this.data.region.length)){
+      showToastFun('none','请选择省市区')
+      return;
+    }
+    if (!this.data.addressVal) {
+      showToastFun('none', '请填写具体地址')
+      return;
+    }
     let cityArr = this.data.region;
     console.log(this.data.theData)
     let url = this.data.theData.id ? '/api/user/updateUserContact' : '/api/user/addUserContact'
