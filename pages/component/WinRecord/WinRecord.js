@@ -31,6 +31,9 @@ Page({
         token: token
       },
       success(res) {
+        _this.setData({
+          listState:true
+        })
         console.log(res.data)
         wx.hideLoading();
         if (res.data.error && res.data.error.length) {

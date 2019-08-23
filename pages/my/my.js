@@ -48,7 +48,6 @@ Component({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          console.log(res)
           this.setData({
             name: app.globalData.userInfo.nickName,
             imgUrl: app.globalData.userInfo.avatarUrl
@@ -78,7 +77,6 @@ Component({
           token:token
         },
         success(res) {
-          console.log(res.data)
           if (res.data.error && res.data.error.length) {
             wx.hideLoading()
             wx.showToast({

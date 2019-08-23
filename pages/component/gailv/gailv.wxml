@@ -15,7 +15,7 @@
                       <view class='hms'>{{item.hms}}</view>
                       <view class='ymd'>{{item.yy}}</view>
                   </view>
-                  <view class='timeBegin'>开奖时间待定</view>
+                  <view wx:else class='timeBegin'>开奖时间待定</view>
                 </i-col>
                 <i-col span="2" i-class="col-class">
                   <i-icon type="enter" i-class="icon" size="20" color="#80848f" />

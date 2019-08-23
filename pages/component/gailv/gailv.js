@@ -32,7 +32,9 @@ Page({
         token: token
       },
       success(res) {
-        console.log(res.data)
+        _this.setData({
+          listState: true
+        })
         wx.hideLoading();
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
@@ -57,11 +59,11 @@ Page({
             hms = arrT[1];
           }
           list.push({
+            countIntegral: item.countIntegral,
             integral: item.integral,
             status: item.status,
             title: item.title,
             prizeDescription: item.prizeDescription,
-            probability: item.probability * 100,
             id: item.id,
             yy: yy,
             hms: hms,
