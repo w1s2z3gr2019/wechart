@@ -102,6 +102,7 @@ Component({
     listData:[],
     motto: 'Hello World',
     userInfo: {},
+    showModeState:false,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -109,19 +110,23 @@ Component({
   attached() {
     wx.removeStorageSync('time');
     wx.removeStorageSync('idList')
+    const _this = this;
     wx.hideTabBar({})
+    _this.setData({
+      showModeState: true
+    })
     if (app.globalData.userInfo) {
-      this.login(app.globalData)
-      this.setData({
+      _this.login(app.globalData)
+      _this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse) {
+    } else if (_this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        this.login(res)
-        this.setData({
+        _this.login(res)
+        _this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
@@ -130,9 +135,9 @@ Component({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.login(res)
-          this.setData({
+          app.globalData.userInfo = res.userInfo;
+          _this.login(res)
+          _this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
@@ -142,12 +147,12 @@ Component({
     //获取用户设备信息，屏幕宽度
     wx.getSystemInfo({
       success: res => {
-        this.setData({
+        _this.setData({
           screenWidth: res.screenWidth
         })
       }
     })
-    this.saveImageToPhotosAlbum()
+    _this.saveImageToPhotosAlbum()
   },
   
   methods:{
@@ -160,6 +165,7 @@ Component({
       wx.showLoading({
         title: 'Loading...',
       })
+
       wx.login({
         success: ret => {
           wx.request({
@@ -367,12 +373,13 @@ Component({
       })
     },
     saveImg(){
-      this.setData({
+      const _this = this;
+      _this.setData({
         saveImgState:false,
         shareState: true
       })
       setTimeout(()=>{
-        this.saveImageToPhotosAlbum()
+        _this.saveImageToPhotosAlbum()
       },500)
     },
 
@@ -465,35 +472,41 @@ Component({
       });
       },
       savefile(){
+        const _this = this;
         wx.showToast({
           icon: 'loading',
           title: '保存中...'
         })
-        wx.saveImageToPhotosAlbum({
-          filePath: this.data.shareImgPath,
-          //保存成功失败之后，都要隐藏画板，否则影响界面显示。
-          success: (res) => {
-            this.setData({
-              saveImgState: true
-            })
-            wx.showToast({
-              icon:'success',
-              title:'保存成功'
-            })
-            setTimeout(()=>{
-              wx.hideToast()
-            },1500)
-          },
-          fail: (err) => {
-            wx.showToast({
-              icon:'none',
-              title: '保存失败'
-            })
-            setTimeout(() => {
-              wx.hideToast()
-            }, 1500)
-            this.setData({
-              saveImgState: true
+        wx.canvasToTempFilePath({
+          canvasId: 'share',
+          success: function (res) {
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              //保存成功失败之后，都要隐藏画板，否则影响界面显示。
+              success: (res) => {
+                _this.setData({
+                  saveImgState: true
+                })
+                wx.showToast({
+                  icon: 'success',
+                  title: '保存成功'
+                })
+                setTimeout(() => {
+                  wx.hideToast()
+                }, 1500)
+              },
+              fail: (err) => {
+                wx.showToast({
+                  icon: 'none',
+                  title: '保存失败'
+                })
+                setTimeout(() => {
+                  wx.hideToast()
+                }, 1500)
+                _this.setData({
+                  saveImgState: true
+                })
+              }
             })
           }
         })

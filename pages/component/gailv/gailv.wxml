@@ -1,6 +1,6 @@
 <!--pages/component/guessRecord/guessRecord.wxml-->
 <view class='wrap'>
-  <view wx:if="{{listData.length&&listState}}">
+  <view wx:if="{{listState&&listData.length&&listState}}">
     <view wx:for="{{listData}}" wx:key="index">
      <navigator url="{{item.status!=3?'/pages/component/guess/guess?id='+item.id:'/pages/component/lotteryResult/lotteryResult?id='+item.id}}">
         <view class='addressL'>
@@ -11,8 +11,11 @@
                     <view class='nub'>{{winState[item.status]}}</view>
                 </i-col>
                 <i-col span="7" i-class="col-class">
-                    <view class='hms'>{{item.hms}}</view>
-                    <view class='ymd'>{{item.yy}}</view>
+                  <view  wx:if="{{item.hms!=='00:00:00'}}">
+                      <view class='hms'>{{item.hms}}</view>
+                      <view class='ymd'>{{item.yy}}</view>
+                  </view>
+                  <view class='timeBegin'>开奖时间待定</view>
                 </i-col>
                 <i-col span="2" i-class="col-class">
                   <i-icon type="enter" i-class="icon" size="20" color="#80848f" />
@@ -20,14 +23,14 @@
             </i-row>
             <view class='advice'></view>
             <view class='gailv'>
-              <view class='gailvLeft'>累积概率{{item.probability}}%</view>
-              <view class='gailvRight'>本次概率<text class='red'>+1%</text></view>
+              <view class='gailvLeft'>累积积分 {{item.countIntegral}}</view>
+              <view class='gailvRight'>本次积分 <text class='red'>{{item.integral?'+1':'+0'}}</text></view>
             </view>
         </view>
       </navigator>
     </view>
     </view>
-    <view wx:if="{{!listData.length&&listState}}" class='noRecord'>
+    <view wx:if="{{listState&&!listData.length}}" class='noRecord'>
       <image  src = "../../../image/noRecord.png"></image>
       <view class='noTxt'>暂无累积概率</view>
     </view>

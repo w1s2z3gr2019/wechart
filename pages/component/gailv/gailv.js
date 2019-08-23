@@ -24,7 +24,7 @@ Page({
     let nub = pageNum ? pageNum : _this.data.pageNum;
     wx.request({
       method: 'GET',
-      url: api + '/api/user/getMyGuessing',
+      url: api + '/api/user/getMyIntegralList',
       data: {
         pageNo: nub,
         pageSize: 10,
@@ -57,6 +57,7 @@ Page({
             hms = arrT[1];
           }
           list.push({
+            integral: item.integral,
             status: item.status,
             title: item.title,
             prizeDescription: item.prizeDescription,

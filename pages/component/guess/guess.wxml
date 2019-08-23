@@ -111,7 +111,7 @@
   </view>
 </view>
 <view class='huiColor'></view>
-<view class='wrapContent' wx:if="{{theData.content}}">
+<view class='wrapContent' wx:if="{{theData.content.length>2}}">
   <view class='ql-container'>
     <view class="ql-editor">
       <rich-text nodes="{{theData.content}}"></rich-text>

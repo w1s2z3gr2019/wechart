@@ -22,8 +22,8 @@
                 </navigator>
                 <navigator url="/pages/component/gailv/gailv?id=123456">
                   <i-col span="12" i-class="col-class">
-                    <view class='nub'>{{theData.probability*100||0}}%</view>
-                    <view>累计概率</view>
+                    <view class='nub'>{{theData.countIntegral||0}}</view>
+                    <view>累计积分</view>
                   </i-col>
                 </navigator>
                 <navigator url="/pages/component/WinRecord/WinRecord?id=123456">

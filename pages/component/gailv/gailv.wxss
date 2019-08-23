@@ -19,11 +19,16 @@ page{
   line-height:30rpx;
   color: #ccc; 
 }
+.timeBegin{
+  font-size: 32rpx;
+  color: #666;
+  margin-top: 14px;
+}
 .title{
   font-optical-sizing: 14px;
   color: #000;
   font-weight: 800;
-  margin: 10px 0px;
+  margin: 5px 0px 10px;
 }
 .wrap{
   box-sizing: border-box;
@@ -36,7 +41,7 @@ page{
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  padding: 20px 10px;
+  padding: 20px 10px 10px;
   background: #fff;
   overflow: hidden;
   border-radius: 5px;
