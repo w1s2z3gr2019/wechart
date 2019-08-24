@@ -32,7 +32,7 @@
     </view>
     <view wx:if="{{listState&&!listData.length}}" class='noRecord'>
       <image  src = "../../../image/noRecord.png"></image>
-      <view class='noTxt'>暂无累积概率</view>
+      <view class='noTxt'>暂无累积积分</view>
     </view>
     <view class='onlyData' wx:if="{{total&&(listData.length>=total)}}">已加载全部数据</view>
     <i-load-more loading="{{ loading }}" />

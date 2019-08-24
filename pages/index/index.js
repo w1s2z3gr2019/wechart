@@ -10,9 +10,15 @@ Component({
       let time = wx.getStorageSync('time');
       if (options.id && (time !=options.time)){
         wx.setStorageSync('time', options.time)
-        wx.navigateTo({
-          url: '/pages/component/winShare/winShare?id='+options.id
-        })
+        if(options.type){
+          wx.navigateTo({
+            url: '/pages/component/guess/guess?id=' + options.id+'&type=1'
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/component/winShare/winShare?id=' + options.id
+          })
+        }
         return;
       }
       if (typeof this.getTabBar === 'function' &&
@@ -21,8 +27,14 @@ Component({
           selected: 0
         })
       }
-      // this.data.pageNum=1;
-      // this.login();
+      if (options.id && options.time) {
+          this.setData({
+            showModeState: false
+          })
+      }
+      if (!this.data.listData.length){
+        this.login();
+      }
       let detailId = app.globalData.detailId;
       if (detailId){
         const _this = this;
@@ -112,8 +124,8 @@ Component({
     wx.removeStorageSync('idList')
     const _this = this;
     wx.hideTabBar({})
-    _this.setData({
-      showModeState: true
+    this.setData({
+      showModeState:true
     })
     if (app.globalData.userInfo) {
       _this.login(app.globalData)

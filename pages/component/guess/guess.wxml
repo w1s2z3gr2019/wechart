@@ -1,7 +1,7 @@
 
 
 <view class='wrap' >
-<view class='modal' style="display:{{(!hasUserInfo && canIUse)?'block':'none'}}" >
+<view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>
         <view class='place'>请授权登录</view>
         <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>

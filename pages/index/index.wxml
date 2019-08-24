@@ -72,7 +72,7 @@
   </view>
   <view class='noData' wx:if="{{!listData.length}}"></view>
 </view>
-<cover-view class='shareMode' hidden='{{shareState}}'>
+<cover-view class='{{shareState?"shareMode":"shareMode active"}}' hidden='{{shareState}}'>
 <cover-view class='share'>
    <cover-view class='shareAddress'>
       <!-- <cover-image class='shareTitleImg' src ="../../image/shareLeft.png"></cover-image> -->

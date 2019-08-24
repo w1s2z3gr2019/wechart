@@ -234,9 +234,9 @@ page{
   background: rgba(0,0,0,.3)
 }
 
-.share{
-  position: fixed;
-  bottom: 0;
+.shareMode .share{
+  position: absolute;
+  bottom: 0px;
   left: 0;
   z-index: 10000!important;
   background: #fff;
@@ -244,9 +244,22 @@ page{
   width: 100%;
   padding-top:60rpx; 
 }
-.share .img{
-  width: 120rpx;
-  height: 120rpx;
+.shareMode.active .share{
+  animation: move .2s ease-in;
+}
+@keyframes move{
+  0%{
+    opacity: .2;
+    bottom:-250px;
+  }
+  100%{
+    opacity:1;
+    bottom:0
+  }
+}
+.shareMode .img{
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin: 60rpx auto 20rpx;
 }

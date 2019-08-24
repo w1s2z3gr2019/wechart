@@ -87,7 +87,7 @@ page{
 }
 .listBot .firstTxt{
   font-size: 16px;
-  padding: 20rpx 0;
+  padding: 20rpx 0 14rpx;
   font-weight: 800;
 }
 .listBot .firstTxt .first{
@@ -95,7 +95,7 @@ page{
 }
 .listBot .time{
  font-size: 13px;
- margin-bottom: 10px;
+ margin-bottom: 5px;
 }
 .listBot .left{
   color: #999999;
@@ -278,7 +278,7 @@ page{
   font-size: 14px;
 }
 .huad{
-  padding: 40px 0 100px;
+  padding: 40px 0 20px;
   text-align: center;
   color: #999999;
   font-size: 14px;

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userState:false,
     hasUserInfo:false,
     userInfo:{},
     initId:'',
@@ -247,14 +248,10 @@ Page({
           }, 1500)
           return;
         }
-        wx.showToast({
-          icon: 'success',
-          title: '参与成功',
+        _this.loadData(_this.data.initId)
+        _this.setData({
+          successState:false
         })
-        setTimeout(() => {
-          wx.hideToast()
-          _this.loadData(_this.data.initId)
-        }, 1500)
       },
       fail(){
         wx.hideLoading()
@@ -270,6 +267,7 @@ Page({
     //处理分享出去的页面
     if(options.type){
       this.setData({
+        userState:true,
         hasUserInfo:false
       })
       let token = wx.removeStorageSync('token');
@@ -298,6 +296,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        app.globalData.userInfo=res.userInfo
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -431,16 +430,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
+    const _this = this;
     if (res.from === 'button') {
       this.setData({
         successState: true
       })
     }
+
     return {
-      title: '竞猜啦',
-      path: '/pages/component/guess/guess?id='+this.data.theData.id+'&type=1',
+      title: this.data.theData.title,
+      path: '/pages/index/index?id=' + this.data.theData.id + '&time=' + new Date().getTime()+'&type=1',
       success: function (rest) {
-        
+          
       },
       complete: function(){
        
