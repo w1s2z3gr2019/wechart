@@ -380,6 +380,7 @@ Component({
       })
     },
     closeSave(){
+      wx.hideLoading()
       this.setData({
         saveImgState:true
       })
@@ -407,7 +408,13 @@ Component({
       var tit = '['+data.typeValue+']';
       var title = data.title||'';
       var dec = data.drawT && (data.drawT != '00:00:00') ? data.md + ' ' + data.mh + ' 自动开奖':'开奖时间待定';
-      var zanZhu = data.sponsorshipType ? data.sponsor && data.sponsor.length > 5 ? data.sponsor.substr(0, 5) + '... 赞助' : data.sponsor +' 赞助':'竞猜官方 赞助';
+      let sponsor = [], sponExg =/[0-9a-zA-Z_]/m,sponArr = data.sponsor.split('')||[];
+      sponArr.map(item=>{
+        if (sponExg.exec(item)){
+          sponsor.push(item)
+        }
+      })
+      var zanZhu = data.sponsorshipType ? data.sponsor && data.sponsor.length > 8 ? data.sponsor.substr(0, 8) + ' 赞助' : data.sponsor +' 赞助':'竞猜官方 赞助';
       var headImg = '../../image/wechart.png';
       var canvasBot = '../../image/canvasBot.png';
       var gzhImg = '../../image/gzhImg.png'
@@ -440,7 +447,7 @@ Component({
       context.setFillStyle("#999");
       context.fillText(dec, 12, 240);
       context.setFillStyle("#E43E16");
-      context.fillText(zanZhu, 300-(zanZhu.length)*12.5, 240);
+      context.fillText(zanZhu, 300 - ((zanZhu.length - sponsor.length) * 12.5 + sponsor.length*8), 240);
       context.setFillStyle("#F5F5F5");
       context.fillRect(12, 260, 276, 1);
       //底部绘制

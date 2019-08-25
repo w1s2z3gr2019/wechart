@@ -59,7 +59,7 @@
                 <view class='select' >
                   <i-row>
                     <i-col span="16" class="inpGrounp">
-                          <input class='inpNub' type="number" bindinput='inpChange' placeholder='点击即可输入数据' value="{{val}}" />
+                          <input class='inpNub'  bindinput='inpChange' placeholder='点击即可输入数据' value="{{val}}" />
                           <view>立即输入参与</view>
                     </i-col>
                     <i-col span="8">

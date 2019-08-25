@@ -9,7 +9,7 @@
           <view class='huaTi' wx:if='{{theData.myWin}}'>话题:{{theData.title}}</view>
       </view>
       <view class='title' wx:if='{{!theData.myWin}}' >话题：{{theData.title}}</view>
-      <view class='noTxt' wx:if="{{!theData.myWin}}">您的累积中奖概率为<text>{{(theData.myProbability||0)*100}}%</text></view>
+      <view class='noTxt' wx:if="{{!theData.myWin}}">您的累积中奖积分为<text>{{(theData.myProbability||0)}}</text></view>
     </view>
     <i-divider i-class="divider" content="本次中奖者" lineColor="#F5F5F5"></i-divider>
     <view class='resultImg'>
