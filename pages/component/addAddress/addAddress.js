@@ -1,5 +1,5 @@
 // pages/component/addAddress/addAddress.js
-import { api, apiUrl, showToastFun } from '../../../utils/util.js';
+import { api, apiUrl, showToastFun ,login} from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
 let app = getApp();
 Page({
@@ -12,9 +12,24 @@ Page({
     region: [],
     name:'',
     phone:'',
+    userInfo:app.globalData.userInfo,
     theData:{},
     detailedAddress:'',
     switchValue:false
+  },
+  getUserInfo: function (e) {
+    const _this = this;
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      login(e.detail, (res) => {
+        if (res) {
+          _this.submit();
+        }
+      })
+      this.setData({
+        userInfo: e.detail.userInfo,
+      })
+    }
   },
   switch1Change(e){
     this.setData({
@@ -56,7 +71,6 @@ Page({
     let token = wx.getStorageSync('token');
     let userInfo = app.globalData.userInfo;
     if (!userInfo){
-      showToastFun('none', '请登录');
       return 
     }
     wx.showLoading({

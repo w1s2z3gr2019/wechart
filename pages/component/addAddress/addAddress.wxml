@@ -26,9 +26,9 @@
     <view class='footer'>
         <image src='../../../image/my6.png'></image>
     </view>
-    <view class='submit' bindtap="submit">
+    <button  open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='submit' bindtap="submit">
         保存
-    </view>
+    </button>
     <i-message id="message" />
 </view>
 

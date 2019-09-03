@@ -1,12 +1,14 @@
 // pages/component/WinRecord/WinRecord.js
 // pages/component/guessRecord/guessRecord.js
 import { api, apiUrl } from '../../../utils/util.js';
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: app.globalData.userInfo,
     listState:false,
     loading: false,
     pageNum: 1,
@@ -16,6 +18,13 @@ Page({
   },
   loadData(pageNum) {
     const _this = this;
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) {
+      this.setData({
+        listState: true
+      })
+      return;
+    }
     wx.showLoading({
       title: 'Loading...',
     })

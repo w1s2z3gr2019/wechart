@@ -13,7 +13,7 @@ Page({
     },
     userState:false,
     hasUserInfo:false,
-    userInfo:{},
+    userInfo:app.globalData.userInfo,
     initId:'',
     initImg:'',
     apiUrl: apiUrl,
@@ -182,23 +182,13 @@ Page({
   },
   //参与
   canY_ques(e){
-    console.log(app)
     let userInfo=app.globalData.userInfo;
     let token = wx.getStorageSync('token');
     const _this = this;
     if (!userInfo){
-      wx.showToast({
-        icon: 'none',
-        title: '请登录',
-      })
       setTimeout(() => {
-        // wx.openSetting({
-        //   success: function (res) {    // 这里重新调用代码，比如这里的重新显示头像昵称
-        //     _this.shareLogin(res)
-        //   }
-        // });
         wx.hideToast()
-      }, 2000)
+      }, 1000)
       return;
     }
     let val = e.currentTarget.dataset.val||'';

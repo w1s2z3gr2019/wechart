@@ -1,12 +1,14 @@
 // pages/component/gailv/gailv.js
 import { api, apiUrl, winState } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: app.globalData.userInfo,
     listState:false,
     winState: winState,
     loading: false,
@@ -17,6 +19,13 @@ Page({
   },
   loadData(pageNum) {
     const _this = this;
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) {
+      this.setData({
+        listState: true
+      })
+      return;
+    }
     wx.showLoading({
       title: 'Loading...',
     })

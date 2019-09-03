@@ -62,7 +62,6 @@ Component({
       if (e.detail.userInfo) {
         let userInfo =  e.detail.userInfo;
         app.globalData.userInfo = e.detail.userInfo;
-        console.log(e.detail.userInfo)
         this.login(e.detail)
         this.setData({
           userInfo: e.detail.userInfo,
@@ -127,13 +126,6 @@ Component({
       let token = wx.getStorageSync('token');
       let userInfo = app.globalData.userInfo;
       if (!userInfo){
-        wx.showToast({
-          icon: 'none',
-          title: '请登录'
-        })
-        setTimeout(() => {
-          wx.hideToast()
-        }, 1500)
         return;
       }
       wx.request({

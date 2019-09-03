@@ -1,6 +1,7 @@
 // pages/component/guessRecord/guessRecord.js
 import { api, apiUrl ,winState} from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+let app = getApp()
 Page({
 
   /**
@@ -17,6 +18,13 @@ Page({
   },
   loadData(pageNum) {
     const _this = this;
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) {
+      this.setData({
+        listState: true
+      })
+      return;
+    }
     wx.showLoading({
       title: 'Loading...',
     })

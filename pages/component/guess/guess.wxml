@@ -1,12 +1,12 @@
 
 <!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar> -->
 <view class='wrap' >
-<view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
+<!-- <view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>
         <view class='place'>请授权登录</view>
-        <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+        <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录   </button>
     </view>
- </view>
+ </view> -->
  <view class='listText'>
       <view class='listImg'>
         <image  src='{{theData.pictureUrl||initImg}}'></image>
@@ -44,11 +44,11 @@
                 <view class='select' >
                   <i-row>
                     <i-col span="8">
-                        <text class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</text>
+                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</button>
                     </i-col>
                     <i-col span="8" class="vs">VS</i-col>
                     <i-col span="8">
-                        <text class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</text>
+                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</button>
                     </i-col>
                   </i-row>
                 </view>
@@ -63,7 +63,7 @@
                           <view>立即输入参与</view>
                     </i-col>
                     <i-col span="8">
-                        <view class='cany' data-val="{{val}}" bindtap='canY_ques'>参与</view>
+                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='cany' data-val="{{val}}" bindtap='canY_ques'>参与</button>
                     </i-col>
                   </i-row>
                 </view>
@@ -79,9 +79,9 @@
                       </view>
                   </radio-group>
                 </view>
-                <view class='canYu' data-id="{{0}}" bindtap='canY_ques'>
+                <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='canYu' data-id="{{0}}" bindtap='canY_ques'>
                   参与
-                </view>
+                </button>
                 <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view>  
               <view class='timeState' wx:if="{{!theData.timeState}}">已过该话题参与时间</view>

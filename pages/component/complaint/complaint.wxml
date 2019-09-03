@@ -10,6 +10,6 @@
    <view class='footer'>
       <image src='../../../image/my6.png'></image>
    </view>
-   <view class='submit' bindtap="submit">发送</view>
+   <button class='submit' open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" bindtap="submit">发送</button>
 </view>
 <i-message id="message" />

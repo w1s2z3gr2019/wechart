@@ -1,5 +1,5 @@
 // pages/component/complaint/complaint.js
-import { api, apiUrl, showToastFun } from '../../../utils/util.js';
+import { api, apiUrl, showToastFun,login } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
 let app =getApp();
 Page({
@@ -24,11 +24,24 @@ Page({
       phone: e.detail.value
     })
   },
+  getUserInfo: function (e) {
+    const _this = this;
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      login(e.detail, (res) => {
+        if (res) {
+          _this.submit()
+        }
+      })
+      this.setData({
+        userInfo: e.detail.userInfo,
+      })
+    }
+  },
   submit(){
     let token = wx.getStorageSync('token');
     let userInfo = app.globalData.userInfo;
     if (!userInfo) {
-      showToastFun('none', '请登录');
       return
     }
     const _this = this;
