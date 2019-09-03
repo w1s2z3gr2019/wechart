@@ -5,7 +5,8 @@
       <view class='headTxt'>
         <view class='advice'>
             <view class='headImg'>
-              <image src="{{imgUrl}}"></image>
+              <image wx:if="{{imgUrl}}" src="{{imgUrl}}"></image>
+              <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:else class='login'>登录</button>
             </view>
             <block >
                 <view class='name'>{{name}}</view>

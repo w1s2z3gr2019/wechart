@@ -1,5 +1,5 @@
 
-
+<!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar> -->
 <view class='wrap' >
 <view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>

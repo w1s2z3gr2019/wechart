@@ -1,6 +1,7 @@
 // pages/component/complaint/complaint.js
-import { api, apiUrl } from '../../../utils/util.js';
+import { api, apiUrl, showToastFun } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+let app =getApp();
 Page({
 
   /**
@@ -24,6 +25,12 @@ Page({
     })
   },
   submit(){
+    let token = wx.getStorageSync('token');
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) {
+      showToastFun('none', '请登录');
+      return
+    }
     const _this = this;
     if (!this.data.textVal) {
       wx.showToast({
@@ -49,7 +56,7 @@ Page({
     wx.showLoading({
       title: 'Loading...',
     })
-    let token = wx.getStorageSync('token')
+    
     wx.request({
       method: 'post',
       url: api + '/api/user/addComplaintSuggestions',

@@ -1,6 +1,7 @@
 // pages/component/address/address.js
 import { api, apiUrl } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+let app = getApp();
 Page({
 
   /**
@@ -32,6 +33,8 @@ Page({
   },
   loadData(){
     let token = wx.getStorageSync('token');
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) return;
     wx.showLoading({
       title: 'Loading...',
     })

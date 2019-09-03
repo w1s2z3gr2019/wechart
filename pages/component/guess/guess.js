@@ -7,6 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '猜奖', //导航栏 中间的标题
+    },
     userState:false,
     hasUserInfo:false,
     userInfo:{},
@@ -22,6 +26,11 @@ Page({
     gv_id:'',
     val:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+  jumpTest:function(){
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
   },
   reachBottom:function(){
    
@@ -173,19 +182,21 @@ Page({
   },
   //参与
   canY_ques(e){
+    console.log(app)
+    let userInfo=app.globalData.userInfo;
     let token = wx.getStorageSync('token');
     const _this = this;
-    if(!token){
+    if (!userInfo){
       wx.showToast({
         icon: 'none',
-        title: '微信授权才能参与话题',
+        title: '请登录',
       })
       setTimeout(() => {
-        wx.openSetting({
-          success: function (res) {    // 这里重新调用代码，比如这里的重新显示头像昵称
-            _this.shareLogin(res)
-          }
-        });
+        // wx.openSetting({
+        //   success: function (res) {    // 这里重新调用代码，比如这里的重新显示头像昵称
+        //     _this.shareLogin(res)
+        //   }
+        // });
         wx.hideToast()
       }, 2000)
       return;
@@ -436,10 +447,10 @@ Page({
         successState: true
       })
     }
-
     return {
       title: this.data.theData.title,
       path: '/pages/index/index?id=' + this.data.theData.id + '&time=' + new Date().getTime()+'&type=1',
+      //path:'/pages/component/guess/guess?id='+this.data.theData.id,
       success: function (rest) {
           
       },

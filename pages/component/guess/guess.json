@@ -12,7 +12,8 @@
     "i-radio": "../../dist/radio/index",
     "loading":"../loading/loading",
     "i-load-more": "../../dist/load-more/index",
-    "i-message": "../../dist/message/index"
+    "i-message": "../../dist/message/index",
+    "nav-bar":"../nav/nav"
   }
   
 }

@@ -21,9 +21,10 @@ Component({
   data: {
     theData:{},
     name: '',
-    imgUrl: '../../image/tt.jpg',
+    imgUrl: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -57,13 +58,78 @@ Component({
     }
   },
   methods:{
+    getUserInfo: function (e) {
+      if (e.detail.userInfo) {
+        let userInfo =  e.detail.userInfo;
+        app.globalData.userInfo = e.detail.userInfo;
+        console.log(e.detail.userInfo)
+        this.login(e.detail)
+        this.setData({
+          userInfo: e.detail.userInfo,
+          imgUrl: userInfo.avatarUrl,
+          name:userInfo.nickName
+        })
+      }
+    },
+    login: function (res) {
+      const _this = this;
+      wx.showLoading({
+        title: 'Loading...',
+      })
+      wx.login({
+        success: ret => {
+          wx.request({
+            method: 'GET',
+            url: api + '/open/signin',
+            data: {
+              code: ret.code,
+              nickName: res.userInfo.nickName,
+              avatarUrl: res.userInfo.avatarUrl,
+              remember: false
+            },
+            success(res) {
+              if (res.data.error && res.data.error.length) {
+                wx.hideLoading()
+                wx.showToast({
+                  icon: 'none',
+                  title: res.data.error[0].message,
+                })
+                setTimeout(() => {
+                  wx.hideToast()
+                }, 1500)
+                return;
+              }
+              wx.setStorageSync('token', res.data.token)
+              //请求数据
+              setTimeout(()=>{
+                _this.loadData();
+              },100)
+            },
+            fail: function (err) {
+              wx.hideLoading();
+              wx.showToast({
+                icon: 'none',
+                title: '系统异常',
+              })
+              setTimeout(() => {
+                wx.hideToast()
+              }, 1500)
+            },
+            complete: function () {
+              wx.hideLoading();
+            }
+          })
+        }
+      })
+    },
     loadData:function(){
       const _this = this;
-      let token = wx.getStorageSync('token')
-      if(!token){
+      let token = wx.getStorageSync('token');
+      let userInfo = app.globalData.userInfo;
+      if (!userInfo){
         wx.showToast({
           icon: 'none',
-          title: '未授权'
+          title: '请登录'
         })
         setTimeout(() => {
           wx.hideToast()

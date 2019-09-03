@@ -32,9 +32,6 @@ Component({
             showModeState: false
           })
       }
-      if (!this.data.listData.length){
-        this.login();
-      }
       let detailId = app.globalData.detailId;
       if (detailId){
         const _this = this;
@@ -90,7 +87,8 @@ Component({
             })
           }
         })
-      }
+      };
+     
     }
   },
   data: {
@@ -123,10 +121,13 @@ Component({
     wx.removeStorageSync('time');
     wx.removeStorageSync('idList')
     const _this = this;
+    _this.loadData()
     wx.hideTabBar({})
-    this.setData({
-      showModeState:true
-    })
+    setTimeout(()=>{
+      _this.setData({
+        showModeState: true
+      })
+    },1000)
     if (app.globalData.userInfo) {
       _this.login(app.globalData)
       _this.setData({
@@ -164,20 +165,15 @@ Component({
         })
       }
     })
-    _this.saveImageToPhotosAlbum()
+    _this.saveImageToPhotosAlbum();
   },
   
   methods:{
     login: function (res, pageNum) {
       const _this = this;
-      if (!res){
-        loadData(pageNum)
-        return;
-      }
       wx.showLoading({
         title: 'Loading...',
       })
-
       wx.login({
         success: ret => {
           wx.request({
@@ -203,7 +199,7 @@ Component({
               }
               wx.setStorageSync('token', res.data.token)
               //请求数据
-              loadData();
+             
             },
             fail: function (err) {
               wx.hideLoading();
@@ -221,120 +217,120 @@ Component({
           })
         }
       })
-
-      function loadData(pageNum) {
-        let nub = pageNum ? pageNum : _this.data.pageNum;
-        wx.request({
-          method: 'GET',
-          url: api + '/api/portal/selectByTC',
-          data: {
-            status:5,
-            pageNo:nub,
-            pageSize:6
-          },
-          success(res) {
+    },
+    lower(resData){
+      let _this = this;
+      //此处放后台获取的数据
+      var result = _this.data.listData;
+      var cont = result.concat(resData), idList = [];
+      cont.map(item => {
+        idList.push(item.id)
+      })
+      wx.setStorageSync('idList', idList)
+      wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
+        title: '加载中',
+        icon: 'loading',
+      });
+      setTimeout(() => {
+        _this.setData({
+          loading: false,
+          listData: cont,
+        });
+        wx.hideLoading();
+      }, 1500)
+    },
+    loadData(pageNum){
+      const _this = this;
+      let nub = pageNum ? pageNum : _this.data.pageNum;
+      wx.request({
+        method: 'GET',
+        url: api + '/api/portal/selectByTC',
+        data: {
+          status: 5,
+          pageNo: nub,
+          pageSize: 6
+        },
+        success(res) {
+          wx.hideLoading()
+          wx.hideNavigationBarLoading()
+          wx.stopPullDownRefresh();
+          if (res.data.error && res.data.error.length) {
             wx.hideLoading()
-            wx.hideNavigationBarLoading()
-            wx.stopPullDownRefresh();
-            if (res.data.error && res.data.error.length) {
-              wx.hideLoading()
-              wx.showToast({
-                icon: 'none',
-                title: res.data.error[0].message,
-              })
-              setTimeout(() => {
-                wx.hideToast()
-              }, 1500)
-              return;
-            }
-            let resDate = res.data&&res.data.data,list=[];
-            let idList = [];
-            (resDate.list).map(item=>{
-              let beginT = item.drawTimes,md='',mh='';
-              if (beginT){
-                let arrT = beginT.split(' ');
-                let y = arrT[0],mhs = arrT[1];
-                let yy = arrT[0].split('-'),mm=mhs.split(':');
-                md=yy[1]+'月'+yy[2]+'日';
-                mh = mm[0]+':'+mm[1];
-              }
-              let userArr = [];
-              if (item.userList&&item.userList.length > 7) {
-                item.userList.map((atem, index) => {
-                  if (index < 7) {
-                    userArr.push(atem)
-                  }
-                })
-                item.userList = userArr
-              }
-              idList.push(item.id)
-              list.push({
-                drawT: item.drawTimes ? item.drawTimes.split(' ')[1]:'',
-                title:item.title,
-                id:item.id,
-                md:md,
-                mh:mh,
-                frequency: item.frequency,
-                typeValue: item.typeValue,
-                frequencyValue: item.frequencyValue,
-                pictureUrl: item.pictureUrl && item.pictureUrl != '0' ? item.pictureUrl:'',
-                prizeDescription: item.prizeDescription,
-                sponsorshipType: item.sponsorshipType,
-                sponsorshipTypeValue: item.sponsorshipTypeValue,
-                sponsor: item.sponsor && item.sponsor.length >8?item.sponsor.substr(0,8)+'...':item.sponsor,
-                userListAll:item.userList,
-                userList: item.userList||[],
-              })
-            })
-            if (pageNum) {
-              _this.setData({
-                pageNum
-              });
-              lower(list);
-            } else {
-              _this.setData({
-                total: resDate.totalCount,
-                listData: list
-              })
-            }
-            wx.setStorageSync('idList', idList)
-          },
-          fail: function (err) {
-            wx.hideLoading();
             wx.showToast({
               icon: 'none',
-              title: '系统异常',
+              title: res.data.error[0].message,
             })
             setTimeout(() => {
               wx.hideToast()
             }, 1500)
-          },
-          complete: function () {
-            wx.hideLoading();
+            return;
           }
-        })
-      }
-      //数据滚动加载
-      function lower(resData) {
-        //此处放后台获取的数据
-        var result = _this.data.listData;
-        var cont = result.concat(resData),idList=[];
-        cont.map(item=>{
-          idList.push(item.id)
-        })
-        wx.setStorageSync('idList', idList)
-        wx.showLoading({ //期间为了显示效果可以添加一个过度的弹出框提示“加载中”  
-          title: '加载中',
-          icon: 'loading',
-        });
-        setTimeout(() => {
-          _this.setData({
-            loading: false,
-            listData: cont,
-          });
+          let resDate = res.data && res.data.data, list = [];
+          let idList = [];
+          (resDate.list).map(item => {
+            let beginT = item.drawTimes, md = '', mh = '';
+            if (beginT) {
+              let arrT = beginT.split(' ');
+              let y = arrT[0], mhs = arrT[1];
+              let yy = arrT[0].split('-'), mm = mhs.split(':');
+              md = yy[1] + '月' + yy[2] + '日';
+              mh = mm[0] + ':' + mm[1];
+            }
+            let userArr = [];
+            if (item.userList && item.userList.length > 7) {
+              item.userList.map((atem, index) => {
+                if (index < 7) {
+                  userArr.push(atem)
+                }
+              })
+              item.userList = userArr
+            }
+            idList.push(item.id)
+            list.push({
+              drawT: item.drawTimes ? item.drawTimes.split(' ')[1] : '',
+              title: item.title,
+              id: item.id,
+              md: md,
+              mh: mh,
+              frequency: item.frequency,
+              typeValue: item.typeValue,
+              frequencyValue: item.frequencyValue,
+              pictureUrl: item.pictureUrl && item.pictureUrl != '0' ? item.pictureUrl : '',
+              prizeDescription: item.prizeDescription,
+              sponsorshipType: item.sponsorshipType,
+              sponsorshipTypeValue: item.sponsorshipTypeValue,
+              sponsor: item.sponsor && item.sponsor.length > 8 ? item.sponsor.substr(0, 8) + '...' : item.sponsor,
+              userListAll: item.userList,
+              userList: item.userList || [],
+            })
+          })
+          if (pageNum) {
+            _this.setData({
+              pageNum
+            });
+            _this.lower(list);
+          } else {
+            _this.setData({
+              total: resDate.totalCount,
+              listData: list
+            })
+          }
+          wx.setStorageSync('idList', idList)
+        },
+        fail: function (err) {
           wx.hideLoading();
-        }, 1500)
-      }
+          wx.showToast({
+            icon: 'none',
+            title: '系统异常',
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
+        },
+        complete: function () {
+          wx.hideLoading();
+        }
+      })
     },
     //下拉刷新
     onPullDownRefresh(){
@@ -342,7 +338,7 @@ Component({
       this.setData({
         pageNum:1
       })
-      this.login()
+      this.loadData()
     },
     //下滑加载
     onReachBottom: function () {
@@ -355,7 +351,7 @@ Component({
       this.setData({
         loading: true
       })
-      this.login('',pageNum)
+      this.loadData(pageNum)
     },
     handleOpen() {
       this.setData({

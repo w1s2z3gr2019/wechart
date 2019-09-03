@@ -1,6 +1,7 @@
 // pages/component/addAddress/addAddress.js
 import { api, apiUrl, showToastFun } from '../../../utils/util.js';
 const { $Message } = require('../../dist/base/index');
+let app = getApp();
 Page({
 
   /**
@@ -53,6 +54,11 @@ Page({
   },
   submit(){
     let token = wx.getStorageSync('token');
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo){
+      showToastFun('none', '请登录');
+      return 
+    }
     wx.showLoading({
       title: 'Loading...',
     })
@@ -73,7 +79,6 @@ Page({
       return;
     }
     let cityArr = this.data.region;
-    console.log(this.data.theData)
     let url = this.data.theData.id ? '/api/user/updateUserContact' : '/api/user/addUserContact'
     wx.request({
       method: 'post',
