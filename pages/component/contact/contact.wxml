@@ -1,8 +1,8 @@
 <!--pages/component/complaint/complaint.wxml-->
 <view class='wrap'>
   <view class='qrCode'>
-       <image src="https://static.xcustom.net/upload/static/20190811153440.jpg" mode="widthFix"  
-    data-src="https://static.xcustom.net/upload/static/20190811153440.jpg" 
+       <image src="{{apiUrl+'/static/20190811153440.jpg'}}" mode="widthFix"  
+    data-src="{{apiUrl+'/static/20190811153440.jpg'}}" 
     bindtap="previewImage"></image>
   </view>
   <view>搜索公众号 "猜奖",关注获得更多资讯</view>

@@ -1,11 +1,12 @@
 // pages/component/contact/contact.js
+import { api, apiUrl } from '../../../utils/util.js';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    apiUrl
   },
 
   /**

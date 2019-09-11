@@ -8,7 +8,7 @@ Page({
    */
  
   data: {
-    ewmImg:'https://static.xcustom.net/upload/static/940609329bc1911eb272d39b2999500.png',
+    ewmImg: apiUrl+'/static/940609329bc1911eb272d39b2999500.png',
     name:'TTT',
     winP:'iPhoneX 512G 一台',
     name: '',

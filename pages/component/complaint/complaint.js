@@ -85,16 +85,22 @@ Page({
         wx.hideLoading();
         if (res.data.error && res.data.error.length) {
           wx.hideLoading()
-          $Message({
-            content: res.data.error[0].message,
-            type: 'warning'
-          });
+          wx.showToast({
+            icon: 'none',
+            title: res.data.error[0].message,
+          })
+          setTimeout(() => {
+            wx.hideToast()
+          }, 1500)
           return;
         }
-        $Message({
-          content:'发送成功',
-          type: 'success'
-        });
+        wx.showToast({
+          icon: 'success',
+          title: '发送成功,感谢您的建议',
+        })
+        setTimeout(() => {
+          wx.hideToast()
+        }, 1500)
         _this.setData({
           phone:'',
           textVal:''

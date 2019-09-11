@@ -8,7 +8,7 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-let api = 'https://api.xcustom.net';
+let api = 'https://api.caijiang.fun';
 const login=(res,callback)=>{
   wx.login({
     success: ret => {
@@ -75,5 +75,5 @@ module.exports = {
   winState:['待开奖','待开奖','正在开奖','已开奖','已撤销'],
   formatTime: formatTime,
   api: api,
-  apiUrl: 'https://static.xcustom.net/upload'
+  apiUrl: 'https://static.caijiang.fun/upload'
 }
