@@ -57,6 +57,13 @@ Page({
           }, 1500)
           return;
         }
+        console.log(res.data.data.list)
+        let theData = res.data.data.list;
+        theData.map((item,index)=>{
+          let str = theData[index].content;
+          theData[index].content = str.split(/\n/g);
+        })
+        console.log(theData)
         _this.setData({
           list:res.data.data.list
         })

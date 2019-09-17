@@ -2,7 +2,9 @@
 <view class='wrap'>
   <view class='list' wx:for="{{list}}" wx:key='index'>
       <view class='title'>{{item.title}}</view>
-      <view class='txt'>{{item.content}}</view>
+      <view class='txt'>
+        <view wx:for="{{item.content}}" wx:for-index="ind" wx:key="ind" wx:for-item="atem">{{atem}}</view>
+      </view>
   </view>
    <view class='footer'>
       <image src='../../../image/my6.png'></image>

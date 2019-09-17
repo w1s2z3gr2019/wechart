@@ -18,11 +18,15 @@ page{
 }
 .list .title{
   color:#E70012;
-  font-size: 16px;
+  font-size: 32rpx;
   margin-bottom: 15px;
 }
 .list .txt{
-   text-align: justify;
+  font-size: 28rpx;
+  text-align: justify;
+}
+.txt view{
+  margin-bottom: 14rpx;
 }
 .footer{
   text-align: center;

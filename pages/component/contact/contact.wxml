@@ -8,7 +8,7 @@
   <view>搜索公众号 "猜奖",关注获得更多资讯</view>
   <view class='deviceWrap'>
     <view class='email'>QQ : 1038881666</view>
-    <view class='device'>Email : 1038881666@qq.com</view>
+    <view class='device'>Email : service@caijiang.fun</view>
   </view>
   <view class='contact'>
      <button  open-type='contact'>客服</button>
