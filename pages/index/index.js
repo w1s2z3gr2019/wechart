@@ -37,6 +37,10 @@ Component({
         const _this = this;
         let token = wx.getStorageSync('token');
         let oldData = this.data.listData;
+        if (!oldData.length) {
+          this.loadData()
+          return;
+        }
         wx.request({
           method: 'get',
           url: api + '/api/portal/topicDetails',
@@ -82,13 +86,15 @@ Component({
                 oldData[index] = resDate;
               }
             })
+            
             _this.setData({
               listData: oldData
             })
           }
         })
+      }else{
+        this.loadData()
       };
-     
     }
   },
   data: {
@@ -121,7 +127,7 @@ Component({
     wx.removeStorageSync('time');
     wx.removeStorageSync('idList')
     const _this = this;
-    _this.loadData()
+    // _this.loadData()
     wx.hideTabBar({})
     setTimeout(()=>{
       _this.setData({

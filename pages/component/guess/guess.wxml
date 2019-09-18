@@ -1,12 +1,12 @@
 
 <!-- <nav-bar navbar-data='{{nvabarData}}'></nav-bar> -->
 <view class='wrap' >
-<!-- <view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
+<view class='modal' style="display:{{(userState&&!hasUserInfo && canIUse)?'block':'none'}}" >
     <view class='modalCon'>
         <view class='place'>请授权登录</view>
         <button class='getUserInfo'  open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录   </button>
     </view>
- </view> -->
+ </view>
  <view class='listText'>
       <view class='listImg'>
         <image  src='{{theData.pictureUrl||initImg}}'></image>
@@ -43,16 +43,15 @@
               <view wx:if="{{theData.drawType==0&&theData.timeState}}">
                 <view class='select' >
                   <i-row>
-                    <i-col span="8">
-                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</button>
+                    <i-col span="10">
+                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" style="width:{{widthY}}px" class='qLeft' data-id="{{theData.drawList[0].id}}" bindtap='canY_ques'>{{theData.drawList[0].content}}</button>
                     </i-col>
-                    <i-col span="8" class="vs">VS</i-col>
-                    <i-col span="8">
-                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='qRight' data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</button>
+                    <i-col span="4" class="vs">VS</i-col>
+                    <i-col span="10">
+                        <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='qRight' style="width:{{widthY}}px" data-id="{{theData.drawList[1].id}}" bindtap='canY_ques'>{{theData.drawList[1].content}}</button>
                     </i-col>
                   </i-row>
                 </view>
-                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view> 
 
               <view wx:if="{{theData.drawType==1&&theData.timeState}}">

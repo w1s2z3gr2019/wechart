@@ -186,11 +186,11 @@ page{
 }
 .question1 .select .qLeft{
   float:right;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  margin-right: 10px;
+  height: 50px;
+  /* border-radius: 50%; */
   background: linear-gradient(to bottom,#5FEEFF,#0D86ED);
-  line-height: 60px;
+  line-height: 50px;
   font-size: 16px;
   color: #fff;
   text-align: center;
@@ -198,19 +198,19 @@ page{
 }
 .question1 .select .qRight{
   float: left;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  margin-left: 10px;
+  height: 50px;
+  /* border-radius: 50%; */
   background: linear-gradient(to bottom,#FFD75F,#ED4C0D);
-  line-height: 60px;
+  line-height: 50px;
   text-align: center;
   font-size: 16px;
   color: #fff;
   box-shadow:  0 0 5px #FFD75F;
 }
 .question1 .select .vs{
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   font-size:16px;
   text-align: center;
   color: #333333;

@@ -5,6 +5,11 @@ const app = getApp()
 Page({
   /**
    * 页面的初始数据
+   * if()
+   * 
+   * 
+   * 
+   * 
    */
   data: {
     nvabarData: {
@@ -15,6 +20,7 @@ Page({
     hasUserInfo:false,
     userInfo:app.globalData.userInfo,
     initId:'',
+    widthY:80,
     initImg:'',
     apiUrl: apiUrl,
     theData: {},
@@ -123,7 +129,16 @@ Page({
         theData.pictureUrl = apiUrl + theData.pictureUrl;
         theData.md=md;
         theData.mh=mh;
-        theData.drawT = theData.drawTimes ? theData.drawTimes.split(' ')[1] : '';
+        theData.drawT = theData.drawTimes ? theData.drawTimes.split(' ')[1] : '';let nubY=0;
+        if (theData.drawType == 0){
+          let l =theData.drawList[0].content.length;
+          let r = theData.drawList[1].content.length;
+          if(l>r){
+            nubY = l
+          }else{
+            nubY=r
+          }
+        }
         let endt = new Date(theData.endTimes||'').getTime();
         let nowT = new Date().getTime();
         let timeState=true; //
@@ -147,12 +162,13 @@ Page({
             choosValue = theData.chooseList[0].chooseValue;
           }
         }
+        console.log(nubY)
         theData.timeState = timeState;
         theData.choosValue = choosValue;
-        console.log(theData)
         //渲染页面回到顶部
           _this.setData({
             gv_id:'',
+            widthY: nubY*25+20,
             theData:theData,
             guessType: theData.drawType,
             topNub: 0,
@@ -260,6 +276,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options)
     if (!options) return;
     this.setData({
       initId: options.id
