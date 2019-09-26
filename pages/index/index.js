@@ -2,7 +2,7 @@
 import { api, apiUrl} from '../../utils/util.js';
 const { $Message } = require('../dist/base/index');
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Component({
   pageLifetimes: {
     show() {

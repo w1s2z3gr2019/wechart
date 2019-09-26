@@ -146,9 +146,9 @@ Page({
           timeState=false
         }
         let userArr = [];
-        if (theData.userList&&theData.userList.length > 7) {
+        if (theData.userList&&theData.userList.length >= 5) {
           theData.userList.map((item, index) => {
-            if (index < 7) {
+            if (index < 4) {
               userArr.push(item)
             }
           })
@@ -168,7 +168,7 @@ Page({
         //渲染页面回到顶部
           _this.setData({
             gv_id:'',
-            widthY: nubY*25+20,
+            widthY: nubY*20+20,
             theData:theData,
             guessType: theData.drawType,
             topNub: 0,

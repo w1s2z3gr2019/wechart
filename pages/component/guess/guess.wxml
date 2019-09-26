@@ -39,7 +39,7 @@
             <view class='titleBt'>{{theData.title}}</view>
             <view wx:if="{{theData.myJoin}}" class='resultOk'><text class='resTxt'>已选 : {{theData.choosValue}}</text></view>
             <view class='over' wx:if="{{theData.status==3}}">话题已开奖</view>
-            <view wx:if="{{!theData.myJoin&&theData!=3}}"> 
+            <view wx:if="{{!theData.myJoin&&theData.status!=3}}"> 
               <view wx:if="{{theData.drawType==0&&theData.timeState}}">
                 <view class='select' >
                   <i-row>
@@ -66,7 +66,6 @@
                     </i-col>
                   </i-row>
                 </view>
-                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view>  
               <view wx:if="{{theData.drawType==2&&theData.timeState}}">
                 <view class='select' >
@@ -81,7 +80,6 @@
                 <button open-type="{{userInfo?'':'getUserInfo'}}" bindgetuserinfo="{{userInfo?'':'getUserInfo'}}" class='canYu' data-id="{{0}}" bindtap='canY_ques'>
                   参与
                 </button>
-                <view class='tishi'>温馨提示:参与次数越多,中奖概率越高</view>
               </view>  
               <view class='timeState' wx:if="{{!theData.timeState}}">已过该话题参与时间</view>
           </view>
